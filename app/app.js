@@ -62,7 +62,15 @@ openSansObserver.load().then(() => {
 
 // Create redux store with history
 const initialState = {};
-const history = createHistory();
+const history = createHistory({
+  basename: '/zwap-pay-for-you', // e.g. domain.com/path-goes-here
+});
+// const modHistory = useRouterHistory(createHistory)({
+//   basename: '/path-goes-here', // e.g. domain.com/path-goes-here
+// });
+// const history = syncHistoryWithStore(modHistory, store, {
+//   selectLocationState: makeSelectLocationState(),
+// });
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
