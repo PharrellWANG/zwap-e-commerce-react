@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { pink } from 'material-ui/colors';
+// import { pink, green } from 'material-ui/colors';
 import { withStyles } from 'material-ui/styles';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -39,22 +39,26 @@ const styles = {
   //   paddingTop: 200,
   // },
   button: {
-    color: pink[400],
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    borderRadius: 5,
+    border: 0,
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)',
   },
+  // [`@media (min-width: ${theme.breakpoint.mobileMin})`]: {
+  //   button: {
+  //     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  //     borderRadius: 50,
+  //     border: 0,
+  //     color: 'white',
+  //     height: 48,
+  //     padding: '0 30px',
+  //     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)',
+  //   },
+  // },
 };
-//
-// function CreativeButton(props) {
-//   const { classes } = props;
-//   return (
-//     <Button className={classes.button} />
-//   );
-// }
-//
-// CreativeButton.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-//
-// const styledButton = withStyles(styles)(CreativeButton);
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
