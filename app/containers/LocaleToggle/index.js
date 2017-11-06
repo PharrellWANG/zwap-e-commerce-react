@@ -27,15 +27,21 @@ const styles = (theme) => ({
     // textAlign: 'right',
     flexWrap: 'wrap',
     position: 'absolute',
-    top: '15px',
-    right: '15px',
+    top: '5px',
+    right: '2px',
+    // verticalAlign: 'center',
   },
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120,
+    verticalAlign: 'center',
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
+  },
+  selector: {
+    // width: 80,
+    verticalAlign: 'center',
   },
 });
 
@@ -48,6 +54,7 @@ export class LocaleToggle extends React.PureComponent { // eslint-disable-line r
         <form className={classes.container} autoComplete="off">
           <FormControl className={classes.formControl}>
             <Select
+              className={classes.selector}
               value={this.props.locale}
               onChange={this.props.onLocaleToggle}
               input={<Input id="age-simple" />}

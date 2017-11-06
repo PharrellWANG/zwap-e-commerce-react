@@ -18,6 +18,7 @@ import { teal } from 'material-ui/colors';
 // import { compose } from 'redux';
 // import injectSaga from 'utils/injectSaga';
 // import injectReducer from 'utils/injectReducer';
+// import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 import ImmutableForm from './simpleForm';
@@ -28,13 +29,15 @@ import ImmutableForm from './simpleForm';
 // import messages from './messages';
 
 const styles = (theme) => ({
-  root: {
+  root: theme.mixins.gutters({
     flexGrow: 1,
-  },
-  paper: {
-    height: 140,
-    width: 100,
-  },
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 3,
+  // paper: {
+  //   height: 140,
+  //   width: 100,
+  }),
   control: {
     padding: theme.spacing.unit * 2,
   },
