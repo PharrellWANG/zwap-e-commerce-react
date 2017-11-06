@@ -10,7 +10,7 @@ import Button from 'material-ui/Button';
 import Dialog, {
   DialogTitle,
   DialogContent,
-  DialogContentText,
+  // DialogContentText,
   DialogActions,
 } from 'material-ui/Dialog';
 import LocaleToggle from 'containers/LocaleToggle';
@@ -96,36 +96,31 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
           <CenteredSection>
             <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
               <DialogTitle>
-                Zwap Pay
+                <FormattedMessage {...messages.startProjectHeader} />
               </DialogTitle>
               <DialogContent>
-                <DialogContentText>
-                  <Typography type="subheading" gutterBottom>
-                    Step 1:
-                  </Typography>
-                  <ul>
-                    You apply a loan service from Zwap by submitting the form in this page.
-                  </ul>
-                  <Typography type="subheading" gutterBottom>
-                    Step 2:
-                  </Typography>
-                  <ul>
-                    After your application gets approved by Zwap,
-                    Zwap will help you to pay for the product that you want immediately.
-                  </ul>
-                  <Typography type="subheading" gutterBottom>
-                    Step 3:
-                  </Typography>
-                  <ul>
-                    You just need to payback the instalment
-                    to Zwap in 12 months, or you can early settle
-                    the loan at any time without extra handling fee.
-                  </ul>
-                </DialogContentText>
+                <Typography type="body2" color="primary" gutterBottom>
+                  <FormattedMessage {...messages.stepOne} />
+                </Typography>
+                <Typography type="body1" align="left" gutterBottom>
+                  <FormattedMessage {...messages.stepOneContents} />
+                </Typography>
+                <Typography type="body2" color="primary" gutterBottom>
+                  <FormattedMessage {...messages.stepTwo} />
+                </Typography>
+                <Typography type="body1" align="left" gutterBottom>
+                  <FormattedMessage {...messages.stepTwoContents} />
+                </Typography>
+                <Typography type="body2" color="primary" gutterBottom>
+                  <FormattedMessage {...messages.stepThree} />
+                </Typography>
+                <Typography type="body1" align="left" gutterBottom>
+                  <FormattedMessage {...messages.stepThreeContents} />
+                </Typography>
               </DialogContent>
               <DialogActions>
                 <Button color="primary" onClick={this.handleRequestClose}>
-                  OK
+                  <FormattedMessage {...messages.dialogOk} />
                 </Button>
               </DialogActions>
             </Dialog>
@@ -138,7 +133,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
             </Typography>
             <br />
             <Button className={this.props.classes.button} onClick={this.handleClick}>
-              Details
+              <FormattedMessage {...messages.detailsButton} />
             </Button>
           </CenteredSection>
         </div>

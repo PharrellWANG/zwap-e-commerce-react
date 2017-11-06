@@ -26,8 +26,39 @@ export default defineMessages({
     id: 'boilerplate.containers.HomePage.tryme.atPrefix',
     defaultMessage: '@',
   },
-  helloWorldMsg: {
-    id: 'boilerplate.containers.HomePage.helloworld.button',
-    defaultMessage: 'Hello World',
+  detailsButton: {
+    id: 'boilerplate.containers.HomePage.details.button',
+    defaultMessage: 'Details',
+  },
+  stepOne: {
+    id: 'boilerplate.containers.HomePage.details.dialog.stepOne',
+    defaultMessage: 'Step 1:',
+  },
+  stepTwo: {
+    id: 'boilerplate.containers.HomePage.details.dialog.stepTwo',
+    defaultMessage: 'Step 2:',
+  },
+  stepThree: {
+    id: 'boilerplate.containers.HomePage.details.dialog.stepThree',
+    defaultMessage: 'Step 3:',
+  },
+  stepOneContents: {
+    id: 'boilerplate.containers.HomePage.details.dialog.stepOneContents',
+    defaultMessage: 'You apply a loan service from Zwap by submitting the form in this page.',
+  },
+  stepTwoContents: {
+    id: 'boilerplate.containers.HomePage.details.dialog.stepTwoContents',
+    defaultMessage: 'After your application gets approved by Zwap,\n' +
+    '                  Zwap will help you to pay for the product that you want immediately.',
+  },
+  stepThreeContents: {
+    id: 'boilerplate.containers.HomePage.details.dialog.stepThreeContents',
+    defaultMessage: 'You just need to payback the instalment\n' +
+    '                  to Zwap in 12 months, or you can early settle\n' +
+    '                  the loan at any time without extra handling fee.',
+  },
+  dialogOk: {
+    id: 'boilerplate.containers.HomePage.details.dialog.dialogOk',
+    defaultMessage: 'OK',
   },
 });
