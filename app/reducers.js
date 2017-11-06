@@ -8,6 +8,10 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import globalReducer from 'containers/App/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
+// import { reducer as formReducer } from 'redux-form';
+// Notice that we need redux-form/immutable for the boilerplate
+// http://redux-form.com/6.2.0/examples/immutable/
+import { reducer as reduxFormReducer } from 'redux-form/immutable';
 
 /*
  * routeReducer
@@ -45,6 +49,8 @@ export default function createReducer(injectedReducers) {
     route: routeReducer,
     global: globalReducer,
     language: languageProviderReducer,
+        // Per Step# 1: http://redux-form.com/6.2.0/docs/GettingStarted.md/
+    form: reduxFormReducer,
     ...injectedReducers,
   });
 }
