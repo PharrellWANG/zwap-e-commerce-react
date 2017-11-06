@@ -39,7 +39,7 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/mu" component={MuiformPage} />
+        <Route exact path="/mimic-post-from-third-party" component={MuiformPage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>

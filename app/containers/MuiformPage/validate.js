@@ -14,11 +14,11 @@ const validate = (values) => {
   if (values.get('email') && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email')))) {
     errors.email = 'Invalid email address';
   }
-  if (!values.get('mobile')) {
-    errors.mobile = 'Required';
-  } else if (isNaN(Number(values.get('mobile')))) {
+  // if (!values.get('mobile')) {
+  //   errors.mobile = 'Required';
+  if (values.get('mobile') && isNaN(Number(values.get('mobile')))) {
     errors.mobile = 'Must be a number';
-  } else if (!/^[0-9]{8}$/.test(values.get('mobile'))) {
+  } else if (values.get('mobile') && !/^[0-9]{8}$/.test(values.get('mobile'))) {
     errors.mobile = 'HK phone number must be 8 digits';
   }
   return errors;
