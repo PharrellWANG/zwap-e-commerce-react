@@ -1,6 +1,6 @@
 {
   "boilerplate.components.Footer.author.message": "Mit Liebe gemacht von {author}.",
-  "boilerplate.components.Footer.license.message": "Dieses Projekt wird unter der MIT-Lizenz veröffentlicht.",
+  "boilerplate.components.Footer.license.message": "Zwap為P L Technology Limited的註冊商標。",
   "boilerplate.components.Header.features": "",
   "boilerplate.components.Header.home": "",
   "boilerplate.containers.FeaturePage.css.header": "",
@@ -20,13 +20,15 @@
   "boilerplate.containers.FeaturePage.scaffolding.message": "Automatisieren Sie die Kreation von Komponenten, Containern, Routen, Selektoren und Sagas – und ihre Tests – direkt von dem Terminal!",
   "boilerplate.containers.FeaturePage.state_management.header": "Berechenbare Stateverwaltung",
   "boilerplate.containers.FeaturePage.state_management.message": "Unidirectional data flow erlaubt uns alle Änderungen ihrer Applikation zu loggen und time travel debugging einzusetzen.",
-  "boilerplate.containers.HomePage.start_project.header": "Beginnen Sie Ihr nächstes React Projekt in Sekunden",
-  "boilerplate.containers.HomePage.start_project.message": "Ein skalierendes, offline-first Fundament mit der besten DX und einem Fokus auf Performance und bewährte Methoden",
+  "boilerplate.containers.HomePage.start_project.header": "Zwap 付款",
+  "boilerplate.containers.HomePage.start_project.message": "我們提供貸款，為您立即買單！",
   "boilerplate.containers.HomePage.tryme.atPrefix": "",
   "boilerplate.containers.HomePage.tryme.header": "Probiere mich!",
   "boilerplate.containers.HomePage.tryme.message": "Zeige die Github Repositories von",
-  "boilerplate.containers.LocaleToggle.de": "",
-  "boilerplate.containers.LocaleToggle.en": "",
+  "boilerplate.containers.LocaleToggle.zh": "繁中",
+  "boilerplate.containers.LocaleToggle.en": "英語",
   "boilerplate.containers.NotFoundPage.header": "Seite nicht gefunden.",
-  "boilerplate.containers.HomePage.helloworld.button": "你好朋友"
+  "boilerplate.containers.HomePage.helloworld.button": "你好朋友",
+  "boilerplate.components.Header.payByZwap": "Zwap付款"
+
 }

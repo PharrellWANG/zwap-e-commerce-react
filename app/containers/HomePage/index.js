@@ -13,16 +13,16 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
 // import styledButton from './styled/Button';
-import Button from 'material-ui/Button';
+// import Typography from 'material-ui/Typography';
+// import Button from 'material-ui/Button';
 import AtPrefix from './styled/AtPrefix';
-import CenteredSection from './styled/CenteredSection';
+// import CenteredSection from './styled/CenteredSection';
 import Form from './styled/Form';
 import Input from './styled/Input';
 import Section from './styled/Section';
@@ -43,8 +43,8 @@ const styles = {
     borderRadius: 5,
     border: 0,
     color: 'white',
-    height: 48,
-    padding: '0 30px',
+    height: 38,
+    padding: '0 5px',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)',
   },
   // [`@media (min-width: ${theme.breakpoint.mobileMin})`]: {
@@ -64,14 +64,31 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   /**
    * when initial state username is not null, submit the form to load repos
    */
+  // state = {
+  //   open: false,
+  // };
+
   componentDidMount() {
     if (this.props.username && this.props.username.trim().length > 0) {
       this.props.onSubmitForm();
     }
   }
 
+  // handleRequestClose = () => {
+  //   this.setState({
+  //     open: false,
+  //   });
+  // }
+
+  // handleClick = () => {
+  //   this.setState({
+  //     open: true,
+  //   });
+  // }
+
   render() {
-    const { loading, error, repos, classes } = this.props;
+    // const { loading, error, repos, classes } = this.props;
+    const { loading, error, repos } = this.props;
     const reposListProps = {
       loading,
       error,
@@ -81,21 +98,15 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return (
       <article>
         <Helmet>
-          <title>Home Page</title>
-          <meta name="description" content="A React.js Boilerplate application homepage" />
+          <title>Pay by Zwap</title>
+          <meta name="description" content="Pay by Zwap" />
         </Helmet>
         <div>
-          <CenteredSection>
-            <H2>
-              <FormattedMessage {...messages.startProjectHeader} />
-            </H2>
-            <p>
-              <FormattedMessage {...messages.startProjectMessage} />
-            </p>
-            <Button className={classes.button}>
-              <FormattedMessage {...messages.helloWorldMsg} />
-            </Button>
-          </CenteredSection>
+          {/* <CenteredSection> */}
+          {/* <Button className={classes.button}> */}
+          {/* <FormattedMessage {...messages.helloWorldMsg} /> */}
+          {/* </Button> */}
+          {/* </CenteredSection> */}
           <Section>
             <H2>
               <FormattedMessage {...messages.trymeHeader} />
@@ -136,7 +147,7 @@ HomePage.propTypes = {
   onSubmitForm: PropTypes.func,
   username: PropTypes.string,
   onChangeUsername: PropTypes.func,
-  classes: PropTypes.object.isRequired,
+  // classes: PropTypes.object.isRequired,
 };
 
 export function mapDispatchToProps(dispatch) {
