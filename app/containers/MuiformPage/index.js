@@ -7,25 +7,29 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import Card, { CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import { teal } from 'material-ui/colors';
 // import { FormattedMessage } from 'react-intl';
-// import { createStructuredSelector } from 'reselect';
-// import { compose } from 'redux';
-// import injectSaga from 'utils/injectSaga';
-// import injectReducer from 'utils/injectReducer';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import injectSaga from 'utils/injectSaga';
+import injectReducer from 'utils/injectReducer';
 // import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 import ImmutableForm from './simpleForm';
-// import makeSelectMuiformPage from './selectors';
-// import reducer from './reducer';
-// import { submitApplication } from './actions';
-// import saga from './saga';
+import makeSelectReduxFormState, {
+  makeSelectSuccess,
+  makeSelectSubmitting,
+  makeSelectError,
+} from './selectors';
+import reducer from './reducer';
+import { submitApplication } from './actions';
+import saga from './saga';
 // import messages from './messages';
 
 const styles = (theme) => ({
@@ -34,21 +38,15 @@ const styles = (theme) => ({
     paddingTop: 16,
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 3,
-  // paper: {
-  //   height: 140,
-  //   width: 100,
   }),
   control: {
     padding: theme.spacing.unit * 2,
   },
   card: {
     minWidth: 275,
-    // maxWidth: 505,
     textAlign: 'center',
     background: teal[500],
     marginBottom: '38px',
-    // paddingBottom: '20px',
-    // color: 'white',
   },
   bullet: {
     display: 'inline-block',
@@ -66,77 +64,74 @@ const styles = (theme) => ({
   },
 });
 
-const login = (values) => alert(`It's a map thanks to immutables with redux-form: ${values}`);
-
-function MuiformPage(props) {
-  const { classes } = props;
-  // const bull = <span className={classes.bullet}>•</span>;
-  return (
-    <div>
-      <Helmet>
-        <title>MuiformPage</title>
-        <meta name="description" content="Description of MuiformPage" />
-      </Helmet>
-      <Grid item xs={12}>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography type="body1" className={classes.title}>
-              Hint
-            </Typography>
-            <Typography type="headline" component="h2">
-              {/* be{bull}nev{bull}o{bull}lent */}
-              This page will not appear in production.
-
-            </Typography>
-            <Typography type="body1" className={classes.pos}>
-              It only servers as an example of posting data to Zwap
-              for getting to the Zwap Pay form page in a valid way.
-            </Typography>
-            <Typography component="p">
-              Note: Only Order Reference No field below is required,
-              other two fields are optional. Depends on whether
-              the current customer is a guest or not.
-            </Typography>
-          </CardContent>
-        </Card>
-        <Grid container justify="center" spacing={16}>
-          <ImmutableForm onSubmit={login} />
+// const login = (values) => alert(`It's a map thanks to immutables with redux-form: ${values}`);
+class MuiformPage extends React.PureComponent {
+  render() {
+    const { classes, submitting } = this.props;
+    return (
+      <div>
+        <Helmet>
+          <title>MuiformPage</title>
+          <meta name="description" content="Description of MuiformPage" />
+        </Helmet>
+        <Grid item xs={12}>
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography type="body1" className={classes.title}>
+                Hint
+              </Typography>
+              <Typography type="headline" component="h2">
+                This page will not appear in production.
+              </Typography>
+              <Typography type="body1" className={classes.pos}>
+                It only servers as an example of posting data to Zwap
+                for getting to the Zwap Pay form page in a valid way.
+              </Typography>
+              <Typography component="p">
+                Note: Only Order Reference No field below is required,
+                other two fields are optional. Depends on whether
+                the current customer is a guest or not.
+              </Typography>
+            </CardContent>
+          </Card>
+          <Grid container justify="center" spacing={16}>
+            <ImmutableForm onSubmit={this.props.onSubmitApplication} realSubmitting={submitting} />
+          </Grid>
+          <br />
+          <br />
+          <br />
         </Grid>
-        <br />
-        <br />
-        <br />
-      </Grid>
-      {/* <FormattedMessage {...messages.header} /> */}
-      {/* <simpleForm signInFormLabelNames={signInFormLabelNames} onSubmit={this.props.onSubmitApplication} /> */}
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
-// MuiformPage.propTypes = {
-//   onSubmitApplication: PropTypes.func.isRequired,
-// };
+MuiformPage.propTypes = {
+  onSubmitApplication: PropTypes.func,
+};
 
-// const mapStateToProps = createStructuredSelector({
-//   muiformpage: makeSelectMuiformPage(),
-// });
+const mapStateToProps = createStructuredSelector({
+  muiformpage: makeSelectReduxFormState(),
+  submitting: makeSelectSubmitting(),
+  submitSuccess: makeSelectSuccess(),
+  submitError: makeSelectError(),
+});
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     onSubmitApplication: (evt) => {
-//       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-//       dispatch(submitApplication());
-//     },
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    onSubmitApplication: (values) => {
+      dispatch(submitApplication(values));
+    },
+  };
+}
 
-// const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-// const withReducer = injectReducer({ key: 'muiformpage', reducer });
-// const withSaga = injectSaga({ key: 'muiformpage', saga });
+const withReducer = injectReducer({ key: 'muiformpage', reducer });
+const withSaga = injectSaga({ key: 'muiformpage', saga });
 
-// export default compose(
-  // withReducer,
-  // withSaga,
-  // withConnect,
-// )(MuiformPage);
-export default withStyles(styles)(MuiformPage);
+export default withStyles(styles)(compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(MuiformPage));

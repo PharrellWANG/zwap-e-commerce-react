@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { withStyles } from 'material-ui/styles';
 // import Grid from 'material-ui/Grid';
 import { blueGrey } from 'material-ui/colors';
+// import { browserHistory } from 'react-router';
 import Typography from 'material-ui/Typography';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
