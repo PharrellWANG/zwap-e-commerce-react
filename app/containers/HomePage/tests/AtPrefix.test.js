@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import AtPrefix from '../AtPrefix';
+import AtPrefix from '../styled/AtPrefix';
 
 describe('<AtPrefix />', () => {
   it('should render an <span> tag', () => {

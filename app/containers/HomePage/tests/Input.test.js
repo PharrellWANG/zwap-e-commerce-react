@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Input from '../Input';
+import Input from '../styled/Input';
 
 describe('<Input />', () => {
   it('should render an <input> tag', () => {

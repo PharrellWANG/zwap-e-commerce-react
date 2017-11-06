@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Section from '../Section';
+import Section from '../styled/Section';
 
 describe('<Section />', () => {
   it('should render an <section> tag', () => {

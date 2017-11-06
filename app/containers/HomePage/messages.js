@@ -26,4 +26,8 @@ export default defineMessages({
     id: 'boilerplate.containers.HomePage.tryme.atPrefix',
     defaultMessage: '@',
   },
+  helloWorldMsg: {
+    id: 'boilerplate.containers.HomePage.helloworld.button',
+    defaultMessage: 'Hello World',
+  },
 });

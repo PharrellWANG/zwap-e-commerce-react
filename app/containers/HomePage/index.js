@@ -7,6 +7,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+import { pink } from 'material-ui/colors';
+import { withStyles } from 'material-ui/styles';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -17,17 +19,42 @@ import injectSaga from 'utils/injectSaga';
 import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
-import AtPrefix from './AtPrefix';
-import CenteredSection from './CenteredSection';
-import Form from './Form';
-import Input from './Input';
-import Section from './Section';
+// import styledButton from './styled/Button';
+import Button from 'material-ui/Button';
+import AtPrefix from './styled/AtPrefix';
+import CenteredSection from './styled/CenteredSection';
+import Form from './styled/Form';
+import Input from './styled/Input';
+import Section from './styled/Section';
 import messages from './messages';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+
+const styles = {
+  // root: {
+  //   textAlign: 'center',
+  //   paddingTop: 200,
+  // },
+  button: {
+    color: pink[400],
+  },
+};
+//
+// function CreativeButton(props) {
+//   const { classes } = props;
+//   return (
+//     <Button className={classes.button} />
+//   );
+// }
+//
+// CreativeButton.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
+//
+// const styledButton = withStyles(styles)(CreativeButton);
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
@@ -40,7 +67,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
-    const { loading, error, repos } = this.props;
+    const { loading, error, repos, classes } = this.props;
     const reposListProps = {
       loading,
       error,
@@ -61,6 +88,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             <p>
               <FormattedMessage {...messages.startProjectMessage} />
             </p>
+            <Button className={classes.button}>
+              <FormattedMessage {...messages.helloWorldMsg} />
+            </Button>
           </CenteredSection>
           <Section>
             <H2>
@@ -102,6 +132,7 @@ HomePage.propTypes = {
   onSubmitForm: PropTypes.func,
   username: PropTypes.string,
   onChangeUsername: PropTypes.func,
+  classes: PropTypes.object.isRequired,
 };
 
 export function mapDispatchToProps(dispatch) {
@@ -126,8 +157,8 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'home', reducer });
 const withSaga = injectSaga({ key: 'home', saga });
 
-export default compose(
+export default withStyles(styles)(compose(
   withReducer,
   withSaga,
   withConnect,
-)(HomePage);
+)(HomePage));
