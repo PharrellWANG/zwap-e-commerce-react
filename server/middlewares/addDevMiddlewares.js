@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const cors = require('cors');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
@@ -18,6 +19,12 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
+  app.use(cors());
+  // app.use( function (req, res, next) {
+  //   res.header('Access-Control-Allow-Origin', '*');
+  //   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  //   next();
+  // });
 
   // Since webpackDevMiddleware uses memory-fs internally to store build
   // artifacts, we use it instead
