@@ -3,6 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { Field, reduxForm, formValueSelector } from 'redux-form/immutable'; // <--- immutable import
 import TextField from 'material-ui/TextField';
 import { CircularProgress } from 'material-ui/Progress';
@@ -16,7 +17,6 @@ import Button from 'material-ui/Button';
 import {
   Select,
 } from 'redux-form-material-ui';
-import { injectIntl } from 'react-intl';
 import messages from './messages';
 import validate from './validate';
 import warn from './warn';
@@ -150,68 +150,73 @@ let ImmutableForm = (props) => {
         type="text"
         component={renderRequiredField}
         classes={classes}
-        label="Order Reference No."
+        label={formatMessage(messages.orderRefNo)}
       />
-      <Field name="amountToPay" type="text" component={renderRequiredField} classes={classes} label="Amount to Pay" />
-      <Field name="productName" type="text" component={renderRequiredField} classes={classes} label="Product Name" />
+      <Field name="productName" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.prodName)} />
+      <Field name="amountToPay" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.amountToPay)} />
       <Field name="email" type="email" component={renderRequiredField} classes={classes} label={formatMessage(messages.emailLabel)} />
       <Field
         name="mobile"
         type="text"
         component={renderRequiredField}
         classes={classes}
-        label="Mobile"
+        label={formatMessage(messages.mobile)}
       />
-      <Field name="lastName" type="text" component={renderRequiredField} classes={classes} label="Last Name" />
-      <Field name="firstName" type="text" component={renderRequiredField} classes={classes} label="First Name" />
-      <Field name="HKIDNumber" type="text" component={renderRequiredField} classes={classes} label="HKID Number" />
+      <Field name="lastName" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.lastname)} />
+      <Field name="firstName" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.firstname)} />
+      <Field name="HKIDNumber" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.hkidnumber)} />
       <div>
         <FormControl className={classes.formControl} required>
-          <InputLabel htmlFor="LoanPurpose">Loan Purpose</InputLabel>
-          <Field
-            name="loanPurpose"
-            component={Select}
-            placeholder="Loan Purpose"
-            validate={required}
-          >
-            <MenuItem value="tuition">Tuition</MenuItem>
-            <MenuItem value="investment">Investment</MenuItem>
-            <MenuItem value="travel">Travel</MenuItem>
-            <MenuItem value="debtPayment">Debt Payment</MenuItem>
-            <MenuItem value="others">Others</MenuItem>
-          </Field>
-        </FormControl>
-      </div>
-      <div>
-        <FormControl className={classes.formControl} required>
-          <InputLabel htmlFor="HousingStatus">Housing Status</InputLabel>
+          <InputLabel htmlFor="HousingStatus">
+            <FormattedMessage {...messages.housingstatus} />
+          </InputLabel>
           <Field
             name="housingStatus"
             component={Select}
             placeholder="Housing Status"
             validate={required}
           >
-            <MenuItem value="PublicHousing">Public Housing</MenuItem>
-            <MenuItem value="OwnedByFamily">Owned by Family</MenuItem>
-            <MenuItem value="Rent">Rent</MenuItem>
-            <MenuItem value="Quarter">Quarter</MenuItem>
-            <MenuItem value="Hall">Student Hall</MenuItem>
+            <MenuItem value="PublicHousing">
+              <FormattedMessage {...messages.publichousing} />
+            </MenuItem>
+            <MenuItem value="Hall">
+              <FormattedMessage {...messages.hall} />
+            </MenuItem>
+            <MenuItem value="OwnedByFamily">
+              <FormattedMessage {...messages.ownedbyfamily} />
+            </MenuItem>
+            <MenuItem value="Rent">
+              <FormattedMessage {...messages.rent} />
+            </MenuItem>
+            <MenuItem value="Quarter">
+              <FormattedMessage {...messages.quarterr} />
+            </MenuItem>
           </Field>
         </FormControl>
       </div>
       <div>
         <FormControl className={classes.formControl} required>
-          <InputLabel htmlFor="livingWith">Living With</InputLabel>
+          <InputLabel htmlFor="livingWith">
+            <FormattedMessage {...messages.livingwith} />
+          </InputLabel>
           <Field
             name="livingWith"
             component={Select}
             placeholder="Living With"
             validate={required}
           >
-            <MenuItem value="Parents">Parents</MenuItem>
-            <MenuItem value="Relatives">Relatives</MenuItem>
-            <MenuItem value="Friends">Friends or Classmates</MenuItem>
-            <MenuItem value="Others">Others</MenuItem>
+            <MenuItem value="Parents">
+              <FormattedMessage {...messages.parents} />
+            </MenuItem>
+            <MenuItem value="Relatives">
+              <FormattedMessage {...messages.relatives} />
+            </MenuItem>
+            <MenuItem value="Friends">
+              <FormattedMessage {...messages.friends} />
+            </MenuItem>
+            <MenuItem value="Others">
+              <FormattedMessage {...messages.others} />
+            </MenuItem>
           </Field>
         </FormControl>
       </div>

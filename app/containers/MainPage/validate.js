@@ -78,10 +78,6 @@ const validate = (values) => {
     errors.firstName = 'Must be larger than 1 characters';
   }
 
-  if (!values.get('loanPurpose')) {
-    errors.loanPurpose = 'Required';
-  }
-
   if (!values.get('housingStatus')) {
     errors.housingStatus = 'Required';
   }
