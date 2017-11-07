@@ -5,6 +5,12 @@ import { createSelector } from 'reselect';
  */
 const selectMainPageDomain = (state) => state.get('mainPage');
 
+// const myComplexSelector = createSelector(
+//   selectMainPageDomain,
+//   (myState) => myState.get('data')
+// );
+
+
 /**
  * Other specific selectors
  */
@@ -14,12 +20,20 @@ const selectMainPageDomain = (state) => state.get('mainPage');
  * Default selector used by MainPage
  */
 
-const makeSelectMainPage = () => createSelector(
+const makeSelectMainPageOpenDialog = () => createSelector(
   selectMainPageDomain,
-  (substate) => substate.toJS()
+  (subState) => subState.get('openDialog'),
 );
 
-export default makeSelectMainPage;
+const makeSelectMainPageFormData = () => createSelector(
+  selectMainPageDomain,
+  (subState) => subState.get('data').toJS(),
+);
+
+export default makeSelectMainPageOpenDialog;
+
 export {
   selectMainPageDomain,
+  makeSelectMainPageFormData,
+  // myComplexSelector,
 };

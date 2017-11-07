@@ -9,13 +9,20 @@ import {
   FETCH_AND_LOAD,
   FETCH_AND_LOAD_SUCCESS,
   FETCH_AND_LOAD_FAIL,
+  DISPLAY_DIALOG,
+  CLOSE_DIALOG,
 } from './constants';
 
 const initialState = fromJS({
   fetching: false,
   success: false,
   error: false,
-  data: '',
+  data: {
+    orderReferenceNo: 'DUMMY',
+    email: 'DMMY MAIL',
+    mobile: 'DMMY MOBILE',
+  },
+  openDialog: false,
 });
 
 function mainPageReducer(state = initialState, action) {
@@ -24,20 +31,24 @@ function mainPageReducer(state = initialState, action) {
       return state
         .set('fetching', true)
         .set('success', false)
-        .set('error', false)
-        .set('data', '');
+        .set('error', false);
     case FETCH_AND_LOAD_SUCCESS:
       return state
         .set('fetching', false)
         .set('success', true)
         .set('error', false)
-        .set('data', action.data);
+        .set('data', fromJS(action.data));
     case FETCH_AND_LOAD_FAIL:
       return state
         .set('fetching', false)
         .set('success', false)
-        .set('error', true)
-        .set('data', '');
+        .set('error', true);
+    case DISPLAY_DIALOG:
+      return state
+      .set('openDialog', true);
+    case CLOSE_DIALOG:
+      return state
+      .set('openDialog', false);
     default:
       return state;
   }

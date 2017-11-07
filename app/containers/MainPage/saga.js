@@ -8,17 +8,14 @@ import {
 import { FETCH_AND_LOAD } from './constants';
 
 export function* fetchData(action) {
-  // const username = yield select(makeSelectUsername());
-  const token = action.token;
+  const tokenInUrl = action.token;
+  // console.log(tokenInUrl);
   const requestURL = 'http://218.255.104.158:6789/zwap-pay/token-query/';
   const options = {
     method: 'POST',
-    body: JSON.stringify({ tokenQuery: token }),
+    body: JSON.stringify({ token: tokenInUrl }),
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': '*',
-      'Access-Control-Allow-Headers': '*',
     },
   };
   try {
@@ -31,6 +28,5 @@ export function* fetchData(action) {
 }
 
 export default function* fetchAndLoadData() {
-  // See example in containers/HomePage/saga.js
   yield takeLatest(FETCH_AND_LOAD, fetchData);
 }
