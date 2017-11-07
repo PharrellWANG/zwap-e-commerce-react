@@ -13,6 +13,7 @@ import { Helmet } from 'react-helmet';
 // import { FormattedMessage } from 'react-intl';
 import { withStyles } from 'material-ui/styles';
 import { LinearProgress } from 'material-ui/Progress';
+import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
 import Dialog, {
   DialogActions,
@@ -37,9 +38,12 @@ import ImmutableForm from './form';
 // import messages from './messages';
 
 const styles = {
-  root: {
+  progressStyle: {
     width: '100%',
     marginTop: 0,
+  },
+  gridStyle: {
+    marginTop: 50,
   },
 };
 
@@ -93,13 +97,16 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
             </DialogActions>
           </Dialog>
         </div>
-        { (this.props.getSuccessNotice || !this.props.match.params.token) ?
-          <ImmutableForm onSubmit={login} initialValues={reduxFormInitialValues} /> :
-          <div className={classes.root}>
+        {(this.props.getSuccessNotice || !this.props.match.params.token)
+          ? (<Grid item xs={12}>
+            <Grid className={classes.gridStyle} container justify="center" spacing={16}>
+              <ImmutableForm onSubmit={login} initialValues={reduxFormInitialValues} />
+            </Grid>
+          </Grid>)
+          : <div className={classes.progressStyle}>
             <LinearProgress />
           </div>
         }
-        {/* loanApplicationForm onSubmit={login} /> */}
       </div>
     );
   }

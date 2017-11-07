@@ -11,6 +11,19 @@ const validate = (values) => {
   } else if (values.get('orderReferenceNo').length < 3) {
     errors.orderReferenceNo = 'Must be larger than 3 characters';
   }
+
+  if (!values.get('amountToPay')) {
+    errors.amountToPay = 'Required';
+  } else if (values.get('amountToPay') && isNaN(Number(values.get('amountToPay')))) {
+    errors.amountToPay = 'Must be a number';
+  }
+
+  if (!values.get('productName')) {
+    errors.productName = 'Required';
+  } else if (values.get('productName').length < 1) {
+    errors.productName = 'Must be larger than 1 characters';
+  }
+
   if (values.get('email') && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email')))) {
     errors.email = 'Invalid email address';
   }
