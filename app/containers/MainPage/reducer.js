@@ -19,6 +19,8 @@ const initialState = fromJS({
   error: false,
   data: {
     orderReferenceNo: '',
+    amountToPay: '',
+    productName: '',
     email: '',
     mobile: '',
   },
