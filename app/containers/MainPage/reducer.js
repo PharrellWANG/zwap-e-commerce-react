@@ -18,9 +18,9 @@ const initialState = fromJS({
   success: false,
   error: false,
   data: {
-    orderReferenceNo: 'DUMMY',
-    email: 'DMMY MAIL',
-    mobile: 'DMMY MOBILE',
+    orderReferenceNo: '',
+    email: '',
+    mobile: '',
   },
   openDialog: false,
 });
@@ -33,6 +33,7 @@ function mainPageReducer(state = initialState, action) {
         .set('success', false)
         .set('error', false);
     case FETCH_AND_LOAD_SUCCESS:
+      // console.log(3);
       return state
         .set('fetching', false)
         .set('success', true)

@@ -25,6 +25,11 @@ const makeSelectMainPageOpenDialog = () => createSelector(
   (subState) => subState.get('openDialog'),
 );
 
+const getSuccessNotice = () => createSelector(
+  selectMainPageDomain,
+  (subState) => subState.get('success'),
+);
+
 const makeSelectMainPageFormData = () => createSelector(
   selectMainPageDomain,
   (subState) => subState.get('data').toJS(),
@@ -35,5 +40,6 @@ export default makeSelectMainPageOpenDialog;
 export {
   selectMainPageDomain,
   makeSelectMainPageFormData,
+  getSuccessNotice,
   // myComplexSelector,
 };

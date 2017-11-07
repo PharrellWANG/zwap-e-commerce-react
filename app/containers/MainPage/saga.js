@@ -1,4 +1,5 @@
 import request from 'utils/request';
+// import { delay } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   dataLoadSuccess,
@@ -19,7 +20,7 @@ export function* fetchData(action) {
     },
   };
   try {
-    // yield call(delay, 1000);
+    // yield call(delay, 3000);
     const data = yield call(request, requestURL, options);
     yield put(dataLoadSuccess(data));
   } catch (err) {

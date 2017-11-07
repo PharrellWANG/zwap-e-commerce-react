@@ -11,6 +11,8 @@ import { Helmet } from 'react-helmet';
 // import { initialize } from 'redux-form/immutable';
 // import { fromJS } from 'immutable';
 // import { FormattedMessage } from 'react-intl';
+import { withStyles } from 'material-ui/styles';
+import { LinearProgress } from 'material-ui/Progress';
 import Button from 'material-ui/Button';
 import Dialog, {
   DialogActions,
@@ -28,26 +30,45 @@ import {
   noTokenInUrlDisplayDialog,
   closeDialog,
 } from './actions';
-import makeSelectMainPageOpenDialog, { makeSelectMainPageFormData } from './selectors';
+import makeSelectMainPageOpenDialog, { makeSelectMainPageFormData, getSuccessNotice } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-// import ImmutableForm from './form';
+import ImmutableForm from './form';
 // import messages from './messages';
 
+const styles = {
+  root: {
+    width: '100%',
+    marginTop: 0,
+  },
+};
 
-// const login = (values) => alert(`It's a map thanks to immutables with redux-form: ${values}`);
+const login = (values) => alert(`It's a map thanks to immutables with redux-form: ${values}`);
 export class MainPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
     // console.log(this.props.match);
     if (this.props.match.params.token) {
+      // console.log('1');
       // console.log(this.props.match.params.token);
+      // console.log(this.props.makeSelectMainPageFormData);
+      // console.log(typeof (this.props.makeSelectMainPageFormData));
       this.props.onFetchAndLoad(this.props.match.params.token);
+      // console.log(this.props.makeSelectMainPageFormData);
     } else {
       this.props.openDialog();
-      console.log(this.props.makeSelectMainPageFormData);
+      // console.log(this.props.makeSelectMainPageFormData);
+      // console.log(typeof (this.props.makeSelectMainPageFormData));
     }
   }
+
+  // const initialValus = this.props.makeSelectMainPageFormData;
+
   render() {
+    // console.log(this.props.makeSelectMainPageFormData);
+    const { classes } = this.props;
+    const reduxFormInitialValues = this.props.makeSelectMainPageFormData;
+    // console.log(initvals);
+    // console.log('2');
     return (
       <div>
         <Helmet>
@@ -72,7 +93,12 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
             </DialogActions>
           </Dialog>
         </div>
-        {/* <ImmutableForm onSubmit={login} /> */}
+        { (this.props.getSuccessNotice || !this.props.match.params.token) ?
+          <ImmutableForm onSubmit={login} initialValues={reduxFormInitialValues} /> :
+          <div className={classes.root}>
+            <LinearProgress />
+          </div>
+        }
         {/* loanApplicationForm onSubmit={login} /> */}
       </div>
     );
@@ -84,12 +110,14 @@ MainPage.propTypes = {
   openDialog: PropTypes.func.isRequired,
   closeDialog: PropTypes.func.isRequired,
   makeSelectMainPageOpenDialog: PropTypes.bool.isRequired,
+  getSuccessNotice: PropTypes.bool.isRequired,
   makeSelectMainPageFormData: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   makeSelectMainPageOpenDialog: makeSelectMainPageOpenDialog(),
   makeSelectMainPageFormData: makeSelectMainPageFormData(),
+  getSuccessNotice: getSuccessNotice(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -115,4 +143,5 @@ export default compose(
   withReducer,
   withSaga,
   withConnect,
+  withStyles(styles),
 )(MainPage);
