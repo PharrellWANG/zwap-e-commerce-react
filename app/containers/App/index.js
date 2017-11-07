@@ -16,16 +16,18 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import MainPage from 'containers/MainPage/Loadable';
 import Header from 'components/Header';
-// import Footer from 'components/Footer';
+import Footer from 'components/Footer';
 import MuiformPage from '../../containers/MuiformPage/Loadable';
 
 const AppWrapper = styled.div`
   // max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
   display: flex;
   min-height: 100%;
+  height: auto !important;
+  height: 100%;
   // padding: 0 16px;
   flex-direction: column;
+  margin: 0 auto -142px;
 `;
 
 export default function App() {
@@ -45,7 +47,7 @@ export default function App() {
         <Route exact path="/features" component={FeaturePage} />
         <Route exact path="" component={NotFoundPage} />
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </AppWrapper>
   );
 }

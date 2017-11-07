@@ -228,6 +228,8 @@
     "lodash": "4.17.4",
     "material-ui": "^1.0.0-beta.20",
     "material-ui-icons": "^1.0.0-beta.17",
+    "react-grecaptcha": "^1.1.7",
+    "material-ui-pickers": "^1.0.0-alpha.12",
     "minimist": "1.2.0",
     "normalize.css": "^7.0.0",
     "prop-types": "15.5.10",

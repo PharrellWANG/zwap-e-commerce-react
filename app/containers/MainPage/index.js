@@ -44,6 +44,7 @@ const styles = {
   },
   gridStyle: {
     marginTop: 50,
+    marginBottom: 66,
   },
 };
 
