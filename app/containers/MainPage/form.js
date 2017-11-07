@@ -9,7 +9,7 @@ import { CircularProgress } from 'material-ui/Progress';
 import { MenuItem } from 'material-ui/Menu';
 import { InputLabel } from 'material-ui/Input';
 // import Radio from 'material-ui/Radio';
-import { FormControl, FormHelperText } from 'material-ui/Form';
+import { FormControl } from 'material-ui/Form';
 // import Select from 'material-ui/Select';
 import { green } from 'material-ui/colors';
 import Button from 'material-ui/Button';
@@ -20,7 +20,7 @@ import { injectIntl } from 'react-intl';
 import messages from './messages';
 import validate from './validate';
 import warn from './warn';
-import MuiDatePicker from './datepicker';
+// import MuiDatePicker from './datepicker';
 // import Captach from './captcha';
 
 const styles = (theme) => ({
@@ -166,12 +166,6 @@ let ImmutableForm = (props) => {
       <Field name="firstName" type="text" component={renderRequiredField} classes={classes} label="First Name" />
       <Field name="HKIDNumber" type="text" component={renderRequiredField} classes={classes} label="HKID Number" />
       <div>
-        <FormControl className={classes.formControlDatePicker} required>
-          <Field name="birthday" component={MuiDatePicker} label="Birthday" />
-          <FormHelperText>Your birthday</FormHelperText>
-        </FormControl>
-      </div>
-      <div>
         <FormControl className={classes.formControl} required>
           <InputLabel htmlFor="LoanPurpose">Loan Purpose</InputLabel>
           <Field
@@ -299,7 +293,7 @@ let ImmutableForm = (props) => {
         </FormControl>
       </div>
       { requireGPA &&
-        <Field name="gpa" type="text" component={renderRequiredField} classes={classes} label="Cumulative GPA" />
+        <Field name="cumulativeGPA" type="text" component={renderRequiredField} classes={classes} label="Cumulative GPA" />
       }
       <div className={classes.root}>
         <div className={classes.wrapper}>

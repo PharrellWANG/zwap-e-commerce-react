@@ -67,14 +67,65 @@ const validate = (values) => {
     errors.mobile = 'HK phone number must be 8 digits';
   }
 
+  if (!values.get('lastName')) {
+    errors.lastName = 'Required';
+  } else if (values.get('lastName').length < 1) {
+    errors.lastName = 'Must be larger than 1 characters';
+  }
+  if (!values.get('firstName')) {
+    errors.firstName = 'Required';
+  } else if (values.get('firstName').length < 1) {
+    errors.firstName = 'Must be larger than 1 characters';
+  }
+
   if (!values.get('loanPurpose')) {
     errors.loanPurpose = 'Required';
+  }
+
+  if (!values.get('housingStatus')) {
+    errors.housingStatus = 'Required';
+  }
+
+  if (!values.get('livingWith')) {
+    errors.livingWith = 'Required';
+  }
+
+  if (!values.get('University')) {
+    errors.University = 'Required';
+  }
+
+  if (!values.get('Degree')) {
+    errors.Degree = 'Required';
+  }
+
+  if (!values.get('Major')) {
+    errors.Major = 'Required';
+  }
+
+  if (!values.get('YearOfStudy')) {
+    errors.YearOfStudy = 'Required';
   }
 
   if (!values.get('HKIDNumber')) {
     errors.HKIDNumber = 'Required';
   } else if (!isHKID(values.get('HKIDNumber'))) {
     errors.HKIDNumber = 'Please use your valid HKID number';
+  }
+
+  if (!values.get('YearOfStudy')) {
+    errors.YearOfStudy = 'Required';
+  } else if (values.get('YearOfStudy') === '2' || values.get('YearOfStudy') === '3' || values.get('YearOfStudy') === '4') {
+    if (!values.get('cumulativeGPA')) {
+      errors.cumulativeGPA = 'Required';
+    } else if (isNaN(Number(values.get('cumulativeGPA')))) {
+      errors.cumulativeGPA = 'Must be a number';
+    } else if (Number(values.get('cumulativeGPA')) < 1.5) {
+      errors.cumulativeGPA = 'GPA lower than 1.5 is not qualified for this product';
+    } else if (Number(values.get('cumulativeGPA')) > 5) {
+      errors.cumulativeGPA = 'Please input valid GPA';
+    } else if (Number(values.get('cumulativeGPA')) < 0) {
+      errors.cumulativeGPA = 'Please input valid GPA';
+    }
   }
 
   return errors;
