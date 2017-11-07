@@ -5,8 +5,11 @@ import { withStyles } from 'material-ui/styles';
 import { Field, reduxForm } from 'redux-form/immutable'; // <--- immutable import
 import TextField from 'material-ui/TextField';
 import { CircularProgress } from 'material-ui/Progress';
+// import Select from 'material-ui/Select';
 import { green } from 'material-ui/colors';
 import Button from 'material-ui/Button';
+import validate from './validate';
+import warn from './warn';
 
 const styles = (theme) => ({
   container: {
@@ -43,31 +46,31 @@ const styles = (theme) => ({
   },
 });
 
-const initRenderField = ({
-  classes,
-  input,
-  label,
-  type,
-  meta: { touched, error },
-}) => {
-  const errorx = !!((touched && error));
-  return (
-    <div>
-      <div>
-        <TextField
-          error={errorx}
-          helperText={touched && error}
-          {...input}
-          type={type}
-          label={label}
-          placeholder={label}
-          className={classes.textField}
-          margin="normal"
-        />
-      </div>
-    </div>
-  );
-};
+// const initRenderField = ({
+//   classes,
+//   input,
+//   label,
+//   type,
+//   meta: { touched, error },
+// }) => {
+//   const errorx = !!((touched && error));
+//   return (
+//     <div>
+//       <div>
+//         <TextField
+//           error={errorx}
+//           helperText={touched && error}
+//           {...input}
+//           type={type}
+//           label={label}
+//           placeholder={label}
+//           className={classes.textField}
+//           margin="normal"
+//         />
+//       </div>
+//     </div>
+//   );
+// };
 
 const initRenderRequiredField = ({
   classes,
@@ -97,7 +100,7 @@ const initRenderRequiredField = ({
 };
 
 
-const renderField = withStyles(styles)(initRenderField);
+// const renderField = withStyles(styles)(initRenderField);
 const renderRequiredField = withStyles(styles)(initRenderRequiredField);
 
 const ImmutableForm = (props) => {
@@ -107,11 +110,11 @@ const ImmutableForm = (props) => {
       <Field name="orderReferenceNo" type="text" component={renderRequiredField} classes={classes} label="Order Reference No." />
       <Field name="amountToPay" type="text" component={renderRequiredField} classes={classes} label="Amount to Pay" />
       <Field name="productName" type="text" component={renderRequiredField} classes={classes} label="Product Name" />
-      <Field name="email" type="email" component={renderField} classes={classes} label="Email" />
+      <Field name="email" type="email" component={renderRequiredField} classes={classes} label="Email" />
       <Field
         name="mobile"
         type="text"
-        component={renderField}
+        component={renderRequiredField}
         classes={classes}
         label="Mobile"
       />
@@ -132,6 +135,6 @@ const ImmutableForm = (props) => {
 
 export default withStyles(styles)(reduxForm({
   form: 'immutableExample', // a unique identifier for this form
-  // validate,
-  // warn,
+  validate,
+  warn,
 })(ImmutableForm));
