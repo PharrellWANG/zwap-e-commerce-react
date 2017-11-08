@@ -220,26 +220,48 @@ let ImmutableForm = (props) => {
           </Field>
         </FormControl>
       </div>
-      <Field name="residentialAddress" type="text" component={renderRequiredField} classes={classes} label="Residential Address" />
+      <Field name="residentialAddress" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.resiaddr)} />
       <div>
         <FormControl className={classes.formControl} required>
-          <InputLabel htmlFor="University">Your University</InputLabel>
+          <InputLabel htmlFor="University">
+            <FormattedMessage {...messages.univ} />
+          </InputLabel>
           <Field
             name="University"
             component={Select}
             placeholder="Your University"
             validate={required}
           >
-            <MenuItem value="HKU">The University of Hong Kong</MenuItem>
-            <MenuItem value="CUHK">The Chinese University of Hong Kong</MenuItem>
-            <MenuItem value="UST">The Hong Kong University of Science and Technology</MenuItem>
-            <MenuItem value="POLYU">The Hong Kong Polytechnic University</MenuItem>
-            <MenuItem value="CITYU">City University of Hong Kong</MenuItem>
-            <MenuItem value="BAP">Hong Kong Baptist University</MenuItem>
-            <MenuItem value="HKIE">The Hong Kong Institute of Education</MenuItem>
-            <MenuItem value="LU">Lingnan University</MenuItem>
-            <MenuItem value="OU">The Open University of Hong Kong</MenuItem>
-            <MenuItem value="OTHERS">Others</MenuItem>
+            <MenuItem value="HKU">
+              <FormattedMessage {...messages.hku} />
+            </MenuItem>
+            <MenuItem value="CUHK">
+              <FormattedMessage {...messages.cuhk} />
+            </MenuItem>
+            <MenuItem value="UST">
+              <FormattedMessage {...messages.hkust} />
+            </MenuItem>
+            <MenuItem value="POLYU">
+              <FormattedMessage {...messages.polyu} />
+            </MenuItem>
+            <MenuItem value="CITYU">
+              <FormattedMessage {...messages.cityu} />
+            </MenuItem>
+            <MenuItem value="BAP">
+              <FormattedMessage {...messages.bp} />
+            </MenuItem>
+            <MenuItem value="HKIE">
+              <FormattedMessage {...messages.hkie} />
+            </MenuItem>
+            <MenuItem value="LU">
+              <FormattedMessage {...messages.lingnan} />
+            </MenuItem>
+            <MenuItem value="OU">
+              <FormattedMessage {...messages.ouhk} />
+            </MenuItem>
+            <MenuItem value="OTHERS">
+              <FormattedMessage {...messages.others} />
+            </MenuItem>
           </Field>
         </FormControl>
       </div>

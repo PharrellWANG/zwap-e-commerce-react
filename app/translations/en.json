@@ -56,5 +56,15 @@
   "app.container.MainPage.parents": "Parents",
   "app.container.MainPage.relatives": "Relatives",
   "app.container.MainPage.friends": "Friends or Classmates",
-  "app.container.MainPage.others": "Others"
+  "app.container.MainPage.others": "Others",
+  "app.container.MainPage.univ": "University",
+  "app.container.MainPage.hku": "The University of Hong Kong",
+  "app.container.MainPage.cuhk": "The Chinese University of Hong Kong",
+  "app.container.MainPage.hkust": "The Hong Kong University of Science and Technology",
+  "app.container.MainPage.polyu": "The Hong Kong Polytechnic University",
+  "app.container.MainPage.cityu": "City University of Hong Kong",
+  "app.container.MainPage.bp": "Hong Kong Baptist University",
+  "app.container.MainPage.hkie": "The Hong Kong Institute of Education",
+  "app.container.MainPage.lingnan": "Lingnan University",
+  "app.container.MainPage.ouhk": "The Open University of Hong Kong"
 }

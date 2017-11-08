@@ -87,6 +87,60 @@ export default defineMessages({
     id: 'app.container.MainPage.others',
     defineMessages: 'Others',
   },
+  resiaddr: {
+    id: 'app.container.MainPage.resiaddr',
+    defineMessages: 'Residential Address',
+  },
+
+  univ: {
+    id: 'app.container.MainPage.univ',
+    defineMessages: 'University',
+  },
+
+  hku: {
+    id: 'app.container.MainPage.hku',
+    defineMessages: 'The University of Hong Kong',
+  },
+
+  cuhk: {
+    id: 'app.container.MainPage.cuhk',
+    defineMessages: 'The Chinese University of Hong Kong',
+  },
+
+  hkust: {
+    id: 'app.container.MainPage.hkust',
+    defineMessages: 'The Hong Kong University of Science and Technology',
+  },
+
+  polyu: {
+    id: 'app.container.MainPage.polyu',
+    defineMessages: 'The Hong Kong Polytechnic University',
+  },
+
+  cityu: {
+    id: 'app.container.MainPage.cityu',
+    defineMessages: 'City University of Hong Kong',
+  },
+
+  bp: {
+    id: 'app.container.MainPage.bp',
+    defineMessages: 'Hong Kong Baptist University',
+  },
+
+  hkie: {
+    id: 'app.container.MainPage.hkie',
+    defineMessages: 'The Hong Kong Institute of Education',
+  },
+
+  lingnan: {
+    id: 'app.container.MainPage.lingnan',
+    defineMessages: 'Lingnan University',
+  },
+
+  ouhk: {
+    id: 'app.container.MainPage.ouhk',
+    defineMessages: 'The Open University of Hong Kong',
+  },
   // messages for validate.js
   required: {
     id: 'app.containers.MainPage.require',

@@ -56,5 +56,16 @@
   "app.container.MainPage.parents": "父母",
   "app.container.MainPage.relatives": "親戚",
   "app.container.MainPage.friends": "朋友或同學",
-  "app.container.MainPage.others": "其他"
+  "app.container.MainPage.others": "其他",
+  "app.container.MainPage.resiaddr": "住宅地址",
+  "app.container.MainPage.univ": "大學",
+  "app.container.MainPage.hku": "香港大學",
+  "app.container.MainPage.cuhk": "香港中文大學",
+  "app.container.MainPage.hkust": "香港科技大學",
+  "app.container.MainPage.polyu": "香港理工大學",
+  "app.container.MainPage.cityu": "香港城市大學",
+  "app.container.MainPage.hkie": "香港教育大學",
+  "app.container.MainPage.bp": "香港浸會大學",
+  "app.container.MainPage.lingnan": "嶺南大學",
+  "app.container.MainPage.ouhk": "香港公開大學"
 }
