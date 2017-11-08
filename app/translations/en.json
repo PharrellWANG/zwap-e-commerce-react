@@ -57,6 +57,7 @@
   "app.container.MainPage.relatives": "Relatives",
   "app.container.MainPage.friends": "Friends or Classmates",
   "app.container.MainPage.others": "Others",
+  "app.container.MainPage.resiaddr": "Residential Address",
   "app.container.MainPage.univ": "University",
   "app.container.MainPage.hku": "The University of Hong Kong",
   "app.container.MainPage.cuhk": "The Chinese University of Hong Kong",
@@ -81,5 +82,14 @@
   "app.containers.MainPage.edu": "Education and Language",
   "app.containers.MainPage.inf": "Information Technology/Computing",
   "app.containers.MainPage.soc": "Social Science",
-  "app.containers.MainPage.hotel": "Hotel and Tourism"
+  "app.containers.MainPage.hotel": "Hotel and Tourism",
+  "app.containers.MainPage.yearofstudy": "Year of Study",
+  "app.containers.MainPage.yone": "Year 1",
+  "app.containers.MainPage.ytwo": "Year 2",
+  "app.containers.MainPage.ythree": "Year 3",
+  "app.containers.MainPage.yfour": "Year 4",
+  "app.containers.MainPage.cumulativegpa": "Cumulative GPA",
+  "app.containers.MainPage.Submit": "Submit",
+  "app.containers.MainPage.Clear": "Clear",
+  "app.containers.MainPage.required": "Required"
 }

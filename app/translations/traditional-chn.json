@@ -82,5 +82,14 @@
   "app.containers.MainPage.edu": "教育及語言",
   "app.containers.MainPage.inf": "信息技術/計算機",
   "app.containers.MainPage.soc": "社科",
-  "app.containers.MainPage.hotel": "酒店及旅遊"
+  "app.containers.MainPage.hotel": "酒店及旅遊",
+  "app.containers.MainPage.yearofstudy": "年級",
+  "app.containers.MainPage.yone": "年級 1",
+  "app.containers.MainPage.ytwo": "年級 2",
+  "app.containers.MainPage.ythree": "年級 3",
+  "app.containers.MainPage.yfour": "年級 4",
+  "app.containers.MainPage.cumulativegpa": "累積平均績點",
+  "app.containers.MainPage.submit": "提交",
+  "app.containers.MainPage.clear": "清除",
+  "app.containers.MainPage.required": "必須填寫"
 }

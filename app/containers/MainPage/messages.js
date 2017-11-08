@@ -201,10 +201,41 @@ export default defineMessages({
     id: 'app.containers.MainPage.hotel',
     defaultMessage: 'Hotel and Tourism',
   },
-
+  yearofstudy: {
+    id: 'app.containers.MainPage.yearofstudy',
+    defaultMessage: 'Year of Study',
+  },
+  yone: {
+    id: 'app.containers.MainPage.yone',
+    defaultMessage: 'Year 1',
+  },
+  ytwo: {
+    id: 'app.containers.MainPage.ytwo',
+    defaultMessage: 'Year 2',
+  },
+  ythree: {
+    id: 'app.containers.MainPage.ythree',
+    defaultMessage: 'Year 3',
+  },
+  yfour: {
+    id: 'app.containers.MainPage.yfour',
+    defaultMessage: 'Year 4',
+  },
+  cumulativeGPA: {
+    id: 'app.containers.MainPage.cumulativegpa',
+    defaultMessage: 'Cumulative GPA',
+  },
+  submit: {
+    id: 'app.containers.MainPage.submit',
+    defaultMessage: 'Submit',
+  },
+  clear: {
+    id: 'app.containers.MainPage.clear',
+    defaultMessage: 'Clear',
+  },
   // messages for validate.js
   required: {
-    id: 'app.containers.MainPage.require',
+    id: 'app.containers.MainPage.required',
     defaultMessage: 'Required',
   },
 });

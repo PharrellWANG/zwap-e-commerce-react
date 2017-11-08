@@ -338,7 +338,7 @@ let ImmutableForm = (props) => {
       <div>
         <FormControl className={classes.formControl} required>
           <InputLabel htmlFor="YearOfStudy">
-            Year of Study
+            <FormattedMessage {...messages.yearofstudy} />
           </InputLabel>
           <Field
             name="YearOfStudy"
@@ -347,32 +347,32 @@ let ImmutableForm = (props) => {
             validate={required}
           >
             <MenuItem value="1">
-              Year 1
+              <FormattedMessage {...messages.yone} />
             </MenuItem>
             <MenuItem value="2">
-              Year 2
+              <FormattedMessage {...messages.ytwo} />
             </MenuItem>
             <MenuItem value="3">
-              Year 3
+              <FormattedMessage {...messages.ythree} />
             </MenuItem>
             <MenuItem value="4">
-              Year 4
+              <FormattedMessage {...messages.yfour} />
             </MenuItem>
           </Field>
         </FormControl>
       </div>
       { requireGPA &&
-        <Field name="cumulativeGPA" type="text" component={renderRequiredField} classes={classes} label="Cumulative GPA" />
+        <Field name="cumulativeGPA" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.cumulativeGPA)} />
       }
       <div className={classes.root}>
         <div className={classes.wrapper}>
           <Button raised color="primary" className={classes.button} type="submit" disabled={submitting || realSubmitting}>
-           Submit
+            <FormattedMessage {...messages.submit} />
           </Button>
           {realSubmitting && <CircularProgress size={24} className={classes.buttonProgress} thickness={6} />}
         </div>
         <Button raised type="button" className={classes.rightAlignedButton} disabled={submitting} onClick={reset}>
-          Clear
+          <FormattedMessage {...messages.clear} />
         </Button>
       </div>
     </form>

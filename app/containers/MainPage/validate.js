@@ -34,7 +34,7 @@ const validate = (values) => {
   // IMPORTANT: values is an Immutable.Map here!
   const errors = {};
   // if (!values.get('username')) {
-  //   errors.username = 'Required';
+  //   errors.username = <FormattedMessage {...messages.required} />;
   // } else if (values.get('username').length > 15) {
   //   errors.username = 'Must be 15 characters or less';
   // }
@@ -45,13 +45,13 @@ const validate = (values) => {
   }
 
   if (!values.get('amountToPay')) {
-    errors.amountToPay = 'Required';
+    errors.amountToPay = <FormattedMessage {...messages.required} />;
   } else if (values.get('amountToPay') && isNaN(Number(values.get('amountToPay')))) {
     errors.amountToPay = 'Must be a number';
   }
 
   if (!values.get('productName')) {
-    errors.productName = 'Required';
+    errors.productName = <FormattedMessage {...messages.required} />;
   } else if (values.get('productName').length < 1) {
     errors.productName = 'Must be larger than 1 characters';
   }
@@ -60,7 +60,7 @@ const validate = (values) => {
     errors.email = 'Invalid email address';
   }
   // if (!values.get('mobile')) {
-  //   errors.mobile = 'Required';
+  //   errors.mobile = <FormattedMessage {...messages.required} />;
   if (values.get('mobile') && isNaN(Number(values.get('mobile')))) {
     errors.mobile = 'Must be a number';
   } else if (values.get('mobile') && !/^[0-9]{8}$/.test(values.get('mobile'))) {
@@ -68,51 +68,51 @@ const validate = (values) => {
   }
 
   if (!values.get('lastName')) {
-    errors.lastName = 'Required';
+    errors.lastName = <FormattedMessage {...messages.required} />;
   } else if (values.get('lastName').length < 1) {
     errors.lastName = 'Must be larger than 1 characters';
   }
   if (!values.get('firstName')) {
-    errors.firstName = 'Required';
+    errors.firstName = <FormattedMessage {...messages.required} />;
   } else if (values.get('firstName').length < 1) {
     errors.firstName = 'Must be larger than 1 characters';
   }
 
   if (!values.get('housingStatus')) {
-    errors.housingStatus = 'Required';
+    errors.housingStatus = <FormattedMessage {...messages.required} />;
   }
 
   if (!values.get('livingWith')) {
-    errors.livingWith = 'Required';
+    errors.livingWith = <FormattedMessage {...messages.required} />;
   }
 
   if (!values.get('University')) {
-    errors.University = 'Required';
+    errors.University = <FormattedMessage {...messages.required} />;
   }
 
   if (!values.get('Degree')) {
-    errors.Degree = 'Required';
+    errors.Degree = <FormattedMessage {...messages.required} />;
   }
 
   if (!values.get('Major')) {
-    errors.Major = 'Required';
+    errors.Major = <FormattedMessage {...messages.required} />;
   }
 
   if (!values.get('YearOfStudy')) {
-    errors.YearOfStudy = 'Required';
+    errors.YearOfStudy = <FormattedMessage {...messages.required} />;
   }
 
   if (!values.get('HKIDNumber')) {
-    errors.HKIDNumber = 'Required';
+    errors.HKIDNumber = <FormattedMessage {...messages.required} />;
   } else if (!isHKID(values.get('HKIDNumber'))) {
     errors.HKIDNumber = 'Please use your valid HKID number';
   }
 
   if (!values.get('YearOfStudy')) {
-    errors.YearOfStudy = 'Required';
+    errors.YearOfStudy = <FormattedMessage {...messages.required} />;
   } else if (values.get('YearOfStudy') === '2' || values.get('YearOfStudy') === '3' || values.get('YearOfStudy') === '4') {
     if (!values.get('cumulativeGPA')) {
-      errors.cumulativeGPA = 'Required';
+      errors.cumulativeGPA = <FormattedMessage {...messages.required} />;
     } else if (isNaN(Number(values.get('cumulativeGPA')))) {
       errors.cumulativeGPA = 'Must be a number';
     } else if (Number(values.get('cumulativeGPA')) < 1.5) {
