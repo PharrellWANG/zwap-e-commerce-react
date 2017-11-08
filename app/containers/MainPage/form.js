@@ -267,55 +267,97 @@ let ImmutableForm = (props) => {
       </div>
       <div>
         <FormControl className={classes.formControl} required>
-          <InputLabel htmlFor="Degree">Your Degree</InputLabel>
+          <InputLabel htmlFor="Degree">
+            <FormattedMessage {...messages.yourdegree} />
+          </InputLabel>
           <Field
             name="Degree"
             component={Select}
             placeholder="Your degree"
             validate={required}
           >
-            <MenuItem value="Bachelor">Bachelor Degree</MenuItem>
-            <MenuItem value="Associate">Associate Degree/Higher Diploma</MenuItem>
+            <MenuItem value="Bachelor">
+              <FormattedMessage {...messages.bachelor} />
+            </MenuItem>
+            <MenuItem value="Associate">
+              <FormattedMessage {...messages.aso} />
+            </MenuItem>
           </Field>
         </FormControl>
       </div>
       <div>
         <FormControl className={classes.formControl} required>
-          <InputLabel htmlFor="Major">Your Major</InputLabel>
+          <InputLabel htmlFor="Major">
+            Your Major
+          </InputLabel>
           <Field
             name="Major"
             component={Select}
             placeholder="Your Major"
             validate={required}
           >
-            <MenuItem value="MEDICAL">Medical/Health</MenuItem>
-            <MenuItem value="LAW">Law</MenuItem>
-            <MenuItem value="ACCOUNTING">Accounting</MenuItem>
-            <MenuItem value="CONSTRUCTION">Construction and Environment</MenuItem>
-            <MenuItem value="ENGINEERING">Engineering</MenuItem>
-            <MenuItem value="DESIGN">Design</MenuItem>
-            <MenuItem value="BUSINESS">Business/Finance/Economic</MenuItem>
-            <MenuItem value="EDU">Education and Language</MenuItem>
-            <MenuItem value="IT">Information Technology/Computingg</MenuItem>
-            <MenuItem value="SOCIAL">Social Sciences</MenuItem>
-            <MenuItem value="HOTEL">Hotel and Tourism</MenuItem>
-            <MenuItem value="OTHERS">Others</MenuItem>
+            <MenuItem value="MEDICAL">
+              Medical/Health
+            </MenuItem>
+            <MenuItem value="LAW">
+              Law
+            </MenuItem>
+            <MenuItem value="ACCOUNTING">
+              Accounting
+            </MenuItem>
+            <MenuItem value="CONSTRUCTION">
+              Construction and Environment
+            </MenuItem>
+            <MenuItem value="ENGINEERING">
+              Engineering
+            </MenuItem>
+            <MenuItem value="DESIGN">
+              Design
+            </MenuItem>
+            <MenuItem value="BUSINESS">
+              Business/Finance/Economic
+            </MenuItem>
+            <MenuItem value="EDU">
+              Education and Language
+            </MenuItem>
+            <MenuItem value="IT">
+              Information Technology/Computingg
+            </MenuItem>
+            <MenuItem value="SOCIAL">
+              Social Sciences
+            </MenuItem>
+            <MenuItem value="HOTEL">
+              Hotel and Tourism
+            </MenuItem>
+            <MenuItem value="OTHERS">
+              Others
+            </MenuItem>
           </Field>
         </FormControl>
       </div>
       <div>
         <FormControl className={classes.formControl} required>
-          <InputLabel htmlFor="YearOfStudy">Year of Study</InputLabel>
+          <InputLabel htmlFor="YearOfStudy">
+            Year of Study
+          </InputLabel>
           <Field
             name="YearOfStudy"
             component={Select}
             placeholder="Year of Study"
             validate={required}
           >
-            <MenuItem value="1">Year 1</MenuItem>
-            <MenuItem value="2">Year 2</MenuItem>
-            <MenuItem value="3">Year 3</MenuItem>
-            <MenuItem value="4">Year 4</MenuItem>
+            <MenuItem value="1">
+              Year 1
+            </MenuItem>
+            <MenuItem value="2">
+              Year 2
+            </MenuItem>
+            <MenuItem value="3">
+              Year 3
+            </MenuItem>
+            <MenuItem value="4">
+              Year 4
+            </MenuItem>
           </Field>
         </FormControl>
       </div>

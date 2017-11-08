@@ -66,5 +66,8 @@
   "app.container.MainPage.bp": "Hong Kong Baptist University",
   "app.container.MainPage.hkie": "The Hong Kong Institute of Education",
   "app.container.MainPage.lingnan": "Lingnan University",
-  "app.container.MainPage.ouhk": "The Open University of Hong Kong"
+  "app.container.MainPage.ouhk": "The Open University of Hong Kong",
+  "app.container.MainPage.yourdegree": "Degree Type",
+  "app.container.MainPage.bachelor": "Bachelor Degree",
+  "app.containers.MainPage.aso": "Associate Degree/Higher Diploma"
 }

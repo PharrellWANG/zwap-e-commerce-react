@@ -141,6 +141,18 @@ export default defineMessages({
     id: 'app.container.MainPage.ouhk',
     defineMessages: 'The Open University of Hong Kong',
   },
+  yourdegree: {
+    id: 'app.container.MainPage.yourdegree',
+    defineMessages: 'Degree Type',
+  },
+  bachelor: {
+    id: 'app.container.MainPage.bachelor',
+    defineMessages: 'Bachelor Degree',
+  },
+  aso: {
+    id: 'app.containers.MainPage.aso',
+    defaultMessage: 'Associate Degree/Higher Diploma',
+  },
   // messages for validate.js
   required: {
     id: 'app.containers.MainPage.require',

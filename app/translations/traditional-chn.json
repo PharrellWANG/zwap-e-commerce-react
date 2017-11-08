@@ -67,5 +67,8 @@
   "app.container.MainPage.hkie": "香港教育大學",
   "app.container.MainPage.bp": "香港浸會大學",
   "app.container.MainPage.lingnan": "嶺南大學",
-  "app.container.MainPage.ouhk": "香港公開大學"
+  "app.container.MainPage.ouhk": "香港公開大學",
+  "app.container.MainPage.yourdegree": "學位類型",
+  "app.container.MainPage.bachelor": "學士學位",
+  "app.containers.MainPage.aso": "副學士學位/高級文憑"
 }
