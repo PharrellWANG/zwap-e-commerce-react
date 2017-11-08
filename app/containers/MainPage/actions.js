@@ -13,6 +13,7 @@ import {
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_FAIL,
+  CLOSE_NOTIFICATION,
 } from './constants';
 
 export function fetchAndLoad(token) {
@@ -45,6 +46,12 @@ export function noTokenInUrlDisplayDialog() {
 export function closeDialog() {
   return {
     type: CLOSE_DIALOG,
+  };
+}
+
+export function closeNotification() {
+  return {
+    type: CLOSE_NOTIFICATION,
   };
 }
 

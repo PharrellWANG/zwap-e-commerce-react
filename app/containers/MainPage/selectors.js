@@ -22,7 +22,33 @@ const selectMainPageDomain = (state) => state.get('mainPage');
 
 /**
  * Default selector used by MainPage
+ *   submitInProgress: false,
+  submitError: false,
+  submitSuccess: false,
  */
+const makeSelectSubmitting = () => createSelector(
+  selectMainPageDomain,
+  (substate) => substate.get('submitInProgress')
+);
+
+const makeSelectError = () => createSelector(
+  selectMainPageDomain,
+  (substate) => substate.get('submitError')
+);
+
+const makeSelectSuccess = () => createSelector(
+  selectMainPageDomain,
+  (substate) => substate.get('submitSuccess')
+);
+
+// const makeSelectOpenNotification = () => createSelector(
+//   selectMainPageDomain(),
+//   (subState) => subState.get('showNotification'),
+// );
+const makeSelectMainPageShowNotification = () => createSelector(
+  selectMainPageDomain,
+  (subState) => subState.get('showNotification'),
+);
 
 const makeSelectMainPageOpenDialog = () => createSelector(
   selectMainPageDomain,
@@ -45,6 +71,11 @@ export {
   selectMainPageDomain,
   makeSelectMainPageFormData,
   getSuccessNotice,
+  makeSelectSubmitting,
+  makeSelectError,
+  makeSelectSuccess,
+  makeSelectMainPageShowNotification,
+  // makeSelectOpenNotification,
   // formInitialValues,
   // myComplexSelector,
 };

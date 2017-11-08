@@ -31,9 +31,17 @@ import {
   fetchAndLoad,
   noTokenInUrlDisplayDialog,
   closeDialog,
+  closeNotification,
   letMeSubmit,
 } from './actions';
-import makeSelectMainPageOpenDialog, { makeSelectMainPageFormData, getSuccessNotice } from './selectors';
+import makeSelectMainPageOpenDialog, {
+  makeSelectMainPageFormData,
+  makeSelectMainPageShowNotification,
+  getSuccessNotice,
+  makeSelectError,
+  makeSelectSuccess,
+  makeSelectSubmitting,
+} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import ImmutableForm from './form';
@@ -78,7 +86,7 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
 
   render() {
     // console.log(this.props.makeSelectMainPageFormData);
-    const { classes } = this.props;
+    const { classes, submitting } = this.props;
     const reduxFormInitialValues = this.props.makeSelectMainPageFormData;
     // console.log(initvals);
     // console.log('2');
@@ -101,7 +109,22 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
             </DialogContent>
             <DialogActions>
               <Button onClick={this.props.closeDialog} color="primary" autoFocus>
-                Agree
+                <FormattedMessage {...messages.okmessage} />
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <Dialog open={this.props.makeSelectMainPageShowNotification && !this.props.makeSelectMainPageOpenDialog} onRequestClose={this.props.closeNotification}>
+            <DialogTitle>
+              <FormattedMessage {...messages.notificationHeader} />
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                <FormattedMessage {...messages.notificationContents} />
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.props.closeNotification} color="primary" autoFocus>
+                <FormattedMessage {...messages.okmessage} />
               </Button>
             </DialogActions>
           </Dialog>
@@ -109,7 +132,7 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
         {(this.props.getSuccessNotice || !this.props.match.params.token)
           ? (<Grid item xs={12}>
             <Grid className={classes.gridStyle} container justify="center" spacing={16}>
-              <ImmutableForm onSubmit={this.props.handleSubmit} initialValues={reduxFormInitialValues} />
+              <ImmutableForm onSubmit={this.props.handleSubmit} initialValues={reduxFormInitialValues} realSubmitting={submitting} />
             </Grid>
           </Grid>)
           : <div className={classes.progressStyle}>
@@ -125,7 +148,9 @@ MainPage.propTypes = {
   onFetchAndLoad: PropTypes.func.isRequired,
   openDialog: PropTypes.func.isRequired,
   closeDialog: PropTypes.func.isRequired,
+  closeNotification: PropTypes.func.isRequired,
   makeSelectMainPageOpenDialog: PropTypes.bool.isRequired,
+  makeSelectMainPageShowNotification: PropTypes.bool.isRequired,
   getSuccessNotice: PropTypes.bool.isRequired,
   makeSelectMainPageFormData: PropTypes.object.isRequired,
 };
@@ -133,7 +158,11 @@ MainPage.propTypes = {
 const mapStateToProps = createStructuredSelector({
   makeSelectMainPageOpenDialog: makeSelectMainPageOpenDialog(),
   makeSelectMainPageFormData: makeSelectMainPageFormData(),
+  makeSelectMainPageShowNotification: makeSelectMainPageShowNotification(),
   getSuccessNotice: getSuccessNotice(),
+  submitting: makeSelectSubmitting(),
+  submitSuccess: makeSelectSuccess(),
+  submitError: makeSelectError(),
   // getFormInitialValues: formInitialValues(),
 });
 
@@ -145,6 +174,9 @@ function mapDispatchToProps(dispatch) {
     },
     closeDialog: () => {
       dispatch(closeDialog());
+    },
+    closeNotification: () => {
+      dispatch(closeNotification());
     },
     onFetchAndLoad: (token) => {
       dispatch(fetchAndLoad(token));

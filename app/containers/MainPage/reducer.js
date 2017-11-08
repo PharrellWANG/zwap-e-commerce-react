@@ -11,6 +11,8 @@ import {
   FETCH_AND_LOAD_FAIL,
   DISPLAY_DIALOG,
   CLOSE_DIALOG,
+  DISPLAY_NOTIFICATION,
+  CLOSE_NOTIFICATION,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_FAIL,
@@ -28,6 +30,7 @@ const initialState = fromJS({
     mobile: '',
   },
   openDialog: false,
+  showNotification: false,
   submitInProgress: false,
   submitError: false,
   submitSuccess: false,
@@ -58,6 +61,12 @@ function mainPageReducer(state = initialState, action) {
     case CLOSE_DIALOG:
       return state
       .set('openDialog', false);
+    case DISPLAY_NOTIFICATION:
+      return state
+      .set('showNotification', true);
+    case CLOSE_NOTIFICATION:
+      return state
+      .set('showNotification', false);
     case SUBMIT_APPLICATION_FOR_AUTO_APPROVE:
       return state
       .set('submitInProgress', true)
@@ -67,7 +76,8 @@ function mainPageReducer(state = initialState, action) {
       return state
       .set('submitInProgress', false)
       .set('submitError', false)
-      .set('submitSuccess', true);
+      .set('submitSuccess', true)
+      .set('showNotification', true);
     case SUBMIT_APPLICATION_FOR_AUTO_APPROVE_FAIL:
       return state
       .set('submitInProgress', false)

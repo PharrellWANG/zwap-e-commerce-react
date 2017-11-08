@@ -93,5 +93,8 @@
   "app.containers.MainPage.Clear": "Clear",
   "app.containers.MainPage.required": "Required",
   "app.containers.MainPage.dialogHeader": "Hey there!",
-  "app.containers.MainPage.dialogContents": "We have noticed that you are visiting us directly instead of coming from MTGamer e-commerce website. To use our Zwap Pay service, you need to input your MTGamer order reference number manually if you wish to use our service. Thank you for visiting us!"
+  "app.containers.MainPage.dialogContents": "We have noticed that you are visiting us directly instead of coming from MTGamer e-commerce website. To use our Zwap Pay service, you need to input your MTGamer order reference number manually if you wish to use our service. Thank you for visiting us!",
+  "app.containers.MainPage.nheader": "Success",
+  "app.containers.MainPage.ncontents": "You application has been successfully submitted. Please check your email for activating your loan. You can go back to MTGamer website to see your order status",
+  "app.containers.MainPage.okmessage": "OK"
 }

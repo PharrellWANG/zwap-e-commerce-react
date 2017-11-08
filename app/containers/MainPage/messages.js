@@ -247,4 +247,16 @@ export default defineMessages({
     id: 'app.containers.MainPage.dialogContents',
     defaultMessage: 'We have noticed that you are visiting us directly instead of coming from MTGamer e-commerce website. To use our Zwap Pay service, you need to input your MTGamer order reference number manually. Thank you for visiting us!',
   },
+  okmessage: {
+    id: 'app.containers.MainPage.okmessage',
+    defaultMessage: 'Success',
+  },
+  notificationHeader: {
+    id: 'app.containers.MainPage.nheader',
+    defaultMessage: 'You application has been successfully submitted. We will send you email notification for further instructions',
+  },
+  notificationContents: {
+    id: 'app.containers.MainPage.ncontents',
+    defaultMessage: 'OK',
+  },
 });
