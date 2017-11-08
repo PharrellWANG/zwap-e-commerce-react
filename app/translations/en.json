@@ -69,5 +69,17 @@
   "app.container.MainPage.ouhk": "The Open University of Hong Kong",
   "app.container.MainPage.yourdegree": "Degree Type",
   "app.container.MainPage.bachelor": "Bachelor Degree",
-  "app.containers.MainPage.aso": "Associate Degree/Higher Diploma"
+  "app.containers.MainPage.aso": "Associate Degree/Higher Diploma",
+  "app.containers.MainPage.major": "Major",
+  "app.containers.MainPage.med": "Medical/Health",
+  "app.containers.MainPage.law": "Law",
+  "app.containers.MainPage.acc": "Accounting",
+  "app.containers.MainPage.con": "Construction and Environment",
+  "app.containers.MainPage.eng": "Engineering",
+  "app.containers.MainPage.des": "Design",
+  "app.containers.MainPage.bus": "Business/Finance/Economic",
+  "app.containers.MainPage.edu": "Education and Language",
+  "app.containers.MainPage.inf": "Information Technology/Computing",
+  "app.containers.MainPage.soc": "Social Science",
+  "app.containers.MainPage.hotel": "Hotel and Tourism"
 }

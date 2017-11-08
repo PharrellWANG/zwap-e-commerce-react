@@ -153,6 +153,55 @@ export default defineMessages({
     id: 'app.containers.MainPage.aso',
     defaultMessage: 'Associate Degree/Higher Diploma',
   },
+  major: {
+    id: 'app.containers.MainPage.major',
+    defaultMessage: 'Major',
+  },
+  med: {
+    id: 'app.containers.MainPage.med',
+    defaultMessage: 'Medical/Health',
+  },
+  law: {
+    id: 'app.containers.MainPage.law',
+    defaultMessage: 'Law',
+  },
+  acc: {
+    id: 'app.containers.MainPage.acc',
+    defaultMessage: 'Accounting',
+  },
+  con: {
+    id: 'app.containers.MainPage.con',
+    defaultMessage: 'Construction and Environment',
+  },
+  eng: {
+    id: 'app.containers.MainPage.eng',
+    defaultMessage: 'Engineering',
+  },
+  des: {
+    id: 'app.containers.MainPage.des',
+    defaultMessage: 'Design',
+  },
+  bus: {
+    id: 'app.containers.MainPage.bus',
+    defaultMessage: 'Business/Finance/Economic',
+  },
+  edu: {
+    id: 'app.containers.MainPage.edu',
+    defaultMessage: 'Education and Language',
+  },
+  inf: {
+    id: 'app.containers.MainPage.inf',
+    defaultMessage: 'Information Technology/Computing',
+  },
+  soc: {
+    id: 'app.containers.MainPage.soc',
+    defaultMessage: 'Social Science',
+  },
+  hotel: {
+    id: 'app.containers.MainPage.hotel',
+    defaultMessage: 'Hotel and Tourism',
+  },
+
   // messages for validate.js
   required: {
     id: 'app.containers.MainPage.require',

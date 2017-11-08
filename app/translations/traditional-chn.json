@@ -70,5 +70,17 @@
   "app.container.MainPage.ouhk": "香港公開大學",
   "app.container.MainPage.yourdegree": "學位類型",
   "app.container.MainPage.bachelor": "學士學位",
-  "app.containers.MainPage.aso": "副學士學位/高級文憑"
+  "app.containers.MainPage.aso": "副學士學位/高級文憑",
+  "app.containers.MainPage.major": "學系",
+  "app.containers.MainPage.med": "醫療/健康",
+  "app.containers.MainPage.law": "法律",
+  "app.containers.MainPage.acc": "會計",
+  "app.containers.MainPage.con": "建築及環境",
+  "app.containers.MainPage.eng": "工程",
+  "app.containers.MainPage.des": "設計",
+  "app.containers.MainPage.bus": "商業/財務/經濟",
+  "app.containers.MainPage.edu": "教育及語言",
+  "app.containers.MainPage.inf": "信息技術/計算機",
+  "app.containers.MainPage.soc": "社科",
+  "app.containers.MainPage.hotel": "酒店及旅遊"
 }

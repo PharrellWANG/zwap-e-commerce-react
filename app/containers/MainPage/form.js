@@ -288,7 +288,7 @@ let ImmutableForm = (props) => {
       <div>
         <FormControl className={classes.formControl} required>
           <InputLabel htmlFor="Major">
-            Your Major
+            <FormattedMessage {...messages.major} />
           </InputLabel>
           <Field
             name="Major"
@@ -297,40 +297,40 @@ let ImmutableForm = (props) => {
             validate={required}
           >
             <MenuItem value="MEDICAL">
-              Medical/Health
+              <FormattedMessage {...messages.med} />
             </MenuItem>
             <MenuItem value="LAW">
-              Law
+              <FormattedMessage {...messages.law} />
             </MenuItem>
             <MenuItem value="ACCOUNTING">
-              Accounting
+              <FormattedMessage {...messages.acc} />
             </MenuItem>
             <MenuItem value="CONSTRUCTION">
-              Construction and Environment
+              <FormattedMessage {...messages.con} />
             </MenuItem>
             <MenuItem value="ENGINEERING">
-              Engineering
+              <FormattedMessage {...messages.eng} />
             </MenuItem>
             <MenuItem value="DESIGN">
-              Design
+              <FormattedMessage {...messages.des} />
             </MenuItem>
             <MenuItem value="BUSINESS">
-              Business/Finance/Economic
+              <FormattedMessage {...messages.bus} />
             </MenuItem>
             <MenuItem value="EDU">
-              Education and Language
+              <FormattedMessage {...messages.edu} />
             </MenuItem>
             <MenuItem value="IT">
-              Information Technology/Computingg
+              <FormattedMessage {...messages.inf} />
             </MenuItem>
             <MenuItem value="SOCIAL">
-              Social Sciences
+              <FormattedMessage {...messages.soc} />
             </MenuItem>
             <MenuItem value="HOTEL">
-              Hotel and Tourism
+              <FormattedMessage {...messages.hotel} />
             </MenuItem>
             <MenuItem value="OTHERS">
-              Others
+              <FormattedMessage {...messages.others} />
             </MenuItem>
           </Field>
         </FormControl>
