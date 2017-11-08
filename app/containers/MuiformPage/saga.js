@@ -12,7 +12,7 @@ import { submitSuccess, submitFail } from './actions';
 export function* submitApp(action) {
   // See example in containers/HomePage/saga.js
   // const simpleFormData = yield select(makeSelectReduxFormState());
-  const requestURL = 'http://192.168.0.167:6789/zwap-pay/init/';
+  const requestURL = 'http://218.255.104.158:6789/zwap-pay/init/';
   // if you want to use nginx, then use the below code instead
   // const requestURL = '/zwap-pay/init/';
   const options = {
