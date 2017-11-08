@@ -3,7 +3,11 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the mainPage state domain
  */
+// import { getFormInitialValues } from 'redux-form/immutable';
+
 const selectMainPageDomain = (state) => state.get('mainPage');
+
+// const formInitialValues = (state) => state.get('form');
 
 // const myComplexSelector = createSelector(
 //   selectMainPageDomain,
@@ -41,5 +45,6 @@ export {
   selectMainPageDomain,
   makeSelectMainPageFormData,
   getSuccessNotice,
+  // formInitialValues,
   // myComplexSelector,
 };

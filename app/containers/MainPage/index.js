@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /**
  *
  * MainPage
@@ -30,6 +31,7 @@ import {
   fetchAndLoad,
   noTokenInUrlDisplayDialog,
   closeDialog,
+  letMeSubmit,
 } from './actions';
 import makeSelectMainPageOpenDialog, { makeSelectMainPageFormData, getSuccessNotice } from './selectors';
 import reducer from './reducer';
@@ -48,7 +50,7 @@ const styles = {
   },
 };
 
-const login = (values) => alert(`It's a map thanks to immutables with redux-form: ${values}`);
+// const login = (values) => alert(`It's a map thanks to immutables with redux-form: ${values}`);
 export class MainPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
     // console.log(this.props.match);
@@ -67,6 +69,12 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
   }
 
   // const initialValus = this.props.makeSelectMainPageFormData;
+  // prehandleSubmit = (values) => {
+    // console.log(this.props.getFormInitialValues);
+    // console.log(values);
+    // const updatedValues = values.set('initialValues', this.props.getFormInitialValues);
+    // console.log(updatedValues.toJS());
+  // };
 
   render() {
     // console.log(this.props.makeSelectMainPageFormData);
@@ -101,7 +109,7 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
         {(this.props.getSuccessNotice || !this.props.match.params.token)
           ? (<Grid item xs={12}>
             <Grid className={classes.gridStyle} container justify="center" spacing={16}>
-              <ImmutableForm onSubmit={login} initialValues={reduxFormInitialValues} />
+              <ImmutableForm onSubmit={this.props.handleSubmit} initialValues={reduxFormInitialValues} />
             </Grid>
           </Grid>)
           : <div className={classes.progressStyle}>
@@ -126,9 +134,11 @@ const mapStateToProps = createStructuredSelector({
   makeSelectMainPageOpenDialog: makeSelectMainPageOpenDialog(),
   makeSelectMainPageFormData: makeSelectMainPageFormData(),
   getSuccessNotice: getSuccessNotice(),
+  // getFormInitialValues: formInitialValues(),
 });
 
 function mapDispatchToProps(dispatch) {
+  // console.log(formInitialValues);
   return {
     openDialog: () => {
       dispatch(noTokenInUrlDisplayDialog());
@@ -138,6 +148,20 @@ function mapDispatchToProps(dispatch) {
     },
     onFetchAndLoad: (token) => {
       dispatch(fetchAndLoad(token));
+    },
+    handleSubmit: (values) => {
+      // console.log('1');
+      // console.log(values);
+      // console.log('2');
+      // console.log(values.toJS());
+      // let combinedValues = values.toJS();
+      // console.log('3');
+      // console.log(combinedValues);
+      // combinedValues.prefilled = props.makeSelectMainPageFormData;
+      // console.log('4');
+      // console.log(combinedValues);
+      // values.set('prefilled') = makeSelectMainPageFormData;
+      dispatch(letMeSubmit(values));
     },
   };
 }

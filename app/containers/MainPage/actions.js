@@ -10,6 +10,9 @@ import {
   FETCH_AND_LOAD_FAIL,
   DISPLAY_DIALOG,
   CLOSE_DIALOG,
+  SUBMIT_APPLICATION_FOR_AUTO_APPROVE,
+  SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
+  SUBMIT_APPLICATION_FOR_AUTO_APPROVE_FAIL,
 } from './constants';
 
 export function fetchAndLoad(token) {
@@ -42,6 +45,25 @@ export function noTokenInUrlDisplayDialog() {
 export function closeDialog() {
   return {
     type: CLOSE_DIALOG,
+  };
+}
+
+export function letMeSubmit(values) {
+  return {
+    type: SUBMIT_APPLICATION_FOR_AUTO_APPROVE,
+    formData: values,
+  };
+}
+
+export function letMeSubmitSuccess() {
+  return {
+    type: SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
+  };
+}
+
+export function letMeSubmitFail() {
+  return {
+    type: SUBMIT_APPLICATION_FOR_AUTO_APPROVE_FAIL,
   };
 }
 // export function loadFormData(loanApplicationFormData) {
