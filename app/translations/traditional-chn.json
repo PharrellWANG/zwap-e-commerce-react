@@ -91,5 +91,7 @@
   "app.containers.MainPage.cumulativegpa": "累積平均績點",
   "app.containers.MainPage.submit": "提交",
   "app.containers.MainPage.clear": "清除",
-  "app.containers.MainPage.required": "必須填寫"
+  "app.containers.MainPage.required": "必須填寫",
+  "app.containers.MainPage.dialogHeader": "你好!",
+  "app.containers.MainPage.dialogContents": "我們注意到你是直接來訪問我們頁面的而非是來自MTGamer網站。為了使用Zwap Pay服務, 你需要手動輸入你的MTGamer訂單編號。"
 }

@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 // import { initialize } from 'redux-form/immutable';
 // import { fromJS } from 'immutable';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { withStyles } from 'material-ui/styles';
 import { LinearProgress } from 'material-ui/Progress';
 import Grid from 'material-ui/Grid';
@@ -35,7 +35,7 @@ import makeSelectMainPageOpenDialog, { makeSelectMainPageFormData, getSuccessNot
 import reducer from './reducer';
 import saga from './saga';
 import ImmutableForm from './form';
-// import messages from './messages';
+import messages from './messages';
 
 const styles = {
   progressStyle: {
@@ -83,12 +83,12 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
         {/* <FormattedMessage {...messages.header} /> */}
         <div>
           <Dialog open={this.props.makeSelectMainPageOpenDialog} onRequestClose={this.props.closeDialog}>
-            <DialogTitle>Hey there! Nice to meet you!</DialogTitle>
+            <DialogTitle>
+              <FormattedMessage {...messages.dialogHeader} />
+            </DialogTitle>
             <DialogContent>
               <DialogContentText>
-                We have noticed that you are visiting us directly instead of coming from MTGamer e-commerce
-                website. To use our Zwap Pay service, you need to input your MTGamer order reference number manually
-                if you wish to use our service. Thank you for visiting us!
+                <FormattedMessage {...messages.dialogContents} />
               </DialogContentText>
             </DialogContent>
             <DialogActions>

@@ -238,4 +238,13 @@ export default defineMessages({
     id: 'app.containers.MainPage.required',
     defaultMessage: 'Required',
   },
+  // Dialog Header:
+  dialogHeader: {
+    id: 'app.containers.MainPage.dialogHeader',
+    defaultMessage: 'Hey there!',
+  },
+  dialogContents: {
+    id: 'app.containers.MainPage.dialogContents',
+    defaultMessage: 'We have noticed that you are visiting us directly instead of coming from MTGamer e-commerce website. To use our Zwap Pay service, you need to input your MTGamer order reference number manually. Thank you for visiting us!',
+  },
 });

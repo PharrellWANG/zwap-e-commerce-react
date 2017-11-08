@@ -91,5 +91,7 @@
   "app.containers.MainPage.cumulativegpa": "Cumulative GPA",
   "app.containers.MainPage.Submit": "Submit",
   "app.containers.MainPage.Clear": "Clear",
-  "app.containers.MainPage.required": "Required"
+  "app.containers.MainPage.required": "Required",
+  "app.containers.MainPage.dialogHeader": "Hey there!",
+  "app.containers.MainPage.dialogContents": "We have noticed that you are visiting us directly instead of coming from MTGamer e-commerce website. To use our Zwap Pay service, you need to input your MTGamer order reference number manually if you wish to use our service. Thank you for visiting us!"
 }
