@@ -56,12 +56,14 @@ const validate = (values) => {
     errors.productName = 'Must be larger than 1 characters';
   }
 
-  if (values.get('email') && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email')))) {
+  if (!values.get('email')) {
+    errors.email = <FormattedMessage {...messages.required} />;
+  } else if (values.get('email') && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email')))) {
     errors.email = 'Invalid email address';
   }
-  // if (!values.get('mobile')) {
-  //   errors.mobile = <FormattedMessage {...messages.required} />;
-  if (values.get('mobile') && isNaN(Number(values.get('mobile')))) {
+  if (!values.get('mobile')) {
+    errors.mobile = <FormattedMessage {...messages.required} />;
+  } else if (values.get('mobile') && isNaN(Number(values.get('mobile')))) {
     errors.mobile = 'Must be a number';
   } else if (values.get('mobile') && !/^[0-9]{8}$/.test(values.get('mobile'))) {
     errors.mobile = 'HK phone number must be 8 digits';

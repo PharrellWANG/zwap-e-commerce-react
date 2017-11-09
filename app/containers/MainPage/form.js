@@ -77,7 +77,7 @@ const styles = (theme) => ({
 });
 
 // validation functions
-const required = (value) => (value === null ? 'Required' : undefined);
+// const required = (value) => (value === null ? 'Required' : undefined);
 // const email = (value) =>
 //   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
 //     ? 'Invalid email'
@@ -190,7 +190,7 @@ let ImmutableForm = (props) => {
             name="housingStatus"
             component={Select}
             placeholder="Housing Status"
-            validate={required}
+            // // validate={required}
           >
             <MenuItem value="PublicHousing">
               <FormattedMessage {...messages.publichousing} />
@@ -219,7 +219,7 @@ let ImmutableForm = (props) => {
             name="livingWith"
             component={Select}
             placeholder="Living With"
-            validate={required}
+            // validate={required}
           >
             <MenuItem value="Parents">
               <FormattedMessage {...messages.parents} />
@@ -246,7 +246,7 @@ let ImmutableForm = (props) => {
             name="University"
             component={Select}
             placeholder="Your University"
-            validate={required}
+            // validate={required}
           >
             <MenuItem value="HKU">
               <FormattedMessage {...messages.hku} />
@@ -290,7 +290,7 @@ let ImmutableForm = (props) => {
             name="Degree"
             component={Select}
             placeholder="Your degree"
-            validate={required}
+            // validate={required}
           >
             <MenuItem value="Bachelor">
               <FormattedMessage {...messages.bachelor} />
@@ -310,7 +310,7 @@ let ImmutableForm = (props) => {
             name="Major"
             component={Select}
             placeholder="Your Major"
-            validate={required}
+            // validate={required}
           >
             <MenuItem value="MEDICAL">
               <FormattedMessage {...messages.med} />
@@ -360,7 +360,7 @@ let ImmutableForm = (props) => {
             name="YearOfStudy"
             component={Select}
             placeholder="Year of Study"
-            validate={required}
+            // validate={required}
           >
             <MenuItem value="1">
               <FormattedMessage {...messages.yone} />
