@@ -16,19 +16,30 @@ import { teal } from 'material-ui/colors';
 // import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { Link } from 'react-router-dom';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
+import { fromJS } from 'immutable';
 // import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
+import Dialog, {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from 'material-ui/Dialog';
 import ImmutableForm from './simpleForm';
 import makeSelectReduxFormState, {
   makeSelectSuccess,
   makeSelectSubmitting,
   makeSelectError,
+  makeSelectDialogBoxStatus,
+  makeSelectJsonRes,
 } from './selectors';
 import reducer from './reducer';
-import { submitApplication } from './actions';
+import { submitApplication, closeDialogBox } from './actions';
 import saga from './saga';
 // import messages from './messages';
 
@@ -74,6 +85,27 @@ class MuiformPage extends React.PureComponent {
           <title>MuiformPage</title>
           <meta name="description" content="Description of MuiformPage" />
         </Helmet>
+        <div>
+          <Dialog open={this.props.makeSelectDialogBoxStatus} onRequestClose={this.props.closeDialogBox}>
+            <DialogTitle>
+              Nice to see you here
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                { this.props.makeSelectDialogBoxStatus &&
+                <Link to={fromJS(this.props.makeSelectJsonRes)} onClick={this.props.closeDialogBox}>
+                  Click me to be a hero!
+                </Link>
+                }
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.props.closeDialogBox} color="primary" autoFocus>
+                im a button
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
         <Grid item xs={12}>
           <Card className={classes.card}>
             <CardContent>
@@ -81,18 +113,18 @@ class MuiformPage extends React.PureComponent {
               {/* Hint */}
               {/* </Typography> */}
               <Typography type="headline" component="h2">
-                This pages is for developers.
+                API Endpoints
               </Typography>
               <Typography type="body1" className={classes.pos}>
                 It only servers as an example of posting data to Zwap
                 for getting to the Zwap Pay form page in a valid way.
               </Typography>
               <Typography component="p">
-                Note: Only Order Reference No field and amount field below is required,
-                other two fields are optional.
+                Note: orderReferenceNo, amountToPay are required,
+                other fields are optional.
               </Typography>
               <Typography component="p">
-                Depends on whether
+                It depends on whether
                 the current customer is a guest or not.
               </Typography>
             </CardContent>
@@ -110,20 +142,26 @@ class MuiformPage extends React.PureComponent {
 }
 
 MuiformPage.propTypes = {
+  closeDialogBox: PropTypes.func.isRequired,
   onSubmitApplication: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
+  makeSelectJsonRes: makeSelectJsonRes(),
   muiformpage: makeSelectReduxFormState(),
   submitting: makeSelectSubmitting(),
   submitSuccess: makeSelectSuccess(),
   submitError: makeSelectError(),
+  makeSelectDialogBoxStatus: makeSelectDialogBoxStatus(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     onSubmitApplication: (values) => {
       dispatch(submitApplication(values));
+    },
+    closeDialogBox: () => {
+      dispatch(closeDialogBox());
     },
   };
 }

@@ -2,10 +2,14 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
+import {
+  Switch,
+} from 'redux-form-material-ui';
 import { Field, reduxForm } from 'redux-form/immutable'; // <--- immutable import
 import TextField from 'material-ui/TextField';
 import { CircularProgress } from 'material-ui/Progress';
 import { green } from 'material-ui/colors';
+import { FormControlLabel } from 'material-ui/Form';
 import Button from 'material-ui/Button';
 import validate from './validate';
 import warn from './warn';
@@ -116,6 +120,9 @@ const ImmutableForm = (props) => {
         classes={classes}
         label="Mobile"
       />
+      <div>
+        <FormControlLabel control={<Field name="http302NotWanted" component={Switch} />} className={classes.textField} label="Just give me a link to click instead of 302 status" />
+      </div>
       <div className={classes.root}>
         <div className={classes.wrapper}>
           <Button raised color="primary" className={classes.button} type="submit" disabled={submitting || realSubmitting}>

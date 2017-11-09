@@ -4,6 +4,7 @@ import { createSelector } from 'reselect';
  * Direct selector to the muiformPage state domain
  */
 const selectMuiformPageDomain = (state) => state.get('muiformpage');
+const selectRes = (state) => state.get('muiformpage').get('res');
 const selectReduxFormState = (state) => state.get('form');
 
 // const selectReduxFormSimpleFormState = createSelector(
@@ -21,32 +22,50 @@ const selectReduxFormState = (state) => state.get('form');
  */
 const makeSelectSubmitting = () => createSelector(
   selectMuiformPageDomain,
-  (substate) => substate.get('submitting')
+  (subState) => subState.get('submitting')
 );
 
 const makeSelectError = () => createSelector(
   selectMuiformPageDomain,
-  (substate) => substate.get('error')
+  (subState) => subState.get('error')
 );
+
+const makeSelectDialogBoxStatus = () => createSelector(
+  selectMuiformPageDomain,
+  (subState) => subState.get('openDialog')
+);
+
 
 const makeSelectSuccess = () => createSelector(
   selectMuiformPageDomain,
-  (substate) => substate.get('success')
+  (subState) => subState.get('success')
 );
 
 const makeSelectReduxFormState = () => createSelector(
   selectReduxFormState,
-  (substate) => substate.get('immutableExample')
+  (subState) => subState.get('immutableExample')
 );
+
+const makeSelectJsonRes = () => createSelector(
+  selectRes,
+  (subState) => subState.get('location')
+);
+
+// const makeSelectJsonRes = () => createSelector(
+//   makeSelectJsonResAll,
+//   (subState) => subState.get('location')
+// );
 
 // const makeSelectMuiformPage = () => createSelector(
 //   selectMuiformPageDomain,
-//   (substate) => substate.toJS()
+//   (subState) => subState.toJS()
 // );
 
 export default makeSelectReduxFormState;
 export {
+  makeSelectJsonRes,
   selectReduxFormState,
+  makeSelectDialogBoxStatus,
   makeSelectError,
   makeSelectSubmitting,
   makeSelectSuccess,

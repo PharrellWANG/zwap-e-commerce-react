@@ -37,8 +37,8 @@ export function* submitApp(action) {
   };
   try {
     // yield call(delay, 1000);
-    yield call(request, requestURL, options);
-    yield put(submitSuccess());
+    const data = yield call(request, requestURL, options);
+    yield put(submitSuccess(data));
   } catch (err) {
     yield put(submitFail());
   }
