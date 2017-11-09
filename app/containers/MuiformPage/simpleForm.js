@@ -108,7 +108,6 @@ const ImmutableForm = (props) => {
     <form onSubmit={handleSubmit}>
       <Field name="orderReferenceNo" type="text" component={renderRequiredField} classes={classes} label="Order Reference No." />
       <Field name="amountToPay" type="text" component={renderRequiredField} classes={classes} label="Amount to Pay" />
-      <Field name="productName" type="text" component={renderRequiredField} classes={classes} label="Product Name" />
       <Field name="email" type="email" component={renderField} classes={classes} label="Email" />
       <Field
         name="mobile"

@@ -259,4 +259,8 @@ export default defineMessages({
     id: 'app.containers.MainPage.ncontents',
     defaultMessage: 'OK',
   },
+  helperTextReadOnly: {
+    id: 'app.containers.MainPage.helperTextReadOnly',
+    defaultMessage: 'Read only, no need to change this field',
+  },
 });

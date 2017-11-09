@@ -77,19 +77,22 @@ class MuiformPage extends React.PureComponent {
         <Grid item xs={12}>
           <Card className={classes.card}>
             <CardContent>
-              <Typography type="body1" className={classes.title}>
-                Hint
-              </Typography>
+              {/* <Typography type="body1" className={classes.title}> */}
+              {/* Hint */}
+              {/* </Typography> */}
               <Typography type="headline" component="h2">
-                This page will not appear in production.
+                This pages is for developers.
               </Typography>
               <Typography type="body1" className={classes.pos}>
                 It only servers as an example of posting data to Zwap
                 for getting to the Zwap Pay form page in a valid way.
               </Typography>
               <Typography component="p">
-                Note: Only Order Reference No field below is required,
-                other two fields are optional. Depends on whether
+                Note: Only Order Reference No field and amount field below is required,
+                other two fields are optional.
+              </Typography>
+              <Typography component="p">
+                Depends on whether
                 the current customer is a guest or not.
               </Typography>
             </CardContent>

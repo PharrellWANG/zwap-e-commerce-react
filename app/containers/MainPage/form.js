@@ -7,14 +7,13 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { Field, reduxForm, formValueSelector } from 'redux-form/immutable'; // <--- immutable import
 import TextField from 'material-ui/TextField';
 import { CircularProgress } from 'material-ui/Progress';
+import { FormControl } from 'material-ui/Form';
 import { MenuItem } from 'material-ui/Menu';
 import { InputLabel } from 'material-ui/Input';
-// import Radio from 'material-ui/Radio';
-import { FormControl } from 'material-ui/Form';
-// import Select from 'material-ui/Select';
 import { green } from 'material-ui/colors';
 import Button from 'material-ui/Button';
 import {
+  // TextField as AwesomeTextField,
   Select,
 } from 'redux-form-material-ui';
 import messages from './messages';
@@ -137,23 +136,40 @@ const initRenderRequiredField = ({
   );
 };
 
+const initRenderReadOnlyField = ({
+ classes,
+ input,
+ label,
+ type, helperText,
+}) =>
+(
+  <div>
+    <div>
+      <TextField
+        disabled
+        helperText={helperText}
+        {...input}
+        type={type}
+        label={label}
+        placeholder={label}
+        className={classes.textField}
+        margin="normal"
+      />
+    </div>
+  </div>
+);
+
 // const renderField = withStyles(styles)(initRenderField);
 const renderRequiredField = withStyles(styles)(initRenderRequiredField);
+const renderReadOnlyField = withStyles(styles)(initRenderReadOnlyField);
 
 let ImmutableForm = (props) => {
   const { classes, handleSubmit, reset, submitting, realSubmitting, requireGPA } = props;
   const { formatMessage } = props.intl;
   return (
     <form onSubmit={handleSubmit}>
-      <Field
-        name="orderReferenceNo"
-        type="text"
-        component={renderRequiredField}
-        classes={classes}
-        label={formatMessage(messages.orderRefNo)}
-      />
-      <Field name="productName" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.prodName)} />
-      <Field name="amountToPay" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.amountToPay)} />
+      <Field name="orderReferenceNo" type="text" component={renderReadOnlyField} classes={classes} label={formatMessage(messages.orderRefNo)} helperText={formatMessage(messages.helperTextReadOnly)} />
+      <Field name="amountToPay" type="text" component={renderReadOnlyField} classes={classes} label={formatMessage(messages.amountToPay)} helperText={formatMessage(messages.helperTextReadOnly)} />
       <Field name="email" type="email" component={renderRequiredField} classes={classes} label={formatMessage(messages.emailLabel)} />
       <Field
         name="mobile"
