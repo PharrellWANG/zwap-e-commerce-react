@@ -56,10 +56,11 @@ const styles = {
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)',
   },
   root: {
-    // flexGrow: 1,
-    // paddingTop: 8,
+    flexGrow: 1,
+    // paddingTop: 3,
     paddingLeft: 0,
-    paddingBottom: 2,
+    paddingBottom: 1,
+    // marginBottom: 2,
     // marginTop: 2,
     // marginTop: theme.spacing.unit,
     // margin: 0,
@@ -159,7 +160,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
                 </DialogActions>
               </Dialog>
               <br />
-              <Typography type="display1" gutterBottom>
+              <Typography type="display1" gutterBottom style={{ paddingTop: 42 }}>
                 <FormattedMessage {...messages.startProjectHeader} />
               </Typography>
               <Typography type="subheading" gutterBottom>
