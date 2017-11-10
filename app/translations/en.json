@@ -97,5 +97,6 @@
   "app.containers.MainPage.nheader": "Success",
   "app.containers.MainPage.ncontents": "You application has been successfully submitted. Please check your email for activating your loan. You can go back to MTGamer website to see your order status",
   "app.containers.MainPage.okmessage": "OK",
-  "app.containers.MainPage.helperTextReadOnly": "Read only, no need to change"
+  "app.containers.MainPage.helperTextReadOnly": "Read only, no need to change",
+  "app.containers.MainPage.submitInstruction": "Submit the form below to apply Zwap Pay for your order"
 }

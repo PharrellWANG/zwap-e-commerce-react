@@ -97,5 +97,6 @@
   "app.containers.MainPage.nheader": "成功",
   "app.containers.MainPage.ncontents": "你的申請已經成功被提交。請查看您的郵件來激活貸款。你可以回到MTGamer網頁查看你的訂單狀態。",
   "app.containers.MainPage.okmessage": "好的",
-  "app.containers.MainPage.helperTextReadOnly": "只讀，無需更改"
+  "app.containers.MainPage.helperTextReadOnly": "只讀，無需更改",
+  "app.containers.MainPage.submitInstruction": "提交表格為你的訂單申請Zwap Pay"
 }

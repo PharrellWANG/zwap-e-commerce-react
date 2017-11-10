@@ -263,4 +263,8 @@ export default defineMessages({
     id: 'app.containers.MainPage.helperTextReadOnly',
     defaultMessage: 'Read only, no need to change this field',
   },
+  submitInstruction: {
+    id: 'app.containers.MainPage.submitInstruction',
+    defaultMessage: 'Submit the form below to apply Zwap Pay for your order',
+  },
 });
