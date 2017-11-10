@@ -29,7 +29,7 @@ import ZwapLogo from './ZwapLogoRGB_1_340x100.png';
 // import ZwapLogo from './safari-pinned-tab.svg';
 // import messages from './messages';
 
-const styles = {
+const styles = (theme) => ({
   image: {
     margin: 'auto',
     textAlign: 'left',
@@ -57,24 +57,22 @@ const styles = {
   },
   root: {
     flexGrow: 1,
-    // paddingTop: 3,
+    // paddingTop: 30,
     paddingLeft: 0,
     paddingBottom: 1,
     // marginBottom: 2,
-    // marginTop: 2,
     // marginTop: theme.spacing.unit,
     // margin: 0,
     background: blueGrey[100],
-  // paper: {
-  //   height: 340,
-  //   width: 100,
   },
   flex: {
     flex: 1,
   },
   appbar: {
-    // marginTop: theme.spacing.unit,
+    paddingTop: theme.spacing.unit * 1,
+    paddingBottom: theme.spacing.unit * 1,
     // background: blueGrey[200],
+    // margin: 0,
     background: 'white',
   },
   locale: {
@@ -95,7 +93,8 @@ const styles = {
   //     paddingTop: 80,
   //   },
   // },
-};
+}
+);
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -160,7 +159,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
                 </DialogActions>
               </Dialog>
               <br />
-              <Typography type="display1" gutterBottom style={{ paddingTop: 42 }}>
+              <Typography type="display1" gutterBottom style={{ paddingTop: 48 }}>
                 <FormattedMessage {...messages.startProjectHeader} />
               </Typography>
               <Typography type="subheading" gutterBottom>

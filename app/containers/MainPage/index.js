@@ -70,17 +70,18 @@ const styles = (theme) => ({
   root: {
     flexGrow: 1,
     marginTop: 15,
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingLeft: 0,
+    paddingRight: 0,
   },
   paperLeftAligned: {
-    padding: 5,
+    marginTop: 25,
     textAlign: 'left',
     height: 'auto',
     paddingBottom: 50,
     color: theme.palette.text.secondary,
   },
   paper: {
+    marginTop: 10,
     padding: 30,
     // textAlign: 'center',
     height: 'auto',

@@ -9,9 +9,14 @@ import messages from './messages';
 function Footer() {
   return (
     <Wrapper>
-      <section>
+      {/* <section> */}
+      <div style={{ color: '#ffffff' }}>
+        &copy; Zwap 2017
+      </div>
+      <div style={{ color: 'white' }}>
         <FormattedMessage {...messages.licenseMessage} />
-      </section>
+      </div>
+      {/* </section> */}
       {/* <section> */}
       {/* <LocaleToggle /> */}
       {/* </section> */}
