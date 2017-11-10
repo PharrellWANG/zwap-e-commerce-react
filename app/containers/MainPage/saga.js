@@ -36,8 +36,9 @@ export function* fetchData(action) {
 // const prefilled = makeSelectMainPageFormData();
 
 export function* submitInfo(action) {
+  console.log('===============');
+  console.log(JSON.stringify(action.formData));
   const requestURL = 'http://218.255.104.158:6789/zwap-pay/receive-application/';
-  // console.log(JSON.stringify(action.formData));
   const options = {
     method: 'POST',
     body: JSON.stringify(action.formData),

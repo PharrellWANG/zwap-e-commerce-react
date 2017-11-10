@@ -7,6 +7,10 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { Field, reduxForm, formValueSelector } from 'redux-form/immutable'; // <--- immutable import
 import TextField from 'material-ui/TextField';
 import { CircularProgress } from 'material-ui/Progress';
+import lightBaseTheme from 'material-ui-previous/styles/baseThemes/lightBaseTheme';
+import { RadioButton, RadioButtonGroup } from 'material-ui-previous/RadioButton';
+import MuiThemeProvider from 'material-ui-previous/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui-previous/styles/getMuiTheme';
 import { FormControl } from 'material-ui/Form';
 import Typography from 'material-ui/Typography';
 import { MenuItem } from 'material-ui/Menu';
@@ -17,12 +21,16 @@ import { green } from 'material-ui/colors';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import {
-  // TextField as AwesomeTextField,
   Select,
 } from 'redux-form-material-ui';
+
+import DatePicker from 'material-ui-previous/DatePicker';
+import mapError from '../../components/ReduxFormComponents/mapError';
+
 import messages from './messages';
 import validate from './validate';
 import warn from './warn';
+
 // import MuiDatePicker from './datepicker';
 // import Captach from './captcha';
 
@@ -116,6 +124,35 @@ const styles = (theme) => ({
 //     </div>
 //   );
 // };
+const DatePickerField = ({
+  input: { onBlur, ...inputProps },
+  defaultDate,
+  onChange,
+  ...props }) => (
+    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+      <DatePicker
+        {...inputProps}
+        {...mapError(props)}
+        onChange={(event, value) => {
+          inputProps.onChange(value);
+          if (onChange) {
+            onChange(value);
+          }
+        }}
+      />
+    </MuiThemeProvider>
+);
+
+const renderRadioGroup = ({ input, ...rest }) => (
+  <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+    <RadioButtonGroup
+      {...input}
+      {...rest}
+      valueSelected={input.value}
+      onChange={(event, value) => input.onChange(value)}
+    />
+  </MuiThemeProvider>
+);
 
 const initRenderRequiredField = ({
   classes,
@@ -167,6 +204,36 @@ const initRenderReadOnlyField = ({
   </div>
 );
 
+const initRenderDateField = ({
+  classes,
+  input,
+  label,
+  placeholder,
+  meta: { touched, error },
+}) => {
+  const errorx = !!((touched && error));
+  return (
+    <div>
+      <div>
+        <TextField
+          required
+          error={errorx}
+          helperText={touched && error}
+          {...input}
+          label={label}
+          placeholder={placeholder}
+          margin="normal"
+          type="date"
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
 // const renderField = withStyles(styles)(initRenderField);
 const renderRequiredField = withStyles(styles)(initRenderRequiredField);
 const renderReadOnlyField = withStyles(styles)(initRenderReadOnlyField);
@@ -203,6 +270,14 @@ let ImmutableForm = (props) => {
             label={formatMessage(messages.mobile)}
           />
           <Field name="HKIDNumber" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.hkidnumber)} />
+          <Field name="Birthday" component={initRenderDateField} classes={classes} label="Birthday(dd/mm/yyyy)" placeholder="dd/mm/yyyy" />
+          <Field name="eventDate" component={DatePickerField} format={null} hintText="What day is the event?" />
+          <div>
+            <Field name="sex" component={renderRadioGroup}>
+              <RadioButton value="male" label="male" />
+              <RadioButton value="female" label="female" />
+            </Field>
+          </div>
           <div>
             <FormControl className={classes.formControl} required>
               <InputLabel htmlFor="HousingStatus">
