@@ -54,9 +54,11 @@ import makeSelectMainPageOpenDialog, {
 import reducer from './reducer';
 import saga from './saga';
 import ImmutableForm from './form';
+// import KnowYourCreditForm from './knowYourCreditForm';
 import messages from './messages';
 import pharrellAva from './avatars/pharrell.png';
 import eveAva from './avatars/eve.png';
+
 
 const styles = (theme) => ({
   progressStyle: {
@@ -69,14 +71,24 @@ const styles = (theme) => ({
   },
   root: {
     flexGrow: 1,
-    marginTop: 15,
+    marginTop: 30,
     paddingLeft: 0,
     paddingRight: 0,
   },
-  paperLeftAligned: {
+  rootGridList: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    background: theme.palette.background.paper,
+  },
+  paperTwo: {
     marginTop: 25,
+    marginLeft: 10,
+    marginRight: 10,
     textAlign: 'left',
     height: 'auto',
+    padding: 50,
     paddingBottom: 50,
     color: theme.palette.text.secondary,
   },
@@ -100,6 +112,18 @@ const styles = (theme) => ({
     justifyContent: 'left',
     verticalAlign: 'center',
   },
+  gridList: {
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
+  },
+  title: {
+    color: theme.palette.primary[200],
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+  },
 });
 
 function TabContainer(props) {
@@ -119,7 +143,7 @@ function TabContainer(props) {
 // const login = (values) => alert(`It's a map thanks to immutables with redux-form: ${values}`);
 export class MainPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
-    value: 0,
+    value: 1,
   };
 
   componentWillMount() {
@@ -154,6 +178,8 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
     // console.log(this.props.makeSelectMainPageFormData);
     const { classes, submitting } = this.props;
     const reduxFormInitialValues = this.props.makeSelectMainPageFormData;
+    // console.log(reduxFormInitialValues);
+    // console.log(reduxFormInitialValues.orderReferenceNo === '');
     const { value } = this.state;
     // console.log(initvals);
     // console.log('2');
@@ -181,11 +207,12 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
             </DialogActions>
           </Dialog>
         </div>
-        {(!this.props.match.params.token) &&
+        {/* if no token in url, present the homepage */}
+        {((!this.props.match.params.token) || (this.props.getSuccessNotice && reduxFormInitialValues.orderReferenceNo === '')) &&
         <div className={classes.root}>
           <Grid container spacing={24}>
             <Grid item xs={12}>
-              <Paper className={classes.paperLeftAligned}>
+              <Paper className={classes.paper}>
                 <Tabs
                   value={value}
                   onChange={this.handleChange}
@@ -214,7 +241,7 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                       Adam:
                     </Typography>
                     <Typography type="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
-                      Eve, my dear, what is the god damn Zwap Pay?
+                      Eve, my dear, what is the Zwap Pay?
                     </Typography>
                   </div>
                   {/* end single conversation block */}
@@ -343,61 +370,66 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                     How does Zwap Pay work?
                   </Typography>
                   <Typography type="body2" component="p">
-                    Step 1
+                    We collaborate with e-commerce websites to provide interest-free payments for you.
                   </Typography>
                   <Typography type="body1" component="p" gutterBottom>
-                    Check your Zwap Credit in this page.
+                    {''}
                   </Typography>
                   <Typography type="body2" component="p">
-                    Step 2
+                    {''}
                   </Typography>
                   <Typography type="body1" component="p" gutterBottom>
-                    Go to MTGamer e-commerce website, and add something into cart for yourself, total price should be lower than your Zwap Credit. Choose Zwap Pay for checkout.
+                    Go to our collaborator&#39;s website, and add something into cart for yourself, choose Zwap Pay to checkout.
                   </Typography>
                   <Typography type="body2" component="p">
-                    Step 3
+                    {''}
                   </Typography>
                   <Typography type="body1" component="p" gutterBottom>
-                    Submit application for your MTGamer order. Wait for the application to be approved.
+                    Submit application to Zwap. Wait for the application to be approved.
                   </Typography>
                   <Typography type="body2" component="p">
-                    Step 4
+                    {''}
                   </Typography>
                   <Typography type="body1" component="p" gutterBottom>
-                    You application will have been approved. And MTGamer starts to deliver your goods.
+                    You application is approved. Your items bought are on the way to your hands.
                   </Typography>
                 </TabContainer>}
-              </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Typography type="headline" component="h3" gutterBottom>
-                  check your Zwap Credit
-                </Typography>
-                <Typography type="body2" component="p">
-                  After submitting the form below, your Zwap Credit would be displayed.
-                </Typography>
-                <Typography type="body1" component="p">
-                  (Your data will NOT be saved here)
-                </Typography>
               </Paper>
             </Grid>
           </Grid>
         </div>
         }
-        {(this.props.getSuccessNotice || !this.props.match.params.token)
+        {/* if token in url, check the loading status, if not, display progress bar,
+             if loaded, display form
+        */}
+        {(this.props.match.params.token) &&
+        ((this.props.getSuccessNotice)
           // if we have token appended in the path,
           // we will load the form only when the data has been successfully loaded via calling api.
           // else if we don't have the token in path,
           // we directly load the form without presenting the progress bar.
-          ? (<Grid item xs={12}>
+          ? ((reduxFormInitialValues.orderReferenceNo !== '') && (<Grid item xs={12}>
             <Grid className={classes.gridStyle} container justify="center" spacing={16}>
               <ImmutableForm onSubmit={this.props.handleSubmit} initialValues={reduxFormInitialValues} realSubmitting={submitting} />
             </Grid>
-          </Grid>)
+          </Grid>))
           : <div className={classes.progressStyle}>
             <LinearProgress />
           </div>
+        )
+        }
+        {(this.props.getSuccessNotice && reduxFormInitialValues.orderReferenceNo === '') &&
+        <div>
+          <Paper className={classes.paperTwo} elevation={4}>
+            <Typography type="headline" component="h2" gutterBottom>
+              Notice: Invalid Token
+            </Typography>
+            <Typography type="body1" component="p">
+              Looks like your token has expired or never existed. Please go to e-commerce website to use Zwap Pay
+              for checkout.
+            </Typography>
+          </Paper>
+        </div>
         }
       </div>
     );

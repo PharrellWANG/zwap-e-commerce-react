@@ -44,7 +44,7 @@ export default defineMessages({
   },
   stepOneContents: {
     id: 'boilerplate.containers.HomePage.details.dialog.stepOneContents',
-    defaultMessage: 'You apply a loan service from Zwap by submitting the form in this page.',
+    defaultMessage: 'You apply a loan service from Zwap by submitting the form.',
   },
   stepTwoContents: {
     id: 'boilerplate.containers.HomePage.details.dialog.stepTwoContents',
