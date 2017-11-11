@@ -33,6 +33,20 @@ function isHKID(str) {
 const validate = (values) => {
   // IMPORTANT: values is an Immutable.Map here!
   const errors = {};
+  const requiredFields = [
+    'firstName',
+    'lastName',
+    'email',
+    'mobile',
+    'residentialAddress',
+    'Birthday',
+    'sex',
+  ];
+  requiredFields.forEach((field) => {
+    if (!values[field]) {
+      errors[field] = <FormattedMessage {...messages.required} />;
+    }
+  });
   // if (!values.get('username')) {
   //   errors.username = <FormattedMessage {...messages.required} />;
   // } else if (values.get('username').length > 15) {
@@ -56,9 +70,7 @@ const validate = (values) => {
     errors.productName = 'Must be larger than 1 characters';
   }
 
-  if (!values.get('email')) {
-    errors.email = <FormattedMessage {...messages.required} />;
-  } else if (values.get('email') && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email')))) {
+  if (values.get('email') && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email')))) {
     errors.email = 'Invalid email address';
   }
   if (!values.get('mobile')) {
@@ -78,6 +90,9 @@ const validate = (values) => {
     errors.firstName = <FormattedMessage {...messages.required} />;
   } else if (values.get('firstName').length < 1) {
     errors.firstName = 'Must be larger than 1 characters';
+  }
+  if (!values.get('residentialAddress')) {
+    errors.residentialAddress = <FormattedMessage {...messages.required} />;
   }
 
   if (!values.get('housingStatus')) {

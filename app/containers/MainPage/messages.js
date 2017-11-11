@@ -236,7 +236,7 @@ export default defineMessages({
   // messages for validate.js
   required: {
     id: 'app.containers.MainPage.required',
-    defaultMessage: 'Required',
+    defaultMessage: 'Please fill in this field',
   },
   // Dialog Header:
   dialogHeader: {
@@ -266,5 +266,25 @@ export default defineMessages({
   submitInstruction: {
     id: 'app.containers.MainPage.submitInstruction',
     defaultMessage: 'Submit the form below to apply Zwap Pay for your order',
+  },
+  birthday: {
+    id: 'app.containers.MainPage.birthday',
+    defaultMessage: 'Birthday',
+  },
+  confirmMsg: {
+    id: 'app.containers.MainPage.confirmMsg',
+    defaultMessage: 'OK',
+  },
+  cancelMsg: {
+    id: 'app.containers.MainPage.cancelMsg',
+    defaultMessage: 'Cancel',
+  },
+  male: {
+    id: 'app.containers.MainPage.male',
+    defaultMessage: 'Male',
+  },
+  female: {
+    id: 'app.containers.MainPage.female',
+    defaultMessage: 'Female',
   },
 });

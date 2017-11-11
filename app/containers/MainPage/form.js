@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/label-has-for,no-const-assign,import/no-mutable-exports */
+/* eslint-disable jsx-a11y/label-has-for,no-const-assign,import/no-mutable-exports,react/no-children-prop */
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import { connect } from 'react-redux';
@@ -11,18 +11,21 @@ import lightBaseTheme from 'material-ui-previous/styles/baseThemes/lightBaseThem
 import { RadioButton, RadioButtonGroup } from 'material-ui-previous/RadioButton';
 import MuiThemeProvider from 'material-ui-previous/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui-previous/styles/getMuiTheme';
-import { FormControl } from 'material-ui/Form';
+// import { FormControl } from 'material-ui/Form';
+import TextFieldPrevious from 'material-ui-previous/TextField';
 import Typography from 'material-ui/Typography';
-import { MenuItem } from 'material-ui/Menu';
+import SelectField from 'material-ui-previous/SelectField';
+// import { MenuItem as MenuItemNext } from 'material-ui/Menu';
+import MenuItem from 'material-ui-previous/MenuItem';
 // import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
-import { InputLabel } from 'material-ui/Input';
+// import { InputLabel } from 'material-ui/Input';
 import { green } from 'material-ui/colors';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
-import {
-  Select,
-} from 'redux-form-material-ui';
+// import {
+//   Select,
+// } from 'redux-form-material-ui';
 
 import DatePicker from 'material-ui-previous/DatePicker';
 import mapError from '../../components/ReduxFormComponents/mapError';
@@ -31,8 +34,9 @@ import messages from './messages';
 import validate from './validate';
 import warn from './warn';
 
-// import MuiDatePicker from './datepicker';
-// import Captach from './captcha';
+const IntlPolyfill = require('intl');
+const DateTimeFormat = IntlPolyfill.DateTimeFormat;
+require('intl/locale-data/jsonp/zh-Hans-HK');
 
 const styles = (theme) => ({
   container: {
@@ -49,7 +53,7 @@ const styles = (theme) => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 300,
+    width: 255,
   },
   root: {
     display: 'flex',
@@ -124,62 +128,190 @@ const styles = (theme) => ({
 //     </div>
 //   );
 // };
-const DatePickerField = ({
-  input: { onBlur, ...inputProps },
-  defaultDate,
-  onChange,
-  ...props }) => (
-    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-      <DatePicker
-        {...inputProps}
-        {...mapError(props)}
-        onChange={(event, value) => {
-          inputProps.onChange(value);
-          if (onChange) {
-            onChange(value);
-          }
-        }}
-      />
-    </MuiThemeProvider>
-);
-
-const renderRadioGroup = ({ input, ...rest }) => (
+// const DatePickerField = ({
+//   input: { onBlur, ...inputProps },
+//   defaultDate,
+//   onChange,
+//   ...props }) => (
+//     <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+//       <DatePicker
+//         {...inputProps}
+//         {...mapError(props)}
+//         onChange={(event, value) => {
+//           inputProps.onChange(value);
+//           if (onChange) {
+//             onChange(value);
+//           }
+//         }}
+//       />
+//     </MuiThemeProvider>
+// );
+const renderTextField = ({
+  input,
+  label,
+  meta: { touched, error },
+  ...custom
+}) => (
   <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-    <RadioButtonGroup
+    <TextFieldPrevious
+      // floatingLabelStyle={{ backgroundColor: '#d8efff', color: 'black' }}
+      floatingLabelStyle={{ color: '#7a7a7a' }}
+      errorStyle={{ textAlign: 'left' }}
+      hintText={label}
+      floatingLabelText={label}
+      errorText={touched && error}
       {...input}
-      {...rest}
-      valueSelected={input.value}
-      onChange={(event, value) => input.onChange(value)}
+      {...custom}
     />
   </MuiThemeProvider>
 );
 
-const initRenderRequiredField = ({
-  classes,
+const renderSelectField = ({
   input,
   label,
-  type,
   meta: { touched, error },
-}) => {
-  const errorx = !!((touched && error));
-  return (
-    <div>
-      <div>
-        <TextField
-          required
-          error={errorx}
-          helperText={touched && error}
-          {...input}
-          type={type}
-          label={label}
-          placeholder={label}
-          className={classes.textField}
-          margin="normal"
-        />
-      </div>
-    </div>
-  );
-};
+  children,
+  ...custom
+}) => (
+  <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+    <SelectField
+      // floatingLabelFixed
+      floatingLabelStyle={{ color: '#7a7a7a' }}
+      // menuItemStyle={{ textAlign: 'left' }}
+      // hintStyle={{ textAlign: 'left' }}
+      // labelStyle={{ textAlign: 'left' }}
+      style={{ textAlign: 'left' }}
+      errorStyle={{ textAlign: 'left' }}
+      floatingLabelText={label}
+      errorText={touched && error}
+      {...input}
+      onChange={(event, index, value) => {
+        input.onChange(value);
+      }}
+      children={children}
+      {...custom}
+    />
+  </MuiThemeProvider>
+);
+
+
+// const DatePickerFieldZhHansHK = ({
+//   input: { onBlur, ...inputProps },
+//   // input,
+//   defaultDate,
+//   onChange,
+//   // classes,
+//   ...props }) => (
+//     <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+//       <DatePicker
+//         DateTimeFormat={DateTimeFormat}
+//         okLabel="好的"
+//         cancelLabel="取消"
+//         locale="zh-Hans-HK"
+//         value={inputProps.value !== '' ? new Date(inputProps.value) : null}
+//         // onChange = {(event, value) => { console.log(value); input.onChange(value); }}
+//         // style={{ marginLeft: 3, width: 20 }}
+//         // style={styles.textField}
+//         // className={classes.textField}
+//         {...inputProps}
+//         {...mapError(props)}
+//         onChange={(event, value) => {
+//           console.log(value);
+//           inputProps.onChange(value);
+//           if (onChange) {
+//             onChange(value);
+//           }
+//         }}
+//       />
+//     </MuiThemeProvider>
+// );
+
+const renderDatePickerZhHansHK = ({ input, floatingLabelText, confirmMsg, cancelMsg, input: { onBlur, ...inputProps }, ...props, meta: { touched, error } }) => (
+  <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+    <DatePicker
+      floatingLabelStyle={{ color: '#7a7a7a' }}
+      floatingLabelText={floatingLabelText}
+      errorStyle={{ textAlign: 'left' }}
+      DateTimeFormat={DateTimeFormat}
+      okLabel={confirmMsg}
+      cancelLabel={cancelMsg}
+      locale="zh-Hans-HK"
+      // locale="en-US"
+      errorText={touched && error}
+      {...inputProps}
+      {...mapError(props)}
+      value={input.value !== '' ? new Date(input.value) : null}
+      onChange={(event, value) => {
+        // console.log(value);
+        input.onChange(value);
+      }}
+    />
+  </MuiThemeProvider>
+);
+
+const renderDatePickerEnUS = ({ input, floatingLabelText, confirmMsg, cancelMsg, input: { onBlur, ...inputProps }, ...props, meta: { touched, error } }) => (
+  <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+    <DatePicker
+      floatingLabelStyle={{ color: '#7a7a7a' }}
+      floatingLabelText={floatingLabelText}
+      errorStyle={{ textAlign: 'left' }}
+      okLabel={confirmMsg}
+      cancelLabel={cancelMsg}
+      locale="en-US"
+      errorText={touched && error}
+      {...inputProps}
+      {...mapError(props)}
+      value={input.value !== '' ? new Date(input.value) : null}
+      onChange={(event, value) => {
+        // console.log(value);
+        input.onChange(value);
+      }}
+    />
+  </MuiThemeProvider>
+);
+
+const renderRadioGroup = ({ input, ...rest, meta: { touched, error } }) => (
+  <div>
+    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+      <RadioButtonGroup
+        // defaultSelected="male"
+        {...input}
+        {...rest}
+        // style={{ display: 'flex' }}
+        valueSelected={input.value}
+        onChange={(event, value) => input.onChange(value)}
+      />
+    </MuiThemeProvider>
+    <span style={{ color: 'red', textAlign: 'center', fontSize: 'small', marginLeft: 87 }}>{touched && error}</span>
+  </div>
+);
+
+// const initRenderRequiredField = ({
+//   classes,
+//   input,
+//   label,
+//   type,
+//   meta: { touched, error },
+// }) => {
+//   const errorx = !!((touched && error));
+//   return (
+//     <div>
+//       <div>
+//         <TextField
+//           required
+//           error={errorx}
+//           helperText={touched && error}
+//           {...input}
+//           type={type}
+//           label={label}
+//           placeholder={label}
+//           className={classes.textField}
+//           margin="normal"
+//         />
+//       </div>
+//     </div>
+//   );
+// };
 
 const initRenderReadOnlyField = ({
  classes,
@@ -204,45 +336,46 @@ const initRenderReadOnlyField = ({
   </div>
 );
 
-const initRenderDateField = ({
-  classes,
-  input,
-  label,
-  placeholder,
-  meta: { touched, error },
-}) => {
-  const errorx = !!((touched && error));
-  return (
-    <div>
-      <div>
-        <TextField
-          required
-          error={errorx}
-          helperText={touched && error}
-          {...input}
-          label={label}
-          placeholder={placeholder}
-          margin="normal"
-          type="date"
-          className={classes.textField}
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-      </div>
-    </div>
-  );
-};
+// const initRenderDateField = ({
+//   classes,
+//   input,
+//   label,
+//   placeholder,
+//   meta: { touched, error },
+// }) => {
+//   const errorx = !!((touched && error));
+//   return (
+//     <div>
+//       <div>
+//         <TextField
+//           required
+//           error={errorx}
+//           helperText={touched && error}
+//           {...input}
+//           label={label}
+//           placeholder={placeholder}
+//           margin="normal"
+//           type="date"
+//           className={classes.textField}
+//           InputLabelProps={{
+//             shrink: true,
+//           }}
+//         />
+//       </div>
+//     </div>
+//   );
+// };
 
 // const renderField = withStyles(styles)(initRenderField);
-const renderRequiredField = withStyles(styles)(initRenderRequiredField);
+// const renderRequiredField = withStyles(styles)(initRenderRequiredField);
 const renderReadOnlyField = withStyles(styles)(initRenderReadOnlyField);
 
 let ImmutableForm = (props) => {
-  const { classes, handleSubmit, reset, submitting, realSubmitting, requireGPA } = props;
+  const { classes, handleSubmit, reset, pristine, submitting, realSubmitting, requireGPA, selectedLang } = props;
   const { formatMessage } = props.intl;
+  // console.log(selectedLang === 'zh');
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ width: 800 }}>
       <Grid container spacing={24} style={{ paddingBottom: 15 }}>
         <Grid item xs={12} style={{ textAlign: 'center', paddingLeft: 16, paddingRight: 16 }}>
           <Typography type="headline" component="h5" gutterBottom>
@@ -259,237 +392,191 @@ let ImmutableForm = (props) => {
           <Field name="amountToPay" type="text" component={renderReadOnlyField} classes={classes} label={formatMessage(messages.amountToPay)} helperText={formatMessage(messages.helperTextReadOnly)} />
         </Grid>
       </Grid>
-      <Grid container spacing={24}>
+      <Divider />
+      {/* xs={12} sm={12} md={12} lg={12} xl={12} */}
+      <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
-          <Field name="email" type="email" component={renderRequiredField} classes={classes} label={formatMessage(messages.emailLabel)} />
-          <Field
-            name="mobile"
-            type="text"
-            component={renderRequiredField}
-            classes={classes}
-            label={formatMessage(messages.mobile)}
-          />
-          <Field name="HKIDNumber" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.hkidnumber)} />
-          <Field name="Birthday" component={initRenderDateField} classes={classes} label="Birthday(dd/mm/yyyy)" placeholder="dd/mm/yyyy" />
-          <Field name="eventDate" component={DatePickerField} format={null} hintText="What day is the event?" />
-          <div>
-            <Field name="sex" component={renderRadioGroup}>
-              <RadioButton value="male" label="male" />
-              <RadioButton value="female" label="female" />
-            </Field>
-          </div>
-          <div>
-            <FormControl className={classes.formControl} required>
-              <InputLabel htmlFor="HousingStatus">
-                <FormattedMessage {...messages.housingstatus} />
-              </InputLabel>
-              <Field
-                name="housingStatus"
-                component={Select}
-                placeholder="Housing Status"
-                // // validate={required}
-              >
-                <MenuItem value="PublicHousing">
-                  <FormattedMessage {...messages.publichousing} />
-                </MenuItem>
-                <MenuItem value="Hall">
-                  <FormattedMessage {...messages.hall} />
-                </MenuItem>
-                <MenuItem value="OwnedByFamily">
-                  <FormattedMessage {...messages.ownedbyfamily} />
-                </MenuItem>
-                <MenuItem value="Rent">
-                  <FormattedMessage {...messages.rent} />
-                </MenuItem>
-                <MenuItem value="Quarter">
-                  <FormattedMessage {...messages.quarterr} />
-                </MenuItem>
-              </Field>
-            </FormControl>
-          </div>
-          <div>
-            <FormControl className={classes.formControl} required>
-              <InputLabel htmlFor="livingWith">
-                <FormattedMessage {...messages.livingwith} />
-              </InputLabel>
-              <Field
-                name="livingWith"
-                component={Select}
-                placeholder="Living With"
-                // validate={required}
-              >
-                <MenuItem value="Parents">
-                  <FormattedMessage {...messages.parents} />
-                </MenuItem>
-                <MenuItem value="Relatives">
-                  <FormattedMessage {...messages.relatives} />
-                </MenuItem>
-                <MenuItem value="Friends">
-                  <FormattedMessage {...messages.friends} />
-                </MenuItem>
-                <MenuItem value="Others">
-                  <FormattedMessage {...messages.others} />
-                </MenuItem>
-              </Field>
-            </FormControl>
-          </div>
-          <div>
-            <FormControl className={classes.formControl} required>
-              <InputLabel htmlFor="University">
-                <FormattedMessage {...messages.univ} />
-              </InputLabel>
-              <Field
-                name="University"
-                component={Select}
-                placeholder="Your University"
-                // validate={required}
-              >
-                <MenuItem value="HKU">
-                  <FormattedMessage {...messages.hku} />
-                </MenuItem>
-                <MenuItem value="CUHK">
-                  <FormattedMessage {...messages.cuhk} />
-                </MenuItem>
-                <MenuItem value="UST">
-                  <FormattedMessage {...messages.hkust} />
-                </MenuItem>
-                <MenuItem value="POLYU">
-                  <FormattedMessage {...messages.polyu} />
-                </MenuItem>
-                <MenuItem value="CITYU">
-                  <FormattedMessage {...messages.cityu} />
-                </MenuItem>
-                <MenuItem value="BAP">
-                  <FormattedMessage {...messages.bp} />
-                </MenuItem>
-                <MenuItem value="HKIE">
-                  <FormattedMessage {...messages.hkie} />
-                </MenuItem>
-                <MenuItem value="LU">
-                  <FormattedMessage {...messages.lingnan} />
-                </MenuItem>
-                <MenuItem value="OU">
-                  <FormattedMessage {...messages.ouhk} />
-                </MenuItem>
-                <MenuItem value="OTHERS">
-                  <FormattedMessage {...messages.others} />
-                </MenuItem>
-              </Field>
-            </FormControl>
-          </div>
+          <Field name="email" component={renderTextField} label={formatMessage(messages.emailLabel)} />
         </Grid>
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
-          <Field name="lastName" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.lastname)} />
-          <Field name="firstName" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.firstname)} />
-          <Field name="residentialAddress" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.resiaddr)} />
-          <div>
-            <FormControl className={classes.formControl} required>
-              <InputLabel htmlFor="Degree">
-                <FormattedMessage {...messages.yourdegree} />
-              </InputLabel>
-              <Field
-                name="Degree"
-                component={Select}
-                placeholder="Your degree"
-                // validate={required}
-              >
-                <MenuItem value="Bachelor">
-                  <FormattedMessage {...messages.bachelor} />
-                </MenuItem>
-                <MenuItem value="Associate">
-                  <FormattedMessage {...messages.aso} />
-                </MenuItem>
-              </Field>
-            </FormControl>
-          </div>
-          <div>
-            <FormControl className={classes.formControl} required>
-              <InputLabel htmlFor="Major">
-                <FormattedMessage {...messages.major} />
-              </InputLabel>
-              <Field
-                name="Major"
-                component={Select}
-                placeholder="Your Major"
-                // validate={required}
-              >
-                <MenuItem value="MEDICAL">
-                  <FormattedMessage {...messages.med} />
-                </MenuItem>
-                <MenuItem value="LAW">
-                  <FormattedMessage {...messages.law} />
-                </MenuItem>
-                <MenuItem value="ACCOUNTING">
-                  <FormattedMessage {...messages.acc} />
-                </MenuItem>
-                <MenuItem value="CONSTRUCTION">
-                  <FormattedMessage {...messages.con} />
-                </MenuItem>
-                <MenuItem value="ENGINEERING">
-                  <FormattedMessage {...messages.eng} />
-                </MenuItem>
-                <MenuItem value="DESIGN">
-                  <FormattedMessage {...messages.des} />
-                </MenuItem>
-                <MenuItem value="BUSINESS">
-                  <FormattedMessage {...messages.bus} />
-                </MenuItem>
-                <MenuItem value="EDU">
-                  <FormattedMessage {...messages.edu} />
-                </MenuItem>
-                <MenuItem value="IT">
-                  <FormattedMessage {...messages.inf} />
-                </MenuItem>
-                <MenuItem value="SOCIAL">
-                  <FormattedMessage {...messages.soc} />
-                </MenuItem>
-                <MenuItem value="HOTEL">
-                  <FormattedMessage {...messages.hotel} />
-                </MenuItem>
-                <MenuItem value="OTHERS">
-                  <FormattedMessage {...messages.others} />
-                </MenuItem>
-              </Field>
-            </FormControl>
-          </div>
-          <div>
-            <FormControl className={classes.formControl} required>
-              <InputLabel htmlFor="YearOfStudy">
-                <FormattedMessage {...messages.yearofstudy} />
-              </InputLabel>
-              <Field
-                name="YearOfStudy"
-                component={Select}
-                placeholder="Year of Study"
-                // validate={required}
-              >
-                <MenuItem value="1">
-                  <FormattedMessage {...messages.yone} />
-                </MenuItem>
-                <MenuItem value="2">
-                  <FormattedMessage {...messages.ytwo} />
-                </MenuItem>
-                <MenuItem value="3">
-                  <FormattedMessage {...messages.ythree} />
-                </MenuItem>
-                <MenuItem value="4">
-                  <FormattedMessage {...messages.yfour} />
-                </MenuItem>
-              </Field>
-            </FormControl>
-          </div>
+          <Field
+            name="mobile"
+            component={renderTextField}
+            label={formatMessage(messages.mobile)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <Field name="HKIDNumber" component={renderTextField} label={formatMessage(messages.hkidnumber)} />
+        </Grid>
+        { selectedLang === 'zh' ?
+          <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+            <Field
+              name="Birthday"
+              // label="Birthday"
+              // placeholder="Birthday"
+              // en-US
+              // component={DatePickerField}
+              // Zh-Hans-HK
+              // component={DatePickerFieldZhHansHK}
+              component={renderDatePickerZhHansHK}
+              confirmMsg={formatMessage(messages.confirmMsg)}
+              cancelMsg={formatMessage(messages.cancelMsg)}
+              // classes={classes}
+              // hintText="Birthday"
+              floatingLabelText={formatMessage(messages.birthday)}
+            />
+          </Grid> : <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+            <Field
+              name="Birthday"
+              // label="Birthday"
+              // placeholder="Birthday"
+              // en-US
+              // component={DatePickerField}
+              // Zh-Hans-HK
+              // component={DatePickerFieldZhHansHK}
+              component={renderDatePickerEnUS}
+              confirmMsg={formatMessage(messages.confirmMsg)}
+              cancelMsg={formatMessage(messages.cancelMsg)}
+              // classes={classes}
+              // hintText="Birthday"
+              floatingLabelText={formatMessage(messages.birthday)}
+            />
+          </Grid>
+        }
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <Field name="firstName" component={renderTextField} label={formatMessage(messages.firstname)} />
+        </Grid>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <Field name="lastName" component={renderTextField} label={formatMessage(messages.lastname)} />
+        </Grid>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <Field name="residentialAddress" component={renderTextField} label={formatMessage(messages.resiaddr)} />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Field name="sex" component={renderRadioGroup} >
+            <RadioButton
+              value="male"
+              label={formatMessage(messages.male)}
+              style={{
+                width: '30%',
+                margin: '0 auto',
+                border: '2px solid #ceffa3',
+                backgroundColor: '#ceffa3',
+              }}
+            />
+            <RadioButton
+              value="female"
+              label={formatMessage(messages.female)}
+              style={{
+                width: '30%',
+                margin: '0 auto',
+                border: '2px solid #ffe0cb',
+                backgroundColor: '#ffe0cb',
+              }}
+            />
+          </Field>
+        </Grid>
+      </Grid>
+      <Divider />
+      <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <Field
+            name="housingStatus"
+            component={renderSelectField}
+            label={<FormattedMessage {...messages.housingstatus} />}
+          >
+            <MenuItem value="PublicHousing" primaryText={<FormattedMessage {...messages.publichousing} />} />
+            <MenuItem value="Hall" primaryText={<FormattedMessage {...messages.hall} />} />
+            <MenuItem value="OwnedByFamily" primaryText={<FormattedMessage {...messages.ownedbyfamily} />} />
+            <MenuItem value="Rent" primaryText={<FormattedMessage {...messages.rent} />} />
+            <MenuItem value="Quarter" primaryText={<FormattedMessage {...messages.quarterr} />} />
+          </Field>
+        </Grid>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <Field
+            name="livingWith"
+            component={renderSelectField}
+            label={<FormattedMessage {...messages.livingwith} />}
+          >
+            <MenuItem value="Parents" primaryText={<FormattedMessage {...messages.parents} />} />
+            <MenuItem value="Relatives" primaryText={<FormattedMessage {...messages.relatives} />} />
+            <MenuItem value="Friends" primaryText={<FormattedMessage {...messages.friends} />} />
+            <MenuItem value="Others" primaryText={<FormattedMessage {...messages.others} />} />
+          </Field>
+        </Grid>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <Field
+            name="University"
+            component={renderSelectField}
+            label={<FormattedMessage {...messages.univ} />}
+          >
+            <MenuItem value="HKU" primaryText={<FormattedMessage {...messages.hku} />} />
+            <MenuItem value="CUHK" primaryText={<FormattedMessage {...messages.cuhk} />} />
+            <MenuItem value="UST" primaryText={<FormattedMessage {...messages.hkust} />} />
+            <MenuItem value="POLYU" primaryText={<FormattedMessage {...messages.polyu} />} />
+            <MenuItem value="CITYU" primaryText={<FormattedMessage {...messages.cityu} />} />
+            <MenuItem value="BAP" primaryText={<FormattedMessage {...messages.bp} />} />
+            <MenuItem value="HKIE" primaryText={<FormattedMessage {...messages.hkie} />} />
+            <MenuItem value="LU" primaryText={<FormattedMessage {...messages.lingnan} />} />
+            <MenuItem value="OU" primaryText={<FormattedMessage {...messages.ouhk} />} />
+            <MenuItem value="OTHERS" primaryText={<FormattedMessage {...messages.others} />} />
+          </Field>
+        </Grid>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <Field
+            name="Degree"
+            component={renderSelectField}
+            label={<FormattedMessage {...messages.yourdegree} />}
+          >
+            <MenuItem value="Bachelor" primaryText={<FormattedMessage {...messages.bachelor} />} />
+            <MenuItem value="Associate" primaryText={<FormattedMessage {...messages.aso} />} />
+          </Field>
+        </Grid>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <Field
+            name="Major"
+            component={renderSelectField}
+            label={<FormattedMessage {...messages.major} />}
+          >
+            <MenuItem value="MEDICAL" primaryText={<FormattedMessage {...messages.med} />} />
+            <MenuItem value="LAW" primaryText={<FormattedMessage {...messages.law} />} />
+            <MenuItem value="ACCOUNTING" primaryText={<FormattedMessage {...messages.acc} />} />
+            <MenuItem value="CONSTRUCTION" primaryText={<FormattedMessage {...messages.con} />} />
+            <MenuItem value="ENGINEERING" primaryText={<FormattedMessage {...messages.eng} />} />
+            <MenuItem value="DESIGN" primaryText={<FormattedMessage {...messages.des} />} />
+            <MenuItem value="BUSINESS" primaryText={<FormattedMessage {...messages.bus} />} />
+            <MenuItem value="EDU" primaryText={<FormattedMessage {...messages.edu} />} />
+            <MenuItem value="IT" primaryText={<FormattedMessage {...messages.inf} />} />
+            <MenuItem value="SOCIAL" primaryText={<FormattedMessage {...messages.soc} />} />
+            <MenuItem value="HOTEL" primaryText={<FormattedMessage {...messages.hotel} />} />
+            <MenuItem value="OTHERS" primaryText={<FormattedMessage {...messages.others} />} />
+          </Field>
+        </Grid>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <Field
+            name="YearOfStudy"
+            component={renderSelectField}
+            label={<FormattedMessage {...messages.yearofstudy} />}
+          >
+            <MenuItem value="1" primaryText={<FormattedMessage {...messages.yone} />} />
+            <MenuItem value="2" primaryText={<FormattedMessage {...messages.ytwo} />} />
+            <MenuItem value="3" primaryText={<FormattedMessage {...messages.ythree} />} />
+            <MenuItem value="4" primaryText={<FormattedMessage {...messages.yfour} />} />
+          </Field>
+        </Grid>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
           { requireGPA &&
-            <Field name="cumulativeGPA" type="text" component={renderRequiredField} classes={classes} label={formatMessage(messages.cumulativeGPA)} />
+            <Field name="cumulativeGPA" component={renderTextField} label={formatMessage(messages.cumulativeGPA)} />
           }
         </Grid>
       </Grid>
       <Grid container spacing={24}>
         <Grid item xs={12} style={{ textAlign: 'center', paddingTop: 50 }}>
-          <Button raised color="primary" className={classes.button} type="submit" disabled={submitting || realSubmitting}>
+          <Button raised color="primary" className={classes.button} type="submit" disabled={pristine || submitting || realSubmitting}>
             <FormattedMessage {...messages.submit} />
           </Button>
           {realSubmitting && <CircularProgress size={24} className={classes.buttonProgress} thickness={6} />}
-          <Button raised type="button" className={classes.rightAlignedButton} disabled={submitting} onClick={reset}>
+          <Button raised type="button" className={classes.rightAlignedButton} disabled={pristine || submitting} onClick={reset}>
             <FormattedMessage {...messages.clear} />
           </Button>
         </Grid>
@@ -513,7 +600,9 @@ ImmutableForm = connect(
     if (yearOfStudying === '2' || yearOfStudying === '3' || yearOfStudying === '4') {
       requireGPA = true;
     }
+    const selectedLang = state.get('language').get('locale');
     return {
+      selectedLang,
       requireGPA,
     };
   }
