@@ -373,6 +373,8 @@ const renderReadOnlyField = withStyles(styles)(initRenderReadOnlyField);
 let ImmutableForm = (props) => {
   const { classes, handleSubmit, reset, pristine, submitting, realSubmitting, requireGPA, selectedLang } = props;
   const { formatMessage } = props.intl;
+  // console.log('================');
+  // console.log(initialValues.toJS());
   // console.log(selectedLang === 'zh');
   return (
     <form onSubmit={handleSubmit} style={{ width: 800 }}>

@@ -43,7 +43,7 @@ const validate = (values) => {
     'sex',
   ];
   requiredFields.forEach((field) => {
-    if (!values[field]) {
+    if (!values.get(field)) {
       errors[field] = <FormattedMessage {...messages.required} />;
     }
   });
