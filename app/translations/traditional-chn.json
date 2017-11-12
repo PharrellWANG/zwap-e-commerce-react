@@ -103,5 +103,7 @@
   "app.containers.MainPage.confirmMsg": "確認",
   "app.containers.MainPage.cancelMsg": "取消",
   "app.containers.MainPage.male": "男",
-  "app.containers.MainPage.female": "女"
+  "app.containers.MainPage.female": "女",
+  "app.containers.MainPage.ageNotInRange": "很抱歉你的年齡不適合該產品。",
+  "app.containers.MainPage.mustLargerThanOneCharacter": "至少1位字符。"
 }

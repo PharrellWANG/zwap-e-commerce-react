@@ -103,5 +103,7 @@
   "app.containers.MainPage.confirmMsg": "Confirm",
   "app.containers.MainPage.cancelMsg": "Cancel",
   "app.containers.MainPage.male": "Male",
-  "app.containers.MainPage.female": "Female"
+  "app.containers.MainPage.female": "Female",
+  "app.containers.MainPage.ageNotInRange": "I am sorry that your age is not suitable for this product",
+  "app.containers.MainPage.mustLargerThanOneCharacter": "Must be larger than 1 character."
 }

@@ -69,15 +69,17 @@ const validate = (values) => {
       errors[field] = <FormattedMessage {...messages.required} />;
     }
   });
+
   if (!values.get('Birthday')) {
     errors.Birthday = <FormattedMessage {...messages.required} />;
   } else if (!isBirthdayInRange(values.get('Birthday'))) {
-    errors.Birthday = 'I am sorry that your age is not suitable for this product.';
+    errors.Birthday = <FormattedMessage {...messages.ageNotInRange} />;
   }
+
   if (!values.get('orderReferenceNo')) {
     errors.orderReferenceNo = <FormattedMessage {...messages.required} />;
-  } else if (values.get('orderReferenceNo').length < 3) {
-    errors.orderReferenceNo = 'Must be larger than 3 characters';
+  } else if (values.get('orderReferenceNo').length < 2) {
+    errors.orderReferenceNo = <FormattedMessage {...messages.mustLargerThanOneCharacter} />;
   }
 
   if (!values.get('amountToPay')) {
@@ -86,11 +88,11 @@ const validate = (values) => {
     errors.amountToPay = 'Must be a number';
   }
 
-  if (!values.get('productName')) {
-    errors.productName = <FormattedMessage {...messages.required} />;
-  } else if (values.get('productName').length < 1) {
-    errors.productName = 'Must be larger than 1 characters';
-  }
+  // if (!values.get('productName')) {
+  //   errors.productName = <FormattedMessage {...messages.required} />;
+  // } else if (values.get('productName').length < 1) {
+  //   errors.productName = 'Must be larger than 1 character';
+  // }
 
   if (values.get('email') && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email')))) {
     errors.email = 'Invalid email address';
@@ -106,12 +108,12 @@ const validate = (values) => {
   if (!values.get('lastName')) {
     errors.lastName = <FormattedMessage {...messages.required} />;
   } else if (values.get('lastName').length < 1) {
-    errors.lastName = 'Must be larger than 1 characters';
+    errors.lastName = <FormattedMessage {...messages.mustLargerThanOneCharacter} />;
   }
   if (!values.get('firstName')) {
     errors.firstName = <FormattedMessage {...messages.required} />;
   } else if (values.get('firstName').length < 1) {
-    errors.firstName = 'Must be larger than 1 characters';
+    errors.firstName = <FormattedMessage {...messages.mustLargerThanOneCharacter} />;
   }
   if (!values.get('residentialAddress')) {
     errors.residentialAddress = <FormattedMessage {...messages.required} />;

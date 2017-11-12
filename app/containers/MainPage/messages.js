@@ -287,4 +287,12 @@ export default defineMessages({
     id: 'app.containers.MainPage.female',
     defaultMessage: 'Female',
   },
+  ageNotInRange: {
+    id: 'app.containers.MainPage.ageNotInRange',
+    defaultMessage: 'I am sorry that your age is not suitable for this product.',
+  },
+  mustLargerThanOneCharacter: {
+    id: 'app.containers.MainPage.mustLargerThanOneCharacter',
+    defaultMessage: 'Must be larger than 1 character.',
+  },
 });
