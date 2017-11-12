@@ -30,7 +30,28 @@ function isHKID(str) {
   return verify === Number(checkDigit) || (verify === 10 && checkDigit === 'A');
 }
 
+function isBirthdayInRange(birthday) {
+  // const startdate = new Date('01/01/1992'); //
+  // const enddate = new Date('01/01/1999');
+
+  const dateRight = new Date();
+  const dateLeft = new Date();
+  // console.log('------------------------');
+  // console.log(dateRight.getFullYear());
+  // console.log(dateLeft.getFullYear());
+  dateRight.setFullYear(dateRight.getFullYear() - 18);
+  dateLeft.setFullYear(dateLeft.getFullYear() - 25);
+  // console.log('------------------------');
+  // console.log('------------------------');
+  // console.log(dateRight.getFullYear());
+  // console.log(dateLeft.getFullYear());
+
+  return birthday >= dateLeft && birthday <= dateRight;
+}
+
 const validate = (values) => {
+  // console.log(val/ues.get('Birthday'));
+  // console.log(typeof (values.get('Birthday')));
   // IMPORTANT: values is an Immutable.Map here!
   const errors = {};
   const requiredFields = [
@@ -42,16 +63,17 @@ const validate = (values) => {
     'Birthday',
     'sex',
   ];
+
   requiredFields.forEach((field) => {
     if (!values.get(field)) {
       errors[field] = <FormattedMessage {...messages.required} />;
     }
   });
-  // if (!values.get('username')) {
-  //   errors.username = <FormattedMessage {...messages.required} />;
-  // } else if (values.get('username').length > 15) {
-  //   errors.username = 'Must be 15 characters or less';
-  // }
+  if (!values.get('Birthday')) {
+    errors.Birthday = <FormattedMessage {...messages.required} />;
+  } else if (!isBirthdayInRange(values.get('Birthday'))) {
+    errors.Birthday = 'I am sorry that your age is not suitable for this product.';
+  }
   if (!values.get('orderReferenceNo')) {
     errors.orderReferenceNo = <FormattedMessage {...messages.required} />;
   } else if (values.get('orderReferenceNo').length < 3) {
