@@ -7,6 +7,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { Field, reduxForm, formValueSelector } from 'redux-form/immutable'; // <--- immutable import
 import TextField from 'material-ui/TextField';
 import { CircularProgress } from 'material-ui/Progress';
+// import { CircularProgress as CircularProgressPrevious } from 'material-ui-previous/CircularProgress';
 import lightBaseTheme from 'material-ui-previous/styles/baseThemes/lightBaseTheme';
 import { RadioButton, RadioButtonGroup } from 'material-ui-previous/RadioButton';
 import MuiThemeProvider from 'material-ui-previous/styles/MuiThemeProvider';
@@ -33,7 +34,7 @@ import mapError from '../../components/ReduxFormComponents/mapError';
 import messages from './messages';
 import validate from './validate';
 import warn from './warn';
-
+import asyncValidate from './asyncValidate';
 const IntlPolyfill = require('intl');
 const DateTimeFormat = IntlPolyfill.DateTimeFormat;
 require('intl/locale-data/jsonp/zh-Hans-HK');
@@ -64,7 +65,7 @@ const styles = (theme) => ({
     margin: theme.spacing.unit,
     position: 'relative',
   },
-  buttonProgress: {
+  absoluteProgress: {
     color: green[500],
     position: 'absolute',
     top: '50%',
@@ -153,16 +154,19 @@ const renderTextField = ({
   ...custom
 }) => (
   <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-    <TextFieldPrevious
-      // floatingLabelStyle={{ backgroundColor: '#d8efff', color: 'black' }}
-      floatingLabelStyle={{ color: '#7a7a7a' }}
-      errorStyle={{ textAlign: 'left' }}
-      hintText={label}
-      floatingLabelText={label}
-      errorText={touched && error}
-      {...input}
-      {...custom}
-    />
+    <div>
+      <TextFieldPrevious
+        // floatingLabelStyle={{ backgroundColor: '#d8efff', color: 'black' }}
+        floatingLabelStyle={{ color: '#7a7a7a' }}
+        errorStyle={{ textAlign: 'left' }}
+        hintText={label}
+        floatingLabelText={label}
+        errorText={touched && error}
+        {...input}
+        {...custom}
+      />
+      {/* {asyncValidating && <CircularProgressPrevious />} */}
+    </div>
   </MuiThemeProvider>
 );
 
@@ -371,9 +375,11 @@ const initRenderReadOnlyField = ({
 const renderReadOnlyField = withStyles(styles)(initRenderReadOnlyField);
 
 let ImmutableForm = (props) => {
-  const { classes, handleSubmit, reset, pristine, submitting, realSubmitting, requireGPA, selectedLang } = props;
+  const { classes, handleSubmit, reset, pristine, submitting, realSubmitting, requireGPA, selectedLang, asyncValidating } = props;
   const { formatMessage } = props.intl;
   // console.log('================');
+  // console.log(meta);
+  // console.log('haha, now the value of asyncValidating is: ', asyncValidating);
   // console.log(initialValues.toJS());
   // console.log(selectedLang === 'zh');
   return (
@@ -395,11 +401,27 @@ let ImmutableForm = (props) => {
         </Grid>
       </Grid>
       <Divider />
+      <Grid container spacing={24} style={{ paddingTop: 8, paddingBottom: 0 }}>
+        <Grid item xs={12} style={{ textAlign: 'center', paddingLeft: 32, paddingRight: 32 }}>
+          <Typography type="body1" component="h5" gutterBottom>
+            Please type your email, it will automatically identify if you have an existing Zwap account.
+          </Typography>
+          <Typography type="body1" component="h5" gutterBottom>
+            If not, we will simply create one for you.
+          </Typography>
+        </Grid>
+      </Grid>
       {/* xs={12} sm={12} md={12} lg={12} xl={12} */}
       <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
           <Field name="email" component={renderTextField} label={formatMessage(messages.emailLabel)} />
+          { asyncValidating && <CircularProgress thickness={6} size={20} />}
+          {/* <CircularProgress style={{ position: 'absolute', zIndex: 5 }} /> */}
+          {/* <CircularProgress thickness={6} size={20} /> */}
         </Grid>
+      </Grid>
+      <Divider />
+      <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
           <Field
             name="mobile"
@@ -577,7 +599,7 @@ let ImmutableForm = (props) => {
           <Button raised color="primary" className={classes.button} type="submit" disabled={pristine || submitting || realSubmitting}>
             <FormattedMessage {...messages.submit} />
           </Button>
-          {realSubmitting && <CircularProgress size={24} className={classes.buttonProgress} thickness={6} />}
+          {realSubmitting && <CircularProgress size={24} className={classes.absoluteProgress} thickness={6} />}
           <Button raised type="button" className={classes.rightAlignedButton} disabled={pristine || submitting} onClick={reset}>
             <FormattedMessage {...messages.clear} />
           </Button>
@@ -590,6 +612,8 @@ let ImmutableForm = (props) => {
 ImmutableForm = reduxForm({
   form: 'immutableExample', // a unique identifier for this form
   validate,
+  asyncValidate,
+  asyncBlurFields: ['email'],
   warn,
 })(ImmutableForm);
 
@@ -597,6 +621,10 @@ const selector = formValueSelector('immutableExample');
 
 ImmutableForm = connect(
   (state) => {
+    // console.log(state.toJS());
+    // console.log(state.get('mainPage').get('displayCongrats'));
+    const displayCongrats = state.get('mainPage').get('displayCongrats');
+    const displayPwFields = state.get('mainPage').get('displayPwFields');
     const yearOfStudying = selector(state, 'YearOfStudy');
     let requireGPA = false;
     if (yearOfStudying === '2' || yearOfStudying === '3' || yearOfStudying === '4') {
@@ -604,6 +632,8 @@ ImmutableForm = connect(
     }
     const selectedLang = state.get('language').get('locale');
     return {
+      displayCongrats,
+      displayPwFields,
       selectedLang,
       requireGPA,
     };

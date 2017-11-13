@@ -6,10 +6,13 @@ import {
   dataLoadFail,
   letMeSubmitSuccess,
   letMeSubmitFail,
+  accountChecking,
+  accountCheckingFail,
 } from './actions';
 // Individual exports for testing
 import {
   FETCH_AND_LOAD,
+  IS_IT_NEEDED_TO_DISPLAY_PW_FIELD,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE,
 } from './constants';
 
@@ -36,8 +39,8 @@ export function* fetchData(action) {
 // const prefilled = makeSelectMainPageFormData();
 
 export function* submitInfo(action) {
-  console.log('===============');
-  console.log(JSON.stringify(action.formData));
+  // console.log('===============');
+  // console.log(JSON.stringify(action.formData));
   const requestURL = 'http://218.255.104.158:6789/zwap-pay/receive-application/';
   const options = {
     method: 'POST',
@@ -55,9 +58,35 @@ export function* submitInfo(action) {
   }
 }
 
+export function* checkIfAccountExistsOrNot(action) {
+  // console.log('===============saga==========, action data');
+  // console.log(action.email);
+  // console.log(typeof (action.email)); // type: string
+  // console.log(JSON.stringify(action.email));
+  const requestURL = 'http://218.255.104.158:6789/zwap-pay/check-if-account-exist/';
+  const options = {
+    method: 'POST',
+    body: {
+      emailAddress: action.email,
+    },
+    headers: {
+      // Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    // yield call(delay, 1000);
+    const data = yield call(request, requestURL, options);
+    yield put(accountChecking(data));
+  } catch (err) {
+    yield put(accountCheckingFail());
+  }
+}
+
 export default function* fetchAndLoadData() {
   yield [
     takeLatest(FETCH_AND_LOAD, fetchData),
     takeLatest(SUBMIT_APPLICATION_FOR_AUTO_APPROVE, submitInfo),
+    takeLatest(IS_IT_NEEDED_TO_DISPLAY_PW_FIELD, checkIfAccountExistsOrNot),
   ];
 }

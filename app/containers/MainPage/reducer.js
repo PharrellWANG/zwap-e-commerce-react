@@ -16,6 +16,8 @@ import {
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_FAIL,
+  ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT,
+  ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT,
 } from './constants';
 
 const initialState = fromJS({
@@ -34,6 +36,8 @@ const initialState = fromJS({
   submitInProgress: false,
   submitError: false,
   submitSuccess: false,
+  displayPwFields: false,
+  displayCongrats: false,
 });
 
 function mainPageReducer(state = initialState, action) {
@@ -83,6 +87,14 @@ function mainPageReducer(state = initialState, action) {
       .set('submitInProgress', false)
       .set('submitError', true)
       .set('submitSuccess', false);
+    case ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT:
+      return state
+      .set('displayPwFields', true)
+      .set('displayCongrats', false);
+    case ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT:
+      return state
+      .set('displayPwFields', true)
+      .set('displayCongrats', false);
     default:
       return state;
   }

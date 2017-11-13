@@ -5,6 +5,7 @@
  */
 
 import {
+  IS_IT_NEEDED_TO_DISPLAY_PW_FIELD,
   FETCH_AND_LOAD,
   FETCH_AND_LOAD_SUCCESS,
   FETCH_AND_LOAD_FAIL,
@@ -14,6 +15,10 @@ import {
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_FAIL,
   CLOSE_NOTIFICATION,
+  // ACCOUNT_CHECKING_SUCCESS,
+  ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT,
+  ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT,
+  ACCOUNT_CHECKING_FAIL,
 } from './constants';
 
 export function fetchAndLoad(token) {
@@ -65,6 +70,30 @@ export function letMeSubmit(values) {
 export function letMeSubmitSuccess() {
   return {
     type: SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
+  };
+}
+
+export function accountChecking(data) {
+  if (data === false) {
+    return {
+      type: ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT,
+    };
+  }
+  return {
+    type: ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT,
+  };
+}
+
+export function accountCheckingFail() {
+  return {
+    type: ACCOUNT_CHECKING_FAIL,
+  };
+}
+
+export function isItNeededToDisplayPwField(email) {
+  return {
+    type: IS_IT_NEEDED_TO_DISPLAY_PW_FIELD,
+    email,
   };
 }
 
