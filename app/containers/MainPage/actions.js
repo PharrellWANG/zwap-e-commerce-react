@@ -74,7 +74,7 @@ export function letMeSubmitSuccess() {
 }
 
 export function accountChecking(data) {
-  if (data === false) {
+  if (data) {
     return {
       type: ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT,
     };

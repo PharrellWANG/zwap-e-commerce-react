@@ -375,7 +375,19 @@ const initRenderReadOnlyField = ({
 const renderReadOnlyField = withStyles(styles)(initRenderReadOnlyField);
 
 let ImmutableForm = (props) => {
-  const { classes, handleSubmit, reset, pristine, submitting, realSubmitting, requireGPA, selectedLang, asyncValidating } = props;
+  const {
+    classes,
+    handleSubmit,
+    reset,
+    pristine,
+    submitting,
+    realSubmitting,
+    requireGPA,
+    selectedLang,
+    asyncValidating,
+    displayCongrats,
+    displayPwFields,
+  } = props;
   const { formatMessage } = props.intl;
   // console.log('================');
   // console.log(meta);
@@ -403,22 +415,35 @@ let ImmutableForm = (props) => {
       <Divider />
       <Grid container spacing={24} style={{ paddingTop: 8, paddingBottom: 0 }}>
         <Grid item xs={12} style={{ textAlign: 'center', paddingLeft: 32, paddingRight: 32 }}>
-          <Typography type="body1" component="h5" gutterBottom>
-            Please type your email, it will automatically identify if you have an existing Zwap account.
-          </Typography>
-          <Typography type="body1" component="h5" gutterBottom>
-            If not, we will simply create one for you.
+          <Typography type="body1" component="h5" style={{ color: '#607D8B' }} gutterBottom>
+            If you have an Zwap account already, please use the email of your Zwap account
           </Typography>
         </Grid>
       </Grid>
       {/* xs={12} sm={12} md={12} lg={12} xl={12} */}
       <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>
-        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
           <Field name="email" component={renderTextField} label={formatMessage(messages.emailLabel)} />
           { asyncValidating && <CircularProgress thickness={6} size={20} />}
-          {/* <CircularProgress style={{ position: 'absolute', zIndex: 5 }} /> */}
-          {/* <CircularProgress thickness={6} size={20} /> */}
         </Grid>
+        <Grid item xs={12} sm={12} style={{ textAlign: 'center', paddingLeft: 48, paddingRight: 48 }}>
+          { displayCongrats &&
+            <Typography type="body1" component="h5" style={{ color: '#673AB7' }} gutterBottom>
+              Welcome! You have registered an Zwap account before! Go on to fill the remaining fields to get
+              your Zwap Pay service!
+            </Typography>
+          }
+        </Grid>
+        { displayPwFields &&
+        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
+          <Field name="cumulativeGPA" component={renderTextField} label={formatMessage(messages.cumulativeGPA)} />
+        </Grid>
+        }
+        { displayPwFields &&
+        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
+          <Field name="cumulativeGPA" component={renderTextField} label={formatMessage(messages.cumulativeGPA)} />
+        </Grid>
+        }
       </Grid>
       <Divider />
       <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>

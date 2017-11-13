@@ -89,8 +89,8 @@ function mainPageReducer(state = initialState, action) {
       .set('submitSuccess', false);
     case ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT:
       return state
-      .set('displayPwFields', true)
-      .set('displayCongrats', false);
+      .set('displayPwFields', false)
+      .set('displayCongrats', true);
     case ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT:
       return state
       .set('displayPwFields', true)

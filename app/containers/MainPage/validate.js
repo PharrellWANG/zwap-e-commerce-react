@@ -51,7 +51,8 @@ function isBirthdayInRange(birthday) {
 
 const validate = (values, props) => {
   console.log('--------------------------------');
-  console.log(props.displayCongrats);
+  console.log('displayCongrats', props.displayCongrats);
+  console.log('displayPwFields', props.displayPwFields);
   // console.log(val/ues.get('Birthday'));
   // console.log(typeof (values.get('Birthday')));
   // IMPORTANT: values is an Immutable.Map here!

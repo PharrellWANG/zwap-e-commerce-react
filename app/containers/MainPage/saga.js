@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import request from 'utils/request';
 // import { delay } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
@@ -66,9 +67,7 @@ export function* checkIfAccountExistsOrNot(action) {
   const requestURL = 'http://218.255.104.158:6789/zwap-pay/check-if-account-exist/';
   const options = {
     method: 'POST',
-    body: {
-      emailAddress: action.email,
-    },
+    body: JSON.stringify({ email: action.email }),
     headers: {
       // Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -77,7 +76,9 @@ export function* checkIfAccountExistsOrNot(action) {
   try {
     // yield call(delay, 1000);
     const data = yield call(request, requestURL, options);
-    yield put(accountChecking(data));
+    console.log('---------');
+    console.log('is account exist', data.isAccountExist);
+    yield put(accountChecking(data.isAccountExist));
   } catch (err) {
     yield put(accountCheckingFail());
   }
