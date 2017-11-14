@@ -21,6 +21,9 @@ import Typography from 'material-ui/Typography';
 // import { fromJS } from 'immutable';
 import { FormattedMessage } from 'react-intl';
 import { withStyles } from 'material-ui/styles';
+// import Snackbar from 'material-ui/Snackbar';
+// import Fade from 'material-ui/transitions/Fade';
+// import CloseIcon from 'material-ui-icons/Close';
 import { LinearProgress } from 'material-ui/Progress';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
@@ -39,9 +42,11 @@ import injectReducer from 'utils/injectReducer';
 import {
   fetchAndLoad,
   noTokenInUrlDisplayDialog,
-  // closeDialog,
   closeNotification,
+  closeSnackBarCongrats,
   letMeSubmit,
+  closeSnackBarPw,
+  closeSnackBarEmail,
 } from './actions';
 import makeSelectMainPageOpenDialog, {
   makeSelectMainPageFormData,
@@ -144,6 +149,7 @@ function TabContainer(props) {
 export class MainPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
     value: 1,
+    open: true,
   };
 
   componentWillMount() {
@@ -165,6 +171,17 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
   handleChange = (event, value) => {
     this.setState({ value });
   }
+
+  // handleEmailHintClose = () => {
+  //   this.setState({ open: false });
+  // };
+
+  handleEmailHintClose = () => {
+    // e.preventDefault();
+    // console.log('The link was clicked.');
+    this.setState({ open: false });
+  };
+
 
   // const initialValus = this.props.makeSelectMainPageFormData;
   // prehandleSubmit = (values) => {
@@ -410,7 +427,15 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
           // we directly load the form without presenting the progress bar.
           ? ((reduxFormInitialValues.orderReferenceNo !== '') && (<Grid item xs={12}>
             <Grid className={classes.gridStyle} container justify="center" spacing={16}>
-              <ImmutableForm onSubmit={this.props.handleSubmit} initialValues={reduxFormInitialValues} realSubmitting={submitting} />
+              <ImmutableForm
+                onSubmit={this.props.handleSubmit}
+                initialValues={reduxFormInitialValues}
+                closeSnackBarCongrats={this.props.closeSnackBarCongrats}
+                closeSnackBarPw={this.props.closeSnackBarPw}
+                openEmailHint={this.state.open}
+                closeSnackBarEmail={this.props.closeSnackBarEmail}
+                realSubmitting={submitting}
+              />
             </Grid>
           </Grid>))
           : <div className={classes.progressStyle}>
@@ -441,6 +466,10 @@ MainPage.propTypes = {
   openDialog: PropTypes.func.isRequired,
   // closeDialog: PropTypes.func.isRequired,
   closeNotification: PropTypes.func.isRequired,
+  closeSnackBarCongrats: PropTypes.func.isRequired,
+  closeSnackBarEmail: PropTypes.func.isRequired,
+  closeSnackBarPw: PropTypes.func.isRequired,
+  // onCloseSnackbarEmail: PropTypes.func.isRequired,
   makeSelectMainPageOpenDialog: PropTypes.bool.isRequired,
   makeSelectMainPageShowNotification: PropTypes.bool.isRequired,
   getSuccessNotice: PropTypes.bool.isRequired,
@@ -461,14 +490,25 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   // console.log(formInitialValues);
   return {
-    openDialog: () => {
-      dispatch(noTokenInUrlDisplayDialog());
-    },
+    openDialog: () => { dispatch(noTokenInUrlDisplayDialog()); },
+    // onCloseSnackbarEmail: () => {
+    //   console.log('wtf..........');
+    //   dispatch(closeSnackbarEmail());
+    // },
     // closeDialog: () => {
     //   dispatch(closeDialog());
     // },
     closeNotification: () => {
       dispatch(closeNotification());
+    },
+    closeSnackBarCongrats: () => {
+      dispatch(closeSnackBarCongrats());
+    },
+    closeSnackBarEmail: () => {
+      dispatch(closeSnackBarEmail());
+    },
+    closeSnackBarPw: () => {
+      dispatch(closeSnackBarPw());
     },
     onFetchAndLoad: (token) => {
       dispatch(fetchAndLoad(token));

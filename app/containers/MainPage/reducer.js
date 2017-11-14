@@ -18,6 +18,8 @@ import {
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_FAIL,
   ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT,
   ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT,
+  CLOSE_SNACKBAR_CONGRATS, CLOSE_SNACKBAR_EMAIL,
+  CLOSE_SNACKBAR_PW,
 } from './constants';
 
 const initialState = fromJS({
@@ -38,6 +40,7 @@ const initialState = fromJS({
   submitSuccess: false,
   displayPwFields: false,
   displayCongrats: false,
+  displayEmailHint: true,
 });
 
 function mainPageReducer(state = initialState, action) {
@@ -90,11 +93,22 @@ function mainPageReducer(state = initialState, action) {
     case ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT:
       return state
       .set('displayPwFields', false)
-      .set('displayCongrats', true);
+      .set('displayCongrats', true)
+      .set('displayEmailHint', false);
     case ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT:
       return state
       .set('displayPwFields', true)
+      .set('displayCongrats', false)
+      .set('displayEmailHint', false);
+    case CLOSE_SNACKBAR_CONGRATS:
+      return state
       .set('displayCongrats', false);
+    case CLOSE_SNACKBAR_EMAIL:
+      return state
+      .set('displayEmailHint', false);
+    case CLOSE_SNACKBAR_PW:
+      return state
+      .set('displayPwFields', false);
     default:
       return state;
   }

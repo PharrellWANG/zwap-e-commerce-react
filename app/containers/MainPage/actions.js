@@ -19,7 +19,19 @@ import {
   ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT,
   ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT,
   ACCOUNT_CHECKING_FAIL,
+  CLOSE_SNACKBAR_CONGRATS,
+  CLOSE_SNACKBAR_EMAIL,
+  CLOSE_SNACKBAR_PW,
 } from './constants';
+
+export function closeSnackBarEmail() {
+  // console.log('fucccccccc-------');
+  return {
+    type: CLOSE_SNACKBAR_EMAIL,
+  };
+}
+
+// export const closeSnackbarEmail = () => ({ type: CLOSE_SNACKBAR_EMAIL });
 
 export function fetchAndLoad(token) {
   return {
@@ -57,6 +69,18 @@ export function closeDialog() {
 export function closeNotification() {
   return {
     type: CLOSE_NOTIFICATION,
+  };
+}
+
+export function closeSnackBarCongrats() {
+  return {
+    type: CLOSE_SNACKBAR_CONGRATS,
+  };
+}
+
+export function closeSnackBarPw() {
+  return {
+    type: CLOSE_SNACKBAR_PW,
   };
 }
 

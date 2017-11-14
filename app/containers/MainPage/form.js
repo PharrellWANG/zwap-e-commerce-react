@@ -12,6 +12,8 @@ import lightBaseTheme from 'material-ui-previous/styles/baseThemes/lightBaseThem
 import { RadioButton, RadioButtonGroup } from 'material-ui-previous/RadioButton';
 import MuiThemeProvider from 'material-ui-previous/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui-previous/styles/getMuiTheme';
+import Snackbar from 'material-ui/Snackbar';
+import Fade from 'material-ui/transitions/Fade';
 // import { FormControl } from 'material-ui/Form';
 import TextFieldPrevious from 'material-ui-previous/TextField';
 import Typography from 'material-ui/Typography';
@@ -24,6 +26,8 @@ import Grid from 'material-ui/Grid';
 import { green } from 'material-ui/colors';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
+// import IconButton from 'material-ui/IconButton';
+import CloseIcon from 'material-ui-icons/Close';
 // import {
 //   Select,
 // } from 'redux-form-material-ui';
@@ -387,6 +391,10 @@ let ImmutableForm = (props) => {
     asyncValidating,
     displayCongrats,
     displayPwFields,
+    closeSnackBarCongrats,
+    closeSnackBarEmail,
+    closeSnackBarPw,
+    displayEmailHint,
   } = props;
   const { formatMessage } = props.intl;
   // console.log('================');
@@ -413,26 +421,72 @@ let ImmutableForm = (props) => {
         </Grid>
       </Grid>
       <Divider />
-      <Grid container spacing={24} style={{ paddingTop: 8, paddingBottom: 0 }}>
-        <Grid item xs={12} style={{ textAlign: 'center', paddingLeft: 32, paddingRight: 32 }}>
-          <Typography type="body1" component="h5" style={{ color: '#607D8B' }} gutterBottom>
-            If you have an Zwap account already, please use the email of your Zwap account
-          </Typography>
-        </Grid>
-      </Grid>
-      {/* xs={12} sm={12} md={12} lg={12} xl={12} */}
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        // autoHideDuration={60000}
+        onRequestClose={closeSnackBarCongrats}
+        open={displayCongrats}
+        // onRequestClose={this.handleRequestClose}
+        transition={Fade}
+        SnackbarContentProps={{
+          'aria-describedby': 'message-id',
+        }}
+        message={<span id="message-id">Wow! You already have an Zwap account!
+                                            Please fill the remaining fields to get your
+                                            Zwap Pay service. Thank you so much for choosing Zwap.</span>}
+        action={[
+          <Button key="undo" color="accent" dense onClick={closeSnackBarCongrats}>
+            <CloseIcon />
+          </Button>,
+        ]}
+      />
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        // autoHideDuration={60000}
+        onRequestClose={closeSnackBarEmail}
+        open={displayEmailHint}
+        // onRequestClose={this.handleRequestClose}
+        transition={Fade}
+        SnackbarContentProps={{
+          'aria-describedby': 'message-id',
+        }}
+        message={<span id="message-id">If you have an Zwap account, please use the email address of your Zwap account to fill in the form.</span>}
+        action={[
+          <Button key="undo" color="accent" dense onClick={closeSnackBarEmail}>
+            <CloseIcon />
+          </Button>,
+        ]}
+      />
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        // autoHideDuration={60000}
+        onRequestClose={closeSnackBarPw}
+        open={displayPwFields}
+        // onRequestClose={this.handleRequestClose}
+        transition={Fade}
+        SnackbarContentProps={{
+          'aria-describedby': 'message-id',
+        }}
+        message={<span id="message-id">Please type password for your new Zwap account.</span>}
+        action={[
+          <Button key="undo" color="accent" dense onClick={closeSnackBarPw}>
+            <CloseIcon />
+          </Button>,
+        ]}
+      />
       <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>
         <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
-          <Field name="email" component={renderTextField} label={formatMessage(messages.emailLabel)} />
+          <Field name="email" component={renderTextField} autoFocus label={formatMessage(messages.emailLabel)} />
           { asyncValidating && <CircularProgress thickness={6} size={20} />}
-        </Grid>
-        <Grid item xs={12} sm={12} style={{ textAlign: 'center', paddingLeft: 48, paddingRight: 48 }}>
-          { displayCongrats &&
-            <Typography type="body1" component="h5" style={{ color: '#673AB7' }} gutterBottom>
-              Welcome! You have registered an Zwap account before! Go on to fill the remaining fields to get
-              your Zwap Pay service!
-            </Typography>
-          }
         </Grid>
         { displayPwFields &&
         <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
@@ -649,6 +703,7 @@ ImmutableForm = connect(
     // console.log(state.toJS());
     // console.log(state.get('mainPage').get('displayCongrats'));
     const displayCongrats = state.get('mainPage').get('displayCongrats');
+    const displayEmailHint = state.get('mainPage').get('displayEmailHint');
     const displayPwFields = state.get('mainPage').get('displayPwFields');
     const yearOfStudying = selector(state, 'YearOfStudy');
     let requireGPA = false;
@@ -658,6 +713,7 @@ ImmutableForm = connect(
     const selectedLang = state.get('language').get('locale');
     return {
       displayCongrats,
+      displayEmailHint,
       displayPwFields,
       selectedLang,
       requireGPA,
