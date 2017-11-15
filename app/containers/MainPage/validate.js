@@ -88,7 +88,7 @@ const validate = (values, props) => {
   if (!values.get('amountToPay')) {
     errors.amountToPay = <FormattedMessage {...messages.required} />;
   } else if (values.get('amountToPay') && isNaN(Number(values.get('amountToPay')))) {
-    errors.amountToPay = 'Must be a number';
+    errors.amountToPay = <FormattedMessage {...messages.MustBeANumber} />;
   }
 
   // if (!values.get('productName')) {
@@ -103,9 +103,9 @@ const validate = (values, props) => {
   if (!values.get('mobile')) {
     errors.mobile = <FormattedMessage {...messages.required} />;
   } else if (values.get('mobile') && isNaN(Number(values.get('mobile')))) {
-    errors.mobile = 'Must be a number';
+    errors.mobile = <FormattedMessage {...messages.MustBeANumber} />;
   } else if (values.get('mobile') && !/^[0-9]{8}$/.test(values.get('mobile'))) {
-    errors.mobile = 'HK phone number must be 8 digits';
+    errors.mobile = <FormattedMessage {...messages.HKIDEightDigits} />;
   }
 
   if (!values.get('lastName')) {
@@ -149,7 +149,7 @@ const validate = (values, props) => {
   if (!values.get('HKIDNumber')) {
     errors.HKIDNumber = <FormattedMessage {...messages.required} />;
   } else if (!isHKID(values.get('HKIDNumber'))) {
-    errors.HKIDNumber = 'Please use your valid HKID number';
+    errors.HKIDNumber = <FormattedMessage {...messages.PleaseUseValidHKID} />;
   }
 
   if (!values.get('YearOfStudy')) {
@@ -158,19 +158,23 @@ const validate = (values, props) => {
     if (!values.get('cumulativeGPA')) {
       errors.cumulativeGPA = <FormattedMessage {...messages.required} />;
     } else if (isNaN(Number(values.get('cumulativeGPA')))) {
-      errors.cumulativeGPA = 'Must be a number';
+      errors.cumulativeGPA = <FormattedMessage {...messages.MustBeANumber} />;
     } else if (Number(values.get('cumulativeGPA')) < 1.5) {
-      errors.cumulativeGPA = 'GPA lower than 1.5 is not qualified for this product';
+      errors.cumulativeGPA = <FormattedMessage {...messages.PlzInputValidGPA} />;
     } else if (Number(values.get('cumulativeGPA')) > 5) {
-      errors.cumulativeGPA = 'Please input valid GPA';
+      errors.cumulativeGPA = <FormattedMessage {...messages.PlzInputValidGPA} />;
     } else if (Number(values.get('cumulativeGPA')) < 0) {
-      errors.cumulativeGPA = 'Please input valid GPA';
+      errors.cumulativeGPA = <FormattedMessage {...messages.PlzInputValidGPA} />;
     }
   }
 
   if (props.displayPwFields) {
     if (!values.get('pw')) {
       errors.pw = <FormattedMessage {...messages.required} />;
+    } else if (values.get('pw').length < 8) {
+      errors.pw = <FormattedMessage {...messages.AtLeastEight} />;
+    } else if (values.get('pwConfirm') !== values.get('pw')) {
+      errors.pwConfirm = <FormattedMessage {...messages.SamePwRequired} />;
     }
     if (!values.get('pwConfirm')) {
       errors.pwConfirm = <FormattedMessage {...messages.required} />;

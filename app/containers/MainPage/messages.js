@@ -295,4 +295,28 @@ export default defineMessages({
     id: 'app.containers.MainPage.mustLargerThanOneCharacter',
     defaultMessage: 'Must be larger than 1 character.',
   },
+  SamePwRequired: {
+    id: 'app.containers.MainPage.SamePwRequired',
+    defaultMessage: 'Please type the same password',
+  },
+  AtLeastEight: {
+    id: 'app.containers.MainPage.AtLeastEight',
+    defaultMessage: 'At least 8 characters',
+  },
+  PlzInputValidGPA: {
+    id: 'app.containers.MainPage.PlzInputValidGPA',
+    defaultMessage: 'Please input valid GPA',
+  },
+  MustBeANumber: {
+    id: 'app.containers.MainPage.MustBeANumber',
+    defaultMessage: 'Must be a number',
+  },
+  PleaseUseValidHKID: {
+    id: 'app.containers.MainPage.PleaseUseValidHKID',
+    defaultMessage: 'Please use your valid HKID number',
+  },
+  HKIDEightDigits: {
+    id: 'app.containers.MainPage.HKIDEightDigits',
+    defaultMessage: 'HK phone number must be 8 digits',
+  },
 });
