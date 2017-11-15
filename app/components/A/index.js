@@ -5,10 +5,36 @@
 import styled from 'styled-components';
 
 const A = styled.a`
-  color: #41addd;
-
+  color: #616161;
+ 
+  &:link {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
   &:hover {
-    color: #6cc0e5;
+    text-decoration: underline;
+  }
+  &:active {
+    text-decoration: underline;
+  }
+`;
+
+export const ColorA = styled.a`
+  color: #1565c0;
+ 
+  &:link {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+  &:active {
+    text-decoration: underline;
   }
 `;
 

@@ -14,16 +14,17 @@ const Wrapper = styled.footer`
   // flex-direction: column;
   
   width:100%;
-  height:72px;   /* Height of the footer */
+  height:auto;   /* Height of the footer */
   // background: #424242;
   background: #e0e0e0;
+  background: white,
   text-align: left;
   // position: absolute; 
   // bottom: 0; 
   // left: 0; 
   // right: 0;
   // vertical-align: center;
-  padding: .6em 1.5em;
+  padding: 2.5em 2.5em 2.5em; // top, left, bot, right
   // border-top: 1px solid #666;
   margin-top: 10px;
 `;
