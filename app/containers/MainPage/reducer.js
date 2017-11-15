@@ -20,6 +20,7 @@ import {
   ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT,
   CLOSE_SNACKBAR_CONGRATS, CLOSE_SNACKBAR_EMAIL,
   CLOSE_SNACKBAR_PW,
+  TOGGLE_SEE_PW,
 } from './constants';
 
 const initialState = fromJS({
@@ -39,8 +40,10 @@ const initialState = fromJS({
   submitError: false,
   submitSuccess: false,
   displayPwFields: false,
+  displayPwInputInstruction: false,
   displayCongrats: false,
   displayEmailHint: true,
+  seePwAsPlainText: false,
 });
 
 function mainPageReducer(state = initialState, action) {
@@ -92,12 +95,13 @@ function mainPageReducer(state = initialState, action) {
       .set('submitSuccess', false);
     case ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT:
       return state
-      .set('displayPwFields', false)
+      .set('displayPwInputInstruction', false)
       .set('displayCongrats', true)
       .set('displayEmailHint', false);
     case ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT:
       return state
       .set('displayPwFields', true)
+      .set('displayPwInputInstruction', true)
       .set('displayCongrats', false)
       .set('displayEmailHint', false);
     case CLOSE_SNACKBAR_CONGRATS:
@@ -108,7 +112,10 @@ function mainPageReducer(state = initialState, action) {
       .set('displayEmailHint', false);
     case CLOSE_SNACKBAR_PW:
       return state
-      .set('displayPwFields', false);
+      .set('displayPwInputInstruction', false);
+    case TOGGLE_SEE_PW:
+      return state
+      .set('seePwAsPlainText', action.data);
     default:
       return state;
   }

@@ -168,6 +168,15 @@ const validate = (values, props) => {
     }
   }
 
+  if (props.displayPwFields) {
+    if (!values.get('pw')) {
+      errors.pw = <FormattedMessage {...messages.required} />;
+    }
+    if (!values.get('pwConfirm')) {
+      errors.pwConfirm = <FormattedMessage {...messages.required} />;
+    }
+  }
+
   return errors;
 };
 

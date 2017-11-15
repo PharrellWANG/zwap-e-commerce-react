@@ -27,7 +27,7 @@ const AppWrapper = styled.div`
   height: 100%;
   // padding: 0 16px;
   flex-direction: column;
-  margin: 0 auto -142px;
+  margin: 0 auto -72px;
 `;
 
 export default function App() {

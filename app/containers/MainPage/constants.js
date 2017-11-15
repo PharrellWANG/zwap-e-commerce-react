@@ -26,3 +26,4 @@ export const CLOSE_SNACKBAR_CONGRATS = 'app/MainPage/CLOSE_SNACKBAR_CONGRATS';
 export const CLOSE_SNACKBAR_PW = 'app/MainPage/CLOSE_SNACKBAR_PW';
 
 export const CLOSE_SNACKBAR_EMAIL = 'app/MainPage/CLOSE_SNACKBAR_EMAIL';
+export const TOGGLE_SEE_PW = 'app/MainPage/TOGGLE_SEE_PW';

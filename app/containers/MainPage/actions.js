@@ -22,12 +22,21 @@ import {
   CLOSE_SNACKBAR_CONGRATS,
   CLOSE_SNACKBAR_EMAIL,
   CLOSE_SNACKBAR_PW,
+  TOGGLE_SEE_PW,
 } from './constants';
 
 export function closeSnackBarEmail() {
   // console.log('fucccccccc-------');
   return {
     type: CLOSE_SNACKBAR_EMAIL,
+  };
+}
+
+export function togglePwAsPlainText(checked) {
+  // console.log('fucccccccc-------');
+  return {
+    type: TOGGLE_SEE_PW,
+    data: checked,
   };
 }
 

@@ -5,377 +5,52 @@ import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { Field, reduxForm, formValueSelector } from 'redux-form/immutable'; // <--- immutable import
-import TextField from 'material-ui/TextField';
 import { CircularProgress } from 'material-ui/Progress';
 // import { CircularProgress as CircularProgressPrevious } from 'material-ui-previous/CircularProgress';
-import lightBaseTheme from 'material-ui-previous/styles/baseThemes/lightBaseTheme';
-import { RadioButton, RadioButtonGroup } from 'material-ui-previous/RadioButton';
-import MuiThemeProvider from 'material-ui-previous/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui-previous/styles/getMuiTheme';
+// import lightBaseTheme from 'material-ui-previous/styles/baseThemes/lightBaseTheme';
+// import MuiThemeProvider from 'material-ui-previous/styles/MuiThemeProvider';
+// import getMuiTheme from 'material-ui-previous/styles/getMuiTheme';
 import Snackbar from 'material-ui/Snackbar';
 import Fade from 'material-ui/transitions/Fade';
 // import { FormControl } from 'material-ui/Form';
-import TextFieldPrevious from 'material-ui-previous/TextField';
 import Typography from 'material-ui/Typography';
-import SelectField from 'material-ui-previous/SelectField';
 // import { MenuItem as MenuItemNext } from 'material-ui/Menu';
 import MenuItem from 'material-ui-previous/MenuItem';
 // import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 // import { InputLabel } from 'material-ui/Input';
-import { green } from 'material-ui/colors';
+// import { green } from 'material-ui/colors';
 import Button from 'material-ui/Button';
+import { FormControlLabel } from 'material-ui/Form';
+import Switch from 'material-ui/Switch';
 import Divider from 'material-ui/Divider';
 // import IconButton from 'material-ui/IconButton';
 import CloseIcon from 'material-ui-icons/Close';
+import {
+  RadioButton,
+} from 'material-ui-previous/RadioButton';
 // import {
-//   Select,
+//   Switch,
 // } from 'redux-form-material-ui';
+// import redux form rendered fields
+import renderTextField from '../../components/ReduxFormFields/ReadyToUseFields/renderTextField';
+import renderSelectField from '../../components/ReduxFormFields/ReadyToUseFields/renderSelectField';
+import renderRadioGroup from '../../components/ReduxFormFields/ReadyToUseFields/renderRadioGroup';
+import initRenderReadOnlyField from '../../components/ReduxFormFields/ReadyToUseFields/renderReadOnlyField';
+import renderPwField from '../../components/ReduxFormFields/ReadyToUseFields/renderPwField';
 
-import DatePicker from 'material-ui-previous/DatePicker';
-import mapError from '../../components/ReduxFormComponents/mapError';
+import {
+  renderDatePickerZhHansHK,
+  renderDatePickerEnUS,
+} from '../../components/ReduxFormFields/ReadyToUseFields/renderDatePicker';
 
 import messages from './messages';
 import validate from './validate';
 import warn from './warn';
 import asyncValidate from './asyncValidate';
-const IntlPolyfill = require('intl');
-const DateTimeFormat = IntlPolyfill.DateTimeFormat;
-require('intl/locale-data/jsonp/zh-Hans-HK');
+import styles from './styles';
 
-const styles = (theme) => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  button: {
-    margin: theme.spacing.unit,
-  },
-  rightAlignedButton: {
-    margin: theme.spacing.unit,
-    textAlign: 'right',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 255,
-  },
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  wrapper: {
-    paddingLeft: 100,
-    margin: theme.spacing.unit,
-    position: 'relative',
-  },
-  absoluteProgress: {
-    color: green[500],
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    marginTop: -12,
-    marginLeft: -12,
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-    width: 300,
-    verticalAlign: 'center',
-  },
-  formControlDatePicker: {
-    margin: theme.spacing.unit,
-    marginTop: theme.spacing.unit * 3,
-    minWidth: 180,
-    // width: 300,
-    verticalAlign: 'center',
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
-  },
-  selector: {
-    // width: 80,
-    verticalAlign: 'center',
-  },
-  paper: {
-    padding: 10,
-  },
-});
-
-// validation functions
-// const required = (value) => (value === null ? 'Required' : undefined);
-// const email = (value) =>
-//   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-//     ? 'Invalid email'
-//     : undefined;
-
-// const initRenderField = ({
-//   classes,
-//   input,
-//   label,
-//   type,
-//   meta: { touched, error },
-// }) => {
-//   const errorx = !!((touched && error));
-//   return (
-//     <div>
-//       <div>
-//         <TextField
-//           error={errorx}
-//           helperText={touched && error}
-//           {...input}
-//           type={type}
-//           label={label}
-//           placeholder={label}
-//           className={classes.textField}
-//           margin="normal"
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-// const DatePickerField = ({
-//   input: { onBlur, ...inputProps },
-//   defaultDate,
-//   onChange,
-//   ...props }) => (
-//     <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-//       <DatePicker
-//         {...inputProps}
-//         {...mapError(props)}
-//         onChange={(event, value) => {
-//           inputProps.onChange(value);
-//           if (onChange) {
-//             onChange(value);
-//           }
-//         }}
-//       />
-//     </MuiThemeProvider>
-// );
-const renderTextField = ({
-  input,
-  label,
-  meta: { touched, error },
-  ...custom
-}) => (
-  <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-    <div>
-      <TextFieldPrevious
-        // floatingLabelStyle={{ backgroundColor: '#d8efff', color: 'black' }}
-        floatingLabelStyle={{ color: '#7a7a7a' }}
-        errorStyle={{ textAlign: 'left' }}
-        hintText={label}
-        floatingLabelText={label}
-        errorText={touched && error}
-        {...input}
-        {...custom}
-      />
-      {/* {asyncValidating && <CircularProgressPrevious />} */}
-    </div>
-  </MuiThemeProvider>
-);
-
-const renderSelectField = ({
-  input,
-  label,
-  meta: { touched, error },
-  children,
-  ...custom
-}) => (
-  <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-    <SelectField
-      // floatingLabelFixed
-      floatingLabelStyle={{ color: '#7a7a7a' }}
-      // menuItemStyle={{ textAlign: 'left' }}
-      // hintStyle={{ textAlign: 'left' }}
-      // labelStyle={{ textAlign: 'left' }}
-      style={{ textAlign: 'left' }}
-      errorStyle={{ textAlign: 'left' }}
-      floatingLabelText={label}
-      errorText={touched && error}
-      {...input}
-      onChange={(event, index, value) => {
-        input.onChange(value);
-      }}
-      children={children}
-      {...custom}
-    />
-  </MuiThemeProvider>
-);
-
-
-// const DatePickerFieldZhHansHK = ({
-//   input: { onBlur, ...inputProps },
-//   // input,
-//   defaultDate,
-//   onChange,
-//   // classes,
-//   ...props }) => (
-//     <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-//       <DatePicker
-//         DateTimeFormat={DateTimeFormat}
-//         okLabel="好的"
-//         cancelLabel="取消"
-//         locale="zh-Hans-HK"
-//         value={inputProps.value !== '' ? new Date(inputProps.value) : null}
-//         // onChange = {(event, value) => { console.log(value); input.onChange(value); }}
-//         // style={{ marginLeft: 3, width: 20 }}
-//         // style={styles.textField}
-//         // className={classes.textField}
-//         {...inputProps}
-//         {...mapError(props)}
-//         onChange={(event, value) => {
-//           console.log(value);
-//           inputProps.onChange(value);
-//           if (onChange) {
-//             onChange(value);
-//           }
-//         }}
-//       />
-//     </MuiThemeProvider>
-// );
-
-const renderDatePickerZhHansHK = ({ input, floatingLabelText, confirmMsg, cancelMsg, input: { onBlur, ...inputProps }, ...props, meta: { touched, error } }) => (
-  <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-    <DatePicker
-      floatingLabelStyle={{ color: '#7a7a7a' }}
-      floatingLabelText={floatingLabelText}
-      errorStyle={{ textAlign: 'left' }}
-      DateTimeFormat={DateTimeFormat}
-      okLabel={confirmMsg}
-      cancelLabel={cancelMsg}
-      locale="zh-Hans-HK"
-      // locale="en-US"
-      errorText={touched && error}
-      {...inputProps}
-      {...mapError(props)}
-      value={input.value !== '' ? new Date(input.value) : null}
-      onChange={(event, value) => {
-        // console.log(value);
-        input.onChange(value);
-      }}
-    />
-  </MuiThemeProvider>
-);
-
-const renderDatePickerEnUS = ({ input, floatingLabelText, confirmMsg, cancelMsg, input: { onBlur, ...inputProps }, ...props, meta: { touched, error } }) => (
-  <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-    <DatePicker
-      floatingLabelStyle={{ color: '#7a7a7a' }}
-      floatingLabelText={floatingLabelText}
-      errorStyle={{ textAlign: 'left' }}
-      okLabel={confirmMsg}
-      cancelLabel={cancelMsg}
-      locale="en-US"
-      errorText={touched && error}
-      {...inputProps}
-      {...mapError(props)}
-      value={input.value !== '' ? new Date(input.value) : null}
-      onChange={(event, value) => {
-        // console.log(value);
-        input.onChange(value);
-      }}
-    />
-  </MuiThemeProvider>
-);
-
-const renderRadioGroup = ({ input, ...rest, meta: { touched, error } }) => (
-  <div>
-    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-      <RadioButtonGroup
-        // defaultSelected="male"
-        {...input}
-        {...rest}
-        // style={{ display: 'flex' }}
-        valueSelected={input.value}
-        onChange={(event, value) => input.onChange(value)}
-      />
-    </MuiThemeProvider>
-    <span style={{ color: 'red', textAlign: 'center', fontSize: 'small', marginLeft: 87 }}>{touched && error}</span>
-  </div>
-);
-
-// const initRenderRequiredField = ({
-//   classes,
-//   input,
-//   label,
-//   type,
-//   meta: { touched, error },
-// }) => {
-//   const errorx = !!((touched && error));
-//   return (
-//     <div>
-//       <div>
-//         <TextField
-//           required
-//           error={errorx}
-//           helperText={touched && error}
-//           {...input}
-//           type={type}
-//           label={label}
-//           placeholder={label}
-//           className={classes.textField}
-//           margin="normal"
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-
-const initRenderReadOnlyField = ({
- classes,
- input,
- label,
- type, helperText,
-}) =>
-(
-  <div>
-    <div>
-      <TextField
-        disabled
-        helperText={helperText}
-        {...input}
-        type={type}
-        label={label}
-        placeholder={label}
-        className={classes.textField}
-        margin="normal"
-      />
-    </div>
-  </div>
-);
-
-// const initRenderDateField = ({
-//   classes,
-//   input,
-//   label,
-//   placeholder,
-//   meta: { touched, error },
-// }) => {
-//   const errorx = !!((touched && error));
-//   return (
-//     <div>
-//       <div>
-//         <TextField
-//           required
-//           error={errorx}
-//           helperText={touched && error}
-//           {...input}
-//           label={label}
-//           placeholder={placeholder}
-//           margin="normal"
-//           type="date"
-//           className={classes.textField}
-//           InputLabelProps={{
-//             shrink: true,
-//           }}
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-
-// const renderField = withStyles(styles)(initRenderField);
-// const renderRequiredField = withStyles(styles)(initRenderRequiredField);
+// require('intl/locale-data/jsonp/zh-Hans-HK');
 const renderReadOnlyField = withStyles(styles)(initRenderReadOnlyField);
 
 let ImmutableForm = (props) => {
@@ -395,6 +70,9 @@ let ImmutableForm = (props) => {
     closeSnackBarEmail,
     closeSnackBarPw,
     displayEmailHint,
+    displayPwInputInstruction,
+    togglePwAsPlainText,
+    seePwAsPlainText,
   } = props;
   const { formatMessage } = props.intl;
   // console.log('================');
@@ -423,20 +101,19 @@ let ImmutableForm = (props) => {
       <Divider />
       <Snackbar
         anchorOrigin={{
-          vertical: 'top',
+          vertical: 'bottom',
           horizontal: 'left',
         }}
         // autoHideDuration={60000}
-        onRequestClose={closeSnackBarCongrats}
+        // onRequestClose={closeSnackBarCongrats}
         open={displayCongrats}
         // onRequestClose={this.handleRequestClose}
         transition={Fade}
         SnackbarContentProps={{
           'aria-describedby': 'message-id',
         }}
-        message={<span id="message-id">Wow! You already have an Zwap account!
-                                            Please fill the remaining fields to get your
-                                            Zwap Pay service. Thank you so much for choosing Zwap.</span>}
+        message={<span id="message-id">Please fill the remaining fields to get your
+                                        Zwap Pay service. Thank you so much for choosing Zwap.</span>}
         action={[
           <Button key="undo" color="accent" dense onClick={closeSnackBarCongrats}>
             <CloseIcon />
@@ -469,8 +146,8 @@ let ImmutableForm = (props) => {
           horizontal: 'left',
         }}
         // autoHideDuration={60000}
-        onRequestClose={closeSnackBarPw}
-        open={displayPwFields}
+        // onRequestClose={closeSnackBarPw}
+        open={displayPwInputInstruction}
         // onRequestClose={this.handleRequestClose}
         transition={Fade}
         SnackbarContentProps={{
@@ -488,14 +165,37 @@ let ImmutableForm = (props) => {
           <Field name="email" component={renderTextField} autoFocus label={formatMessage(messages.emailLabel)} />
           { asyncValidating && <CircularProgress thickness={6} size={20} />}
         </Grid>
-        { displayPwFields &&
+        { displayPwFields && !seePwAsPlainText &&
         <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
-          <Field name="cumulativeGPA" component={renderTextField} label={formatMessage(messages.cumulativeGPA)} />
+          <Field name="pw" component={renderPwField} label="Password" />
+        </Grid>
+        }
+        { displayPwFields && !seePwAsPlainText &&
+        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
+          <Field name="pwConfirm" component={renderPwField} label="Password again" />
+        </Grid>
+        }
+        { displayPwFields && seePwAsPlainText &&
+        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
+          <Field name="pw" component={renderTextField} label="Password" />
+        </Grid>
+        }
+        { displayPwFields && seePwAsPlainText &&
+        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
+          <Field name="pwConfirm" component={renderTextField} label="Password again" />
         </Grid>
         }
         { displayPwFields &&
         <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
-          <Field name="cumulativeGPA" component={renderTextField} label={formatMessage(messages.cumulativeGPA)} />
+          <FormControlLabel
+            control={
+              <Switch
+                checked={seePwAsPlainText}
+                onChange={(event, checked) => togglePwAsPlainText(checked)}
+              />
+            }
+            label="Show password as plain text"
+          />
         </Grid>
         }
       </Grid>
@@ -705,6 +405,8 @@ ImmutableForm = connect(
     const displayCongrats = state.get('mainPage').get('displayCongrats');
     const displayEmailHint = state.get('mainPage').get('displayEmailHint');
     const displayPwFields = state.get('mainPage').get('displayPwFields');
+    const displayPwInputInstruction = state.get('mainPage').get('displayPwInputInstruction');
+    const seePwAsPlainText = state.get('mainPage').get('seePwAsPlainText');
     const yearOfStudying = selector(state, 'YearOfStudy');
     let requireGPA = false;
     if (yearOfStudying === '2' || yearOfStudying === '3' || yearOfStudying === '4') {
@@ -713,8 +415,10 @@ ImmutableForm = connect(
     const selectedLang = state.get('language').get('locale');
     return {
       displayCongrats,
+      seePwAsPlainText,
       displayEmailHint,
       displayPwFields,
+      displayPwInputInstruction,
       selectedLang,
       requireGPA,
     };

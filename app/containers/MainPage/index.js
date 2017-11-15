@@ -47,6 +47,7 @@ import {
   letMeSubmit,
   closeSnackBarPw,
   closeSnackBarEmail,
+  togglePwAsPlainText,
 } from './actions';
 import makeSelectMainPageOpenDialog, {
   makeSelectMainPageFormData,
@@ -101,6 +102,7 @@ const styles = (theme) => ({
     marginTop: 10,
     padding: 30,
     // textAlign: 'center',
+    marginBottom: 50,
     height: 'auto',
     color: theme.palette.text.secondary,
   },
@@ -434,6 +436,7 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                 closeSnackBarPw={this.props.closeSnackBarPw}
                 openEmailHint={this.state.open}
                 closeSnackBarEmail={this.props.closeSnackBarEmail}
+                togglePwAsPlainText={this.props.togglePwAsPlainText}
                 realSubmitting={submitting}
               />
             </Grid>
@@ -466,6 +469,7 @@ MainPage.propTypes = {
   openDialog: PropTypes.func.isRequired,
   // closeDialog: PropTypes.func.isRequired,
   closeNotification: PropTypes.func.isRequired,
+  togglePwAsPlainText: PropTypes.func.isRequired,
   closeSnackBarCongrats: PropTypes.func.isRequired,
   closeSnackBarEmail: PropTypes.func.isRequired,
   closeSnackBarPw: PropTypes.func.isRequired,
@@ -500,6 +504,9 @@ function mapDispatchToProps(dispatch) {
     // },
     closeNotification: () => {
       dispatch(closeNotification());
+    },
+    togglePwAsPlainText: (checked) => {
+      dispatch(togglePwAsPlainText(checked));
     },
     closeSnackBarCongrats: () => {
       dispatch(closeSnackBarCongrats());

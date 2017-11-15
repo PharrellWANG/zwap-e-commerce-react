@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import Typography from 'material-ui/Typography';
 
 // import A from 'components/A';
 // import LocaleToggle from 'containers/LocaleToggle';
@@ -10,12 +11,18 @@ function Footer() {
   return (
     <Wrapper>
       {/* <section> */}
-      <div style={{ color: '#ffffff' }}>
-        &copy; Zwap 2017
+      <div style={{ verticalAlign: 'center' }}>
+        <Typography type="caption" gutterBottom align="left" style={{ color: '#616161', verticalAlign: 'center' }}>
+          Copyright &copy; 2017 P L Technology Limited
+        </Typography>
+        <Typography type="caption" gutterBottom align="left" style={{ color: '#616161' }}>
+          <FormattedMessage {...messages.licenseMessage} />
+        </Typography>
       </div>
-      <div style={{ color: 'white' }}>
-        <FormattedMessage {...messages.licenseMessage} />
-      </div>
+      {/* </div> */}
+      {/* <div style={{ color: 'white' }}> */}
+      {/* <FormattedMessage {...messages.licenseMessage} /> */}
+      {/* </div> */}
       {/* </section> */}
       {/* <section> */}
       {/* <LocaleToggle /> */}
