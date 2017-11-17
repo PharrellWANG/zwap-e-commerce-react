@@ -14,6 +14,7 @@ import Tabs, { Tab } from 'material-ui/Tabs';
 // import FavoriteIcon from 'material-ui-icons/Favorite';
 import FlightLand from 'material-ui-icons/FlightLand';
 import FlightTakeoff from 'material-ui-icons/FlightTakeoff';
+// import Card, { CardContent } from 'material-ui/Card';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import Typography from 'material-ui/Typography';
@@ -27,13 +28,13 @@ import { withStyles } from 'material-ui/styles';
 import { LinearProgress } from 'material-ui/Progress';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
-import Button from 'material-ui/Button';
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from 'material-ui/Dialog';
+// import Button from 'material-ui/Button';
+// import Dialog, {
+//   DialogActions,
+//   DialogContent,
+//   DialogContentText,
+//   DialogTitle,
+// } from 'material-ui/Dialog';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -43,6 +44,7 @@ import {
   fetchAndLoad,
   noTokenInUrlDisplayDialog,
   closeNotification,
+  closeNoticeOfYouHaveLoanInProgress,
   closeSnackBarCongrats,
   letMeSubmit,
   closeSnackBarPw,
@@ -52,6 +54,7 @@ import {
 import makeSelectMainPageOpenDialog, {
   makeSelectMainPageFormData,
   makeSelectMainPageShowNotification,
+  makeSelectMainPageShowNoticeOfYouHaveLoanInProgress,
   getSuccessNotice,
   makeSelectError,
   makeSelectSuccess,
@@ -64,6 +67,7 @@ import ImmutableForm from './form';
 import messages from './messages';
 import pharrellAva from './avatars/pharrell.png';
 import eveAva from './avatars/eve.png';
+import { ColorAWithUnderline } from '../../components/A';
 
 
 const styles = (theme) => ({
@@ -89,7 +93,7 @@ const styles = (theme) => ({
     background: theme.palette.background.paper,
   },
   paperTwo: {
-    marginTop: 25,
+    marginTop: 10,
     marginLeft: 10,
     marginRight: 10,
     textAlign: 'left',
@@ -102,7 +106,20 @@ const styles = (theme) => ({
     marginTop: 10,
     padding: 30,
     // textAlign: 'center',
-    marginBottom: 50,
+    marginBottom: 10,
+    height: 'auto',
+    color: theme.palette.text.secondary,
+  },
+  NarrowPaper: {
+    // maxWidth: 800,
+    // minWidth: 400,
+    // display: 'inline-block',
+    marginTop: 10,
+    padding: 30,
+    // textAlign: 'center',
+    marginBottom: 10,
+    // marginLeft: 100,
+    // marginRight: 100,
     height: 'auto',
     color: theme.palette.text.secondary,
   },
@@ -130,6 +147,29 @@ const styles = (theme) => ({
   titleBar: {
     background:
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+  },
+  card: {
+    maxWidth: 666,
+    paddingBottom: 200,
+    paddingTop: 200,
+    alignItems: 'center',
+    display: 'inline-block',
+  },
+  media: {
+    height: 200,
+  },
+  styledGrid: {
+    marginTop: 20,
+    marginBottom: 20,
+    textAlign: 'left',
+    display: 'block',
+  },
+  styledDiv: {
+    paddingTop: 118,
+    paddingBottom: 118,
+    width: '90%',
+    margin: '0 auto',
+    maxWidth: 500,
   },
 });
 
@@ -209,23 +249,40 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
           <meta name="description" content="Zwap Pay" />
         </Helmet>
         {/* <FormattedMessage {...messages.header} /> */}
-        <div>
-          <Dialog open={this.props.makeSelectMainPageShowNotification && !this.props.makeSelectMainPageOpenDialog} onRequestClose={this.props.closeNotification}>
-            <DialogTitle>
-              <FormattedMessage {...messages.notificationHeader} />
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                <FormattedMessage {...messages.notificationContents} />
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={this.props.closeNotification} color="primary" autoFocus>
-                <FormattedMessage {...messages.okmessage} />
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </div>
+        {/* <div> */}
+        {/* <Dialog open={this.props.makeSelectMainPageShowNotification} onRequestClose={this.props.closeNotification}> */}
+        {/* <DialogTitle> */}
+        {/* <FormattedMessage {...messages.notificationHeader} /> */}
+        {/* </DialogTitle> */}
+        {/* <DialogContent> */}
+        {/* <DialogContentText> */}
+        {/* <FormattedMessage {...messages.notificationContents} /> */}
+        {/* </DialogContentText> */}
+        {/* </DialogContent> */}
+        {/* <DialogActions> */}
+        {/* <Button onClick={this.props.closeNotification} color="primary" autoFocus> */}
+        {/* <FormattedMessage {...messages.okmessage} /> */}
+        {/* </Button> */}
+        {/* </DialogActions> */}
+        {/* </Dialog> */}
+        {/* </div> */}
+        {/* <div> */}
+        {/* <Dialog open={this.props.makeSelectMainPageShowNoticeOfYouHaveLoanInProgress} onRequestClose={this.props.closeNoticeOfYouHaveLoanInProgress}> */}
+        {/* <DialogTitle> */}
+        {/* <FormattedMessage {...messages.notificationHeader} /> */}
+        {/* </DialogTitle> */}
+        {/* <DialogContent> */}
+        {/* <DialogContentText> */}
+        {/* <FormattedMessage {...messages.notificationContents} /> */}
+        {/* </DialogContentText> */}
+        {/* </DialogContent> */}
+        {/* <DialogActions> */}
+        {/* <Button onClick={this.props.closeNoticeOfYouHaveLoanInProgress} color="primary" autoFocus> */}
+        {/* <FormattedMessage {...messages.okmessage} /> */}
+        {/* </Button> */}
+        {/* </DialogActions> */}
+        {/* </Dialog> */}
+        {/* </div> */}
         {/* if no token in url, present the homepage */}
         {((!this.props.match.params.token) || (this.props.getSuccessNotice && reduxFormInitialValues.orderReferenceNo === '')) &&
         <div className={classes.root}>
@@ -421,7 +478,7 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
         {/* if token in url, check the loading status, if not, display progress bar,
              if loaded, display form
         */}
-        {(this.props.match.params.token) &&
+        {(this.props.match.params.token) && (!this.props.submitSuccess) &&
         ((this.props.getSuccessNotice)
           // if we have token appended in the path,
           // we will load the form only when the data has been successfully loaded via calling api.
@@ -446,38 +503,129 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
           </div>
         )
         }
-        {(this.props.getSuccessNotice && reduxFormInitialValues.orderReferenceNo === '') &&
-        <div>
-          <Paper className={classes.paperTwo} elevation={4}>
-            <Typography type="headline" component="h2" gutterBottom>
-              Notice: Invalid Token
-            </Typography>
-            <Typography type="body1" component="p">
-              Looks like your token has expired or never existed. Please go to e-commerce website to use Zwap Pay
-              for checkout.
-            </Typography>
-          </Paper>
-        </div>
+        {this.props.submitSuccess && this.props.makeSelectMainPageShowNoticeOfYouHaveLoanInProgress &&
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={12} className={classes.styledGrid}>
+            <div className={classes.styledDiv}>
+              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+              You have successfully submitted your application
+              <FormattedMessage {...messages.notificationHeader} />
+              </Typography>
+              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              However, you currently have one loan case at Zwap in progress. Please login to Zwap and settle the loan
+              first. Then you will be allowed to apply Zwap Pay service.
+              </Typography>
+              <ColorAWithUnderline href="https://platform.zwap.hk/login/" target="_blank">Login to Zwap</ColorAWithUnderline>
+            </div>
+          </Grid>
+        </Grid>
         }
+        {this.props.submitSuccess && this.props.makeSelectMainPageShowNotification &&
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={12} className={classes.styledGrid}>
+            <div className={classes.styledDiv}>
+              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+              Congratulations! You have successfully submitted your application
+              <FormattedMessage {...messages.notificationHeader} />
+              </Typography>
+              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              An email has been sent to your inbox. Please follow the instructions
+              in the email to activate your account
+              </Typography>
+            </div>
+          </Grid>
+        </Grid>
+        }
+        {(this.props.getSuccessNotice && reduxFormInitialValues.orderReferenceNo === '') &&
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={12} className={classes.styledGrid}>
+            <div className={classes.styledDiv}>
+              <Typography type="headline" component="h2" gutterBottom>
+                Invalid Token
+              </Typography>
+              <Typography type="body1" component="p" gutterBottom>
+                Looks like your token has expired or never existed.
+              </Typography>
+            </div>
+          </Grid>
+        </Grid>
+        }
+        {/* <Grid container spacing={24}> */}
+        {/* <Grid item xs={12} sm={12} className={classes.styledGrid}> */}
+        {/* <div className={classes.styledDiv}> */}
+        {/* <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom> */}
+        {/* You have successfully submitted your application */}
+        {/* <FormattedMessage {...messages.notificationHeader} /> */}
+        {/* </Typography> */}
+        {/* <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom> */}
+        {/* However, you currently have one loan case at Zwap in progress. Please login to Zwap and settle the loan */}
+        {/* first. Then you will be allowed to apply Zwap Pay service. */}
+        {/* </Typography> */}
+        {/* <ColorAWithUnderline href="https://platform.zwap.hk/login/" target="_blank">Login to Zwap</ColorAWithUnderline> */}
+        {/* </div> */}
+        {/* </Grid> */}
+        {/* </Grid> */}
+        {/* <Grid container spacing={24}> */}
+        {/* <Grid item xs={12} sm={12} className={classes.styledGrid}> */}
+        {/* <div className={classes.styledDiv}> */}
+        {/* <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom> */}
+        {/* Congratulations! You have successfully submitted your application */}
+        {/* <FormattedMessage {...messages.notificationHeader} /> */}
+        {/* </Typography> */}
+        {/* <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom> */}
+        {/* An email has been sent to your inbox. Please follow the instructions */}
+        {/* in the email to activate your account */}
+        {/* </Typography> */}
+        {/* </div> */}
+        {/* </Grid> */}
+        {/* </Grid> */}
+        {/* <Grid container spacing={24}> */}
+        {/* <Grid item xs={12} sm={12} className={classes.styledGrid}> */}
+        {/* <div className={classes.styledDiv}> */}
+        {/* <Typography type="headline" component="h2" gutterBottom> */}
+        {/* Invalid Token */}
+        {/* </Typography> */}
+        {/* <Typography type="body1" component="p" gutterBottom> */}
+        {/* Looks like your token has expired or never existed. */}
+        {/* </Typography> */}
+        {/* </div> */}
+        {/* </Grid> */}
+        {/* </Grid> */}
       </div>
     );
   }
 }
+        // {/*<Grid container spacing={24}>*/}
+        // {/*<Grid item xs={12} sm={12} className={classes.styledGrid}>*/}
+        // {/*<Card className={classes.card}>*/}
+        // {/*<CardContent>*/}
+        // {/*<Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>*/}
+        // {/*Congratulations! You have successfully submitted your application*/}
+        // {/*</Typography>*/}
+        // {/*<Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>*/}
+        // {/*An email has been sent to your inbox. Please follow the instructions*/}
+        // {/*in the email to activate your account.*/}
+        // {/*</Typography>*/}
+        // {/*</CardContent>*/}
+        // {/*</Card>*/}
+        // {/*</Grid>*/}
+        // {/*</Grid>*/}
 
 MainPage.propTypes = {
   onFetchAndLoad: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   openDialog: PropTypes.func.isRequired,
   // closeDialog: PropTypes.func.isRequired,
-  closeNotification: PropTypes.func.isRequired,
+  // closeNotification: PropTypes.func.isRequired,
   togglePwAsPlainText: PropTypes.func.isRequired,
   closeSnackBarCongrats: PropTypes.func.isRequired,
   closeSnackBarEmail: PropTypes.func.isRequired,
   closeSnackBarPw: PropTypes.func.isRequired,
   // onCloseSnackbarEmail: PropTypes.func.isRequired,
-  makeSelectMainPageOpenDialog: PropTypes.bool.isRequired,
+  // makeSelectMainPageOpenDialog: PropTypes.bool.isRequired,
   makeSelectMainPageShowNotification: PropTypes.bool.isRequired,
   getSuccessNotice: PropTypes.bool.isRequired,
+  submitSuccess: PropTypes.bool.isRequired,
   makeSelectMainPageFormData: PropTypes.object.isRequired,
 };
 
@@ -485,6 +633,7 @@ const mapStateToProps = createStructuredSelector({
   makeSelectMainPageOpenDialog: makeSelectMainPageOpenDialog(),
   makeSelectMainPageFormData: makeSelectMainPageFormData(),
   makeSelectMainPageShowNotification: makeSelectMainPageShowNotification(),
+  makeSelectMainPageShowNoticeOfYouHaveLoanInProgress: makeSelectMainPageShowNoticeOfYouHaveLoanInProgress(),
   getSuccessNotice: getSuccessNotice(),
   selectSubmitting: makeSelectSubmitting(),
   submitSuccess: makeSelectSuccess(),
@@ -505,6 +654,9 @@ function mapDispatchToProps(dispatch) {
     // },
     closeNotification: () => {
       dispatch(closeNotification());
+    },
+    closeNoticeOfYouHaveLoanInProgress: () => {
+      dispatch(closeNoticeOfYouHaveLoanInProgress());
     },
     togglePwAsPlainText: (checked) => {
       dispatch(togglePwAsPlainText(checked));

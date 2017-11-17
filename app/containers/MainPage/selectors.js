@@ -50,6 +50,11 @@ const makeSelectMainPageShowNotification = () => createSelector(
   (subState) => subState.get('showNotification'),
 );
 
+const makeSelectMainPageShowNoticeOfYouHaveLoanInProgress = () => createSelector(
+  selectMainPageDomain,
+  (subState) => subState.get('showNoticeOfYouHaveLoanInProgress'),
+);
+
 const makeSelectMainPageOpenDialog = () => createSelector(
   selectMainPageDomain,
   (subState) => subState.get('openDialog'),
@@ -80,6 +85,7 @@ export {
   makeSelectError,
   makeSelectSuccess,
   makeSelectMainPageShowNotification,
+  makeSelectMainPageShowNoticeOfYouHaveLoanInProgress,
   // makeSelectMainPageFormDataOrderRef,
   // makeSelectOpenNotification,
   // formInitialValues,

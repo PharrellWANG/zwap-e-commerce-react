@@ -249,15 +249,15 @@ export default defineMessages({
   },
   okmessage: {
     id: 'app.containers.MainPage.okmessage',
-    defaultMessage: 'Success',
+    defaultMessage: 'OK',
   },
   notificationHeader: {
     id: 'app.containers.MainPage.nheader',
-    defaultMessage: 'You application has been successfully submitted. We will send you email notification for further instructions',
+    defaultMessage: 'Success!',
   },
   notificationContents: {
     id: 'app.containers.MainPage.ncontents',
-    defaultMessage: 'OK',
+    defaultMessage: 'You application has been successfully submitted.',
   },
   helperTextReadOnly: {
     id: 'app.containers.MainPage.helperTextReadOnly',

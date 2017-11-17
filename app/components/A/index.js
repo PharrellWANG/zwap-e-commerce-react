@@ -38,4 +38,21 @@ export const ColorA = styled.a`
   }
 `;
 
+export const ColorAWithUnderline = styled.a`
+  color: #388e3c;
+ 
+  &:link {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+  &:active {
+    text-decoration: underline;
+  }
+`;
+
 export default A;

@@ -15,10 +15,12 @@ import {
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE_FAIL,
   CLOSE_NOTIFICATION,
+  CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS,
   // ACCOUNT_CHECKING_SUCCESS,
   ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT,
   ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT,
   ACCOUNT_CHECKING_FAIL,
+  HAS_EXISTING_LOAN_IN_PROGRESS,
   CLOSE_SNACKBAR_CONGRATS,
   CLOSE_SNACKBAR_EMAIL,
   CLOSE_SNACKBAR_PW,
@@ -26,14 +28,12 @@ import {
 } from './constants';
 
 export function closeSnackBarEmail() {
-  // console.log('fucccccccc-------');
   return {
     type: CLOSE_SNACKBAR_EMAIL,
   };
 }
 
 export function togglePwAsPlainText(checked) {
-  // console.log('fucccccccc-------');
   return {
     type: TOGGLE_SEE_PW,
     data: checked,
@@ -81,6 +81,12 @@ export function closeNotification() {
   };
 }
 
+export function closeNoticeOfYouHaveLoanInProgress() {
+  return {
+    type: CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS,
+  };
+}
+
 export function closeSnackBarCongrats() {
   return {
     type: CLOSE_SNACKBAR_CONGRATS,
@@ -109,6 +115,12 @@ export function letMeSubmit(values) {
 export function letMeSubmitSuccess() {
   return {
     type: SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
+  };
+}
+
+export function hasExistingLoanInProgress() {
+  return {
+    type: HAS_EXISTING_LOAN_IN_PROGRESS,
   };
 }
 

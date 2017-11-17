@@ -19,8 +19,9 @@ import {
   ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT,
   ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT,
   CLOSE_SNACKBAR_CONGRATS, CLOSE_SNACKBAR_EMAIL,
+  CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS,
   CLOSE_SNACKBAR_PW,
-  TOGGLE_SEE_PW,
+  TOGGLE_SEE_PW, HAS_EXISTING_LOAN_IN_PROGRESS,
 } from './constants';
 
 const initialState = fromJS({
@@ -47,6 +48,7 @@ const initialState = fromJS({
   displayCongratsOnce: 1,
   displayEmailHintOnce: 1,
   displayPwInputInstructionOnce: 1,
+  showNoticeOfYouHaveLoanInProgress: false,
 });
 
 function mainPageReducer(state = initialState, action) {
@@ -97,7 +99,23 @@ function mainPageReducer(state = initialState, action) {
       .set('submitInProgress', false)
       .set('submitError', false)
       .set('submitSuccess', true)
-      .set('showNotification', true);
+      // only one of them can be true
+      .set('showNotification', true)
+      .set('showNoticeOfYouHaveLoanInProgress', false)
+      .set('openDialog', false);
+    case HAS_EXISTING_LOAN_IN_PROGRESS:
+      return state
+      .set('submitInProgress', false)
+      .set('submitError', false)
+      .set('submitSuccess', true)
+      // only one of them can be true
+      .set('showNoticeOfYouHaveLoanInProgress', true)
+      .set('showNotification', false)
+      .set('openDialog', false);
+    case CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS:
+      return state
+      // only one of them can be true
+      .set('showNoticeOfYouHaveLoanInProgress', false);
     case SUBMIT_APPLICATION_FOR_AUTO_APPROVE_FAIL:
       return state
       .set('submitInProgress', false)
@@ -117,15 +135,15 @@ function mainPageReducer(state = initialState, action) {
       .set('displayEmailHint', false);
     case CLOSE_SNACKBAR_CONGRATS:
       return state
-      .set('displayCongratsOnce', state.displayCongratsOnce + 1)
+      .set('displayCongratsOnce', 2)
       .set('displayCongrats', false);
     case CLOSE_SNACKBAR_EMAIL:
       return state
-      .set('displayEmailHintOnce', state.displayEmailHintOnce + 1)
+      .set('displayEmailHintOnce', 2)
       .set('displayEmailHint', false);
     case CLOSE_SNACKBAR_PW:
       return state
-      .set('displayPwInputInstructionOnce', state.displayPwInputInstructionOnce + 1)
+      .set('displayPwInputInstructionOnce', 2)
       .set('displayPwInputInstruction', false);
     case TOGGLE_SEE_PW:
       return state

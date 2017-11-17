@@ -7,6 +7,7 @@ import {
   dataLoadFail,
   letMeSubmitSuccess,
   letMeSubmitFail,
+  hasExistingLoanInProgress,
   accountChecking,
   accountCheckingFail,
   // SubmitStatus,
@@ -45,8 +46,8 @@ export function* submitInfo(action) {
   // console.log('-----------------pharrell');
   // yield put(SubmitStatus());
   // console.log('-----------------pharrell----end');
-  console.log('================ here is the submitted data ===============');
-  console.log(JSON.stringify(action.formData));
+  // console.log('================ here is the submitted data ===============');
+  // console.log(JSON.stringify(action.formData));
   yield call(delay, 3000);
   const requestURL = 'http://218.255.104.158:6789/zwap-pay/receive-application/';
   const options = {
@@ -59,9 +60,16 @@ export function* submitInfo(action) {
   try {
     // yield call(delay, 1000);
     const data = yield call(request, requestURL, options);
+    console.log('---------------------~~~~~~~~~~~~~~~~~~~~~~~~~');
     console.log('<------ the response from server is: --->');
     console.log(data);
-    yield put(letMeSubmitSuccess());
+    console.log(data.hasExistingLoanUnsettled === true);
+    console.log(data.creditNotEnough);
+    if (data.hasExistingLoanUnsettled === true) {
+      yield put(hasExistingLoanInProgress());
+    } else {
+      yield put(letMeSubmitSuccess());
+    }
   } catch (err) {
     yield put(letMeSubmitFail());
   }

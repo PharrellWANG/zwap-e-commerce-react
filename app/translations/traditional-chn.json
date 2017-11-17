@@ -95,7 +95,7 @@
   "app.containers.MainPage.dialogHeader": "你好!",
   "app.containers.MainPage.dialogContents": "我們注意到你是直接來訪問我們頁面的而非是來自MTGamer網站。為了使用Zwap Pay服務, 你需要手動輸入你的MTGamer訂單編號。",
   "app.containers.MainPage.nheader": "成功",
-  "app.containers.MainPage.ncontents": "你的申請已經成功被提交。請查看您的郵件來激活貸款。你可以回到MTGamer網頁查看你的訂單狀態。",
+  "app.containers.MainPage.ncontents": "你的申請已經成功被提交。",
   "app.containers.MainPage.okmessage": "好的",
   "app.containers.MainPage.helperTextReadOnly": "只讀，無需更改",
   "app.containers.MainPage.submitInstruction": "提交表格為你的訂單申請Zwap Pay",

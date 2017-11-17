@@ -364,8 +364,8 @@ let ImmutableForm = (props) => {
               style={{
                 width: '30%',
                 margin: '0 auto',
-                border: '2px solid #ceffa3',
-                backgroundColor: '#ceffa3',
+                // border: '2px solid #ceffa3',
+                // backgroundColor: '#ceffa3',
               }}
             />
             <RadioButton
@@ -374,8 +374,8 @@ let ImmutableForm = (props) => {
               style={{
                 width: '30%',
                 margin: '0 auto',
-                border: '2px solid #ffe0cb',
-                backgroundColor: '#ffe0cb',
+                // border: '2px solid #ffe0cb',
+                // backgroundColor: '#ffe0cb',
               }}
             />
           </Field>
@@ -476,7 +476,7 @@ let ImmutableForm = (props) => {
       </Grid>
       <Divider />
       <Grid container spacing={24} style={{ paddingTop: 6, paddingBottom: 6 }}>
-        <Grid item xs={12} style={{ textAlign: 'center' }}>
+        <Grid item xs={12} style={{ textAlign: 'center', paddingLeft: 16, paddingRight: 16 }}>
           <Typography type="body1" gutterBottom>
             <FormattedMessage {...messages.BySubmittingTheForm} />{' '}
             <A href="https://platform.zwap.hk/document/?fname=PDPO.pdf" target="_blank"><FormattedMessage {...messages.ImportantNotice} /></A>{' '}
