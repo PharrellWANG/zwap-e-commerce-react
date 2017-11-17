@@ -25,6 +25,7 @@ import {
   CLOSE_SNACKBAR_EMAIL,
   CLOSE_SNACKBAR_PW,
   TOGGLE_SEE_PW,
+  CREDIT_NOT_ENOUGH,
 } from './constants';
 
 export function closeSnackBarEmail() {
@@ -121,6 +122,13 @@ export function letMeSubmitSuccess() {
 export function hasExistingLoanInProgress() {
   return {
     type: HAS_EXISTING_LOAN_IN_PROGRESS,
+  };
+}
+
+export function creditNotEnoughSorry(data) {
+  return {
+    type: CREDIT_NOT_ENOUGH,
+    data,
   };
 }
 

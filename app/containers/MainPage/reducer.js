@@ -21,7 +21,7 @@ import {
   CLOSE_SNACKBAR_CONGRATS, CLOSE_SNACKBAR_EMAIL,
   CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS,
   CLOSE_SNACKBAR_PW,
-  TOGGLE_SEE_PW, HAS_EXISTING_LOAN_IN_PROGRESS,
+  TOGGLE_SEE_PW, HAS_EXISTING_LOAN_IN_PROGRESS, CREDIT_NOT_ENOUGH,
 } from './constants';
 
 const initialState = fromJS({
@@ -49,6 +49,8 @@ const initialState = fromJS({
   displayEmailHintOnce: 1,
   displayPwInputInstructionOnce: 1,
   showNoticeOfYouHaveLoanInProgress: false,
+  showNoticeOfCreditNotEnough: false,
+  ZwapCredit: 0,
 });
 
 function mainPageReducer(state = initialState, action) {
@@ -99,17 +101,31 @@ function mainPageReducer(state = initialState, action) {
       .set('submitInProgress', false)
       .set('submitError', false)
       .set('submitSuccess', true)
-      // only one of them can be true
+      // only one of them can be true ////////////////////////////////////////////////////////////////
       .set('showNotification', true)
       .set('showNoticeOfYouHaveLoanInProgress', false)
+      .set('showNoticeOfCreditNotEnough', false)
       .set('openDialog', false);
     case HAS_EXISTING_LOAN_IN_PROGRESS:
       return state
       .set('submitInProgress', false)
       .set('submitError', false)
       .set('submitSuccess', true)
-      // only one of them can be true
+      // only one of them can be true////////////////////////////////////////////////////////////////
       .set('showNoticeOfYouHaveLoanInProgress', true)
+      .set('showNoticeOfCreditNotEnough', false)
+      .set('showNotification', false)
+      .set('openDialog', false);
+    case CREDIT_NOT_ENOUGH:
+      return state
+      .set('submitInProgress', false)
+      .set('submitError', false)
+      .set('submitSuccess', true)
+      // set credit ////////////////////////////////////////
+      .set('ZwapCredit', fromJS(action.data))
+      // only one of them can be true////////////////////////////////////////////////////////////////
+      .set('showNoticeOfYouHaveLoanInProgress', false)
+      .set('showNoticeOfCreditNotEnough', true)
       .set('showNotification', false)
       .set('openDialog', false);
     case CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS:

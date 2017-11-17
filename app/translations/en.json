@@ -144,5 +144,7 @@
   "app.containers.MainPage.And": "and",
   "app.containers.MainPage.SuccessNotice": "You have successfully submitted application",
   "app.containers.MainPage.UnsettledNotice": "You currently have one loan case at Zwap in progress. Please login to Zwap and settle the loan first. Then you will be allowed to apply Zwap Pay service.",
-  "app.containers.MainPage.FollowEmailInstruction": "An email has been sent to your inbox. Please follow the instructions in the email to activate your account."
+  "app.containers.MainPage.FollowEmailInstruction": "An email has been sent to your inbox. Please follow the instructions in the email to activate your account.",
+  "app.containers.MainPage.CreditNotEnough": "We are sorry that your Zwap Credit is high enough, please buy less and try to apply again. Your Zwap Credit (HK$): ",
+  "app.containers.MainPage.LoginToZwap": "Login to Zwap"
 }

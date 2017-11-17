@@ -144,5 +144,7 @@
   "app.containers.MainPage.And": "和",
   "app.containers.MainPage.SuccessNotice": "你已經成功遞交申請",
   "app.containers.MainPage.UnsettledNotice": "你目前有貸款未還清。請登入Zwap先還清款項，然後你可以使用Zwap Pay。",
-  "app.containers.MainPage.FollowEmailInstruction": "一封郵件已被發到你郵箱。請按照郵件中的指示激活你的帳戶。"
+  "app.containers.MainPage.FollowEmailInstruction": "一封郵件已被發到你郵箱。請按照郵件中的指示激活你的帳戶。",
+  "app.containers.MainPage.CreditNotEnough": "很抱歉你的Zwap Credit不夠高, 請買少點再來申請。你的Zwap Credit (HK$): ",
+  "app.containers.MainPage.LoginToZwap": "登入Zwap"
 }

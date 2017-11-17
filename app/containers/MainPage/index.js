@@ -44,7 +44,7 @@ import {
   fetchAndLoad,
   noTokenInUrlDisplayDialog,
   closeNotification,
-  closeNoticeOfYouHaveLoanInProgress,
+  // closeNoticeOfYouHaveLoanInProgress,
   closeSnackBarCongrats,
   letMeSubmit,
   closeSnackBarPw,
@@ -55,6 +55,8 @@ import makeSelectMainPageOpenDialog, {
   makeSelectMainPageFormData,
   makeSelectMainPageShowNotification,
   makeSelectMainPageShowNoticeOfYouHaveLoanInProgress,
+  makeSelectMainPageZwapCredit,
+  makeSelectMainPageShowNoticeOfCreditNotEnough,
   getSuccessNotice,
   makeSelectError,
   makeSelectSuccess,
@@ -518,6 +520,22 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
           </Grid>
         </Grid>
         }
+        {this.props.submitSuccess && this.props.makeSelectMainPageShowNoticeOfCreditNotEnough &&
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={12} className={classes.styledGrid}>
+            <div className={classes.styledDiv}>
+              {/* <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom> */}
+              {/* <FormattedMessage {...messages.SuccessNotice} /> */}
+              {/* </Typography> */}
+              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+                <FormattedMessage {...messages.CreditNotEnough} />{' '}
+                {this.props.makeSelectMainPageZwapCredit}
+              </Typography>
+              <ColorAWithUnderline href="https://platform.zwap.hk/login/" target="_blank"><FormattedMessage {...messages.LoginToZwap} /></ColorAWithUnderline>
+            </div>
+          </Grid>
+        </Grid>
+        }
         {this.props.submitSuccess && this.props.makeSelectMainPageShowNotification &&
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
@@ -538,9 +556,11 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
             <div className={classes.styledDiv}>
               <Typography type="headline" component="h2" gutterBottom>
                 Invalid Token
+                <FormattedMessage {...messages.InvalidToken} />
               </Typography>
               <Typography type="body1" component="p" gutterBottom>
                 Looks like your token has expired or never existed.
+                <FormattedMessage {...messages.ExpiredTokenNeverExisted} />
               </Typography>
             </div>
           </Grid>
@@ -589,6 +609,8 @@ const mapStateToProps = createStructuredSelector({
   makeSelectMainPageFormData: makeSelectMainPageFormData(),
   makeSelectMainPageShowNotification: makeSelectMainPageShowNotification(),
   makeSelectMainPageShowNoticeOfYouHaveLoanInProgress: makeSelectMainPageShowNoticeOfYouHaveLoanInProgress(),
+  makeSelectMainPageZwapCredit: makeSelectMainPageZwapCredit(),
+  makeSelectMainPageShowNoticeOfCreditNotEnough: makeSelectMainPageShowNoticeOfCreditNotEnough(),
   getSuccessNotice: getSuccessNotice(),
   selectSubmitting: makeSelectSubmitting(),
   submitSuccess: makeSelectSuccess(),
@@ -610,9 +632,9 @@ function mapDispatchToProps(dispatch) {
     closeNotification: () => {
       dispatch(closeNotification());
     },
-    closeNoticeOfYouHaveLoanInProgress: () => {
-      dispatch(closeNoticeOfYouHaveLoanInProgress());
-    },
+    // closeNoticeOfYouHaveLoanInProgress: () => {
+    //   dispatch(closeNoticeOfYouHaveLoanInProgress());
+    // },
     togglePwAsPlainText: (checked) => {
       dispatch(togglePwAsPlainText(checked));
     },
@@ -632,7 +654,7 @@ function mapDispatchToProps(dispatch) {
       // console.log('1');
       // console.log(values);
       // console.log('2');
-      console.log(values.toJS());
+      // console.log(values.toJS());
       // let combinedValues = values.toJS();
       // console.log('3');
       // console.log(combinedValues);

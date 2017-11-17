@@ -8,6 +8,7 @@ import {
   letMeSubmitSuccess,
   letMeSubmitFail,
   hasExistingLoanInProgress,
+  creditNotEnoughSorry,
   accountChecking,
   accountCheckingFail,
   // SubmitStatus,
@@ -60,13 +61,15 @@ export function* submitInfo(action) {
   try {
     // yield call(delay, 1000);
     const data = yield call(request, requestURL, options);
-    console.log('---------------------~~~~~~~~~~~~~~~~~~~~~~~~~');
-    console.log('<------ the response from server is: --->');
-    console.log(data);
-    console.log(data.hasExistingLoanUnsettled === true);
-    console.log(data.creditNotEnough);
+    // console.log('---------------------~~~~~~~~~~~~~~~~~~~~~~~~~');
+    // console.log('<------ the response from server is: --->');
+    // console.log(data);
+    // console.log(data.hasExistingLoanUnsettled === true);
+    // console.log(data.creditNotEnough);
     if (data.hasExistingLoanUnsettled === true) {
       yield put(hasExistingLoanInProgress());
+    } else if (data.creditNotEnough === true) {
+      yield put(creditNotEnoughSorry(data.credit.amount));
     } else {
       yield put(letMeSubmitSuccess());
     }

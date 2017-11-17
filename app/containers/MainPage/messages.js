@@ -347,4 +347,12 @@ export default defineMessages({
     id: 'app.containers.MainPage.FollowEmailInstruction',
     defaultMessage: 'An email has been sent to your inbox. Please follow the instructions in the email to activate your account.',
   },
+  CreditNotEnough: {
+    id: 'app.containers.MainPage.CreditNotEnough',
+    defaultMessage: 'We are sorry that your Zwap Credit is high enough, please buy less and try to apply again. Your Zwap Credit (HK$): ',
+  },
+  LoginToZwap: {
+    id: 'app.containers.MainPage.LoginToZwap',
+    defaultMessage: 'Login to Zwap',
+  },
 });
