@@ -490,7 +490,7 @@ let ImmutableForm = (props) => {
           <div className={classes.rootForButtonLoading}>
             <div className={classes.xWrapper}>
               <Button raised color="primary" className={classes.button} type="submit" disabled={pristine || submitting || realSubmitting}>
-               Submit
+                <FormattedMessage {...messages.submit} />
               </Button>
               {realSubmitting && <CircularProgress size={28} className={classes.absoluteProgress} thickness={8} />}
             </div>
