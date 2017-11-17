@@ -141,5 +141,8 @@
   "app.containers.MainPage.BySubmittingTheForm": "By submitting the form, you agree to ",
   "app.containers.MainPage.ImportantNotice": "Important Notice",
   "app.containers.MainPage.PrivacyPolicy": "Privacy Policy",
-  "app.containers.MainPage.And": "and"
+  "app.containers.MainPage.And": "and",
+  "app.containers.MainPage.SuccessNotice": "You have successfully submitted application",
+  "app.containers.MainPage.UnsettledNotice": "You currently have one loan case at Zwap in progress. Please login to Zwap and settle the loan first. Then you will be allowed to apply Zwap Pay service.",
+  "app.containers.MainPage.FollowEmailInstruction": "An email has been sent to your inbox. Please follow the instructions in the email to activate your account."
 }

@@ -141,5 +141,8 @@
   "app.containers.MainPage.BySubmittingTheForm": "提交該表格說明您同意 ",
   "app.containers.MainPage.ImportantNotice": "重要通知",
   "app.containers.MainPage.PrivacyPolicy": "隱私政策",
-  "app.containers.MainPage.And": "和"
+  "app.containers.MainPage.And": "和",
+  "app.containers.MainPage.SuccessNotice": "你已經成功遞交申請",
+  "app.containers.MainPage.UnsettledNotice": "你目前有貸款未還清。請登入Zwap先還清款項，然後你可以使用Zwap Pay。",
+  "app.containers.MainPage.FollowEmailInstruction": "一封郵件已被發到你郵箱。請按照郵件中的指示激活你的帳戶。"
 }

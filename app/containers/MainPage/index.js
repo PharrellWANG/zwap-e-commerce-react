@@ -507,13 +507,11 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
-              You have successfully submitted your application
-              <FormattedMessage {...messages.notificationHeader} />
-              </Typography>
+              {/* <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom> */}
+              {/* <FormattedMessage {...messages.SuccessNotice} /> */}
+              {/* </Typography> */}
               <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
-              However, you currently have one loan case at Zwap in progress. Please login to Zwap and settle the loan
-              first. Then you will be allowed to apply Zwap Pay service.
+                <FormattedMessage {...messages.UnsettledNotice} />
               </Typography>
               <ColorAWithUnderline href="https://platform.zwap.hk/login/" target="_blank">Login to Zwap</ColorAWithUnderline>
             </div>
@@ -525,12 +523,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
               <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
-              Congratulations! You have successfully submitted your application
-              <FormattedMessage {...messages.notificationHeader} />
+                <FormattedMessage {...messages.SuccessNotice} />
               </Typography>
               <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
-              An email has been sent to your inbox. Please follow the instructions
-              in the email to activate your account
+                <FormattedMessage {...messages.FollowEmailInstruction} />
               </Typography>
             </div>
           </Grid>

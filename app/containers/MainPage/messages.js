@@ -335,4 +335,16 @@ export default defineMessages({
     id: 'app.containers.MainPage.And',
     defaultMessage: 'and',
   },
+  SuccessNotice: {
+    id: 'app.containers.MainPage.SuccessNotice',
+    defaultMessage: 'You have successfully submitted application',
+  },
+  UnsettledNotice: {
+    id: 'app.containers.MainPage.UnsettledNotice',
+    defaultMessage: 'You currently have one loan case at Zwap in progress. Please login to Zwap and settle the loan first. Then you will be allowed to apply Zwap Pay service.',
+  },
+  FollowEmailInstruction: {
+    id: 'app.containers.MainPage.FollowEmailInstruction',
+    defaultMessage: 'An email has been sent to your inbox. Please follow the instructions in the email to activate your account.',
+  },
 });
