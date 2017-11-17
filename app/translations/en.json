@@ -137,5 +137,9 @@
   "zwap.components.Footer.KOMINInstalment": "KO Min Pay (Instalment)",
   "zwap.components.Footer.KOMINBalloon": "KO Min Pay (Balloon)",
   "zwap.components.Footer.ShortTermStudentLoan": "Short Term Loan (One-Time Repayment)",
-  "zwap.components.Footer.OrCall": "Or call "
+  "zwap.components.Footer.OrCall": "Or call ",
+  "app.containers.MainPage.BySubmittingTheForm": "By submitting the form, you agree to ",
+  "app.containers.MainPage.ImportantNotice": "Important Notice",
+  "app.containers.MainPage.PrivacyPolicy": "Privacy Policy",
+  "app.containers.MainPage.And": "and"
 }

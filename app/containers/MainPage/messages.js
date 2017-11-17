@@ -319,4 +319,20 @@ export default defineMessages({
     id: 'app.containers.MainPage.HKIDEightDigits',
     defaultMessage: 'HK phone number must be 8 digits',
   },
+  BySubmittingTheForm: {
+    id: 'app.containers.MainPage.BySubmittingTheForm',
+    defaultMessage: 'By submitting the form, you agree to ',
+  },
+  ImportantNotice: {
+    id: 'app.containers.MainPage.ImportantNotice',
+    defaultMessage: 'Important Notice',
+  },
+  PrivacyPolicy: {
+    id: 'app.containers.MainPage.PrivacyPolicy',
+    defaultMessage: 'Privacy Policy',
+  },
+  And: {
+    id: 'app.containers.MainPage.And',
+    defaultMessage: 'and',
+  },
 });

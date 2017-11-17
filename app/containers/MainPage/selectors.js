@@ -28,17 +28,17 @@ const selectMainPageDomain = (state) => state.get('mainPage');
  */
 const makeSelectSubmitting = () => createSelector(
   selectMainPageDomain,
-  (substate) => substate.get('submitInProgress')
+  (subState) => subState.get('submitInProgress')
 );
 
 const makeSelectError = () => createSelector(
   selectMainPageDomain,
-  (substate) => substate.get('submitError')
+  (subState) => subState.get('submitError')
 );
 
 const makeSelectSuccess = () => createSelector(
   selectMainPageDomain,
-  (substate) => substate.get('submitSuccess')
+  (subState) => subState.get('submitSuccess')
 );
 
 // const makeSelectOpenNotification = () => createSelector(

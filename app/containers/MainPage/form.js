@@ -18,6 +18,7 @@ import Typography from 'material-ui/Typography';
 import MenuItem from 'material-ui-previous/MenuItem';
 // import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
+import { green } from 'material-ui/colors';
 // import { InputLabel } from 'material-ui/Input';
 // import { green } from 'material-ui/colors';
 import Button from 'material-ui/Button';
@@ -48,7 +49,99 @@ import messages from './messages';
 import validate from './validate';
 import warn from './warn';
 import asyncValidate from './asyncValidate';
-import styles from './styles';
+import A from '../../components/A';
+// import styles from './styles';
+
+const styles = (theme) => ({
+  rootForButtonLoading: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: 80,
+  },
+  rootEmail: {
+    // display: 'flex',
+    alignItems: 'center',
+  },
+  emailCheckingProgress: {
+    color: green[500],
+    position: 'absolute',
+    top: '50%',
+    left: '2%',
+    // marginTop: -12,
+    // marginLeft: -12,
+  },
+  wrapperForButtonLoading: {
+    margin: theme.spacing.unit,
+    position: 'relative',
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  rightAlignedButton: {
+    margin: theme.spacing.unit,
+    textAlign: 'right',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 255,
+  },
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  wrapper: {
+    paddingLeft: 100,
+    margin: theme.spacing.unit,
+    position: 'relative',
+  },
+  absoluteProgress: {
+    color: green[500],
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
+  },
+  xWrapper: {
+    margin: theme.spacing.unit,
+    position: 'relative',
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    width: 300,
+    verticalAlign: 'center',
+  },
+  formControlDatePicker: {
+    margin: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 3,
+    minWidth: 180,
+    // width: 300,
+    verticalAlign: 'center',
+  },
+  selectEmpty: {
+    marginTop: theme.spacing.unit * 2,
+  },
+  selector: {
+    // width: 80,
+    verticalAlign: 'center',
+  },
+  paper: {
+    padding: 10,
+  },
+  // bar: {},
+  // checked: {
+  //   textAlign: 'center',
+  //   color: green[500],
+  //   '& + $bar': {
+  //     backgroundColor: green[500],
+  //   },
+  // },
+});
 
 // require('intl/locale-data/jsonp/zh-Hans-HK');
 const renderReadOnlyField = withStyles(styles)(initRenderReadOnlyField);
@@ -73,9 +166,12 @@ let ImmutableForm = (props) => {
     displayPwInputInstruction,
     togglePwAsPlainText,
     seePwAsPlainText,
+    displayCongratsOnce,
+    displayEmailHintOnce,
+    displayPwInputInstructionOnce,
+    // initialValues,
   } = props;
   const { formatMessage } = props.intl;
-  // console.log('================');
   // console.log(meta);
   // console.log('haha, now the value of asyncValidating is: ', asyncValidating);
   // console.log(initialValues.toJS());
@@ -90,7 +186,7 @@ let ImmutableForm = (props) => {
         </Grid>
       </Grid>
       <Divider />
-      <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>
+      <Grid container spacing={24} style={{ paddingBottom: 15, paddingTop: 15 }}>
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
           <Field name="orderReferenceNo" type="text" component={renderReadOnlyField} classes={classes} label={formatMessage(messages.orderRefNo)} helperText={formatMessage(messages.helperTextReadOnly)} />
         </Grid>
@@ -104,16 +200,15 @@ let ImmutableForm = (props) => {
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        // autoHideDuration={60000}
+        autoHideDuration={9000}
         // onRequestClose={closeSnackBarCongrats}
-        open={displayCongrats}
-        // onRequestClose={this.handleRequestClose}
+        open={displayCongrats && (displayCongratsOnce === 1)}
+        onRequestClose={this.handleRequestClose}
         transition={Fade}
         SnackbarContentProps={{
           'aria-describedby': 'message-id',
         }}
-        message={<span id="message-id">Please fill the remaining fields to get your
-                                        Zwap Pay service. Thank you so much for choosing Zwap.</span>}
+        message={<span id="message-id">Fill the other fields to get your Zwap Pay service.</span>}
         action={[
           <Button key="undo" color="accent" dense onClick={closeSnackBarCongrats}>
             <CloseIcon />
@@ -125,9 +220,9 @@ let ImmutableForm = (props) => {
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        // autoHideDuration={60000}
+        autoHideDuration={9000}
         onRequestClose={closeSnackBarEmail}
-        open={displayEmailHint}
+        open={displayEmailHint && (displayEmailHintOnce === 1)}
         // onRequestClose={this.handleRequestClose}
         transition={Fade}
         SnackbarContentProps={{
@@ -145,9 +240,9 @@ let ImmutableForm = (props) => {
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        // autoHideDuration={60000}
+        autoHideDuration={9000}
         // onRequestClose={closeSnackBarPw}
-        open={displayPwInputInstruction}
+        open={displayPwInputInstruction && (displayPwInputInstructionOnce === 1)}
         // onRequestClose={this.handleRequestClose}
         transition={Fade}
         SnackbarContentProps={{
@@ -160,28 +255,34 @@ let ImmutableForm = (props) => {
           </Button>,
         ]}
       />
-      <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>
-        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
-          <Field name="email" component={renderTextField} autoFocus label={formatMessage(messages.emailLabel)} />
-          { asyncValidating && <CircularProgress thickness={6} size={20} />}
+      <Grid container spacing={24} style={{ paddingBottom: 3, paddingTop: 3 }}>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
+          <div className={classes.rootEmail}>
+            <div className={classes.xWrapper}>
+              <Field name="email" component={renderTextField} autoFocus label={formatMessage(messages.emailLabel)} />
+              { asyncValidating && <CircularProgress className={classes.emailCheckingProgress} thickness={8} size={25} />}
+            </div>
+          </div>
         </Grid>
+      </Grid>
+      <Grid container spacing={24} style={{ paddingBottom: 3, paddingTop: 3 }}>
         { displayPwFields && !seePwAsPlainText &&
-        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
           <Field name="pw" component={renderPwField} label="Password" />
         </Grid>
         }
         { displayPwFields && !seePwAsPlainText &&
-        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
           <Field name="pwConfirm" component={renderPwField} label="Password again" />
         </Grid>
         }
         { displayPwFields && seePwAsPlainText &&
-        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
           <Field name="pw" component={renderTextField} label="Password" />
         </Grid>
         }
         { displayPwFields && seePwAsPlainText &&
-        <Grid item xs={12} sm={12} style={{ textAlign: 'center' }}>
+        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
           <Field name="pwConfirm" component={renderTextField} label="Password again" />
         </Grid>
         }
@@ -200,7 +301,7 @@ let ImmutableForm = (props) => {
         }
       </Grid>
       <Divider />
-      <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>
+      <Grid container spacing={24} style={{ paddingBottom: 3, paddingTop: 3 }}>
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
           <Field
             name="mobile"
@@ -281,16 +382,16 @@ let ImmutableForm = (props) => {
         </Grid>
       </Grid>
       <Divider />
-      <Grid container spacing={24} style={{ paddingBottom: 30, paddingTop: 30 }}>
+      <Grid container spacing={24} style={{ paddingBottom: 3, paddingTop: 3 }}>
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
           <Field
             name="housingStatus"
             component={renderSelectField}
             label={<FormattedMessage {...messages.housingstatus} />}
           >
-            <MenuItem value="PublicHousing" primaryText={<FormattedMessage {...messages.publichousing} />} />
-            <MenuItem value="Hall" primaryText={<FormattedMessage {...messages.hall} />} />
-            <MenuItem value="OwnedByFamily" primaryText={<FormattedMessage {...messages.ownedbyfamily} />} />
+            <MenuItem value="Public Housing" primaryText={<FormattedMessage {...messages.publichousing} />} />
+            <MenuItem value="Student Hall of Residence" primaryText={<FormattedMessage {...messages.hall} />} />
+            <MenuItem value="Owned by Family" primaryText={<FormattedMessage {...messages.ownedbyfamily} />} />
             <MenuItem value="Rent" primaryText={<FormattedMessage {...messages.rent} />} />
             <MenuItem value="Quarter" primaryText={<FormattedMessage {...messages.quarterr} />} />
           </Field>
@@ -303,7 +404,7 @@ let ImmutableForm = (props) => {
           >
             <MenuItem value="Parents" primaryText={<FormattedMessage {...messages.parents} />} />
             <MenuItem value="Relatives" primaryText={<FormattedMessage {...messages.relatives} />} />
-            <MenuItem value="Friends" primaryText={<FormattedMessage {...messages.friends} />} />
+            <MenuItem value="Friends or Classmates" primaryText={<FormattedMessage {...messages.friends} />} />
             <MenuItem value="Others" primaryText={<FormattedMessage {...messages.others} />} />
           </Field>
         </Grid>
@@ -313,16 +414,16 @@ let ImmutableForm = (props) => {
             component={renderSelectField}
             label={<FormattedMessage {...messages.univ} />}
           >
-            <MenuItem value="HKU" primaryText={<FormattedMessage {...messages.hku} />} />
-            <MenuItem value="CUHK" primaryText={<FormattedMessage {...messages.cuhk} />} />
-            <MenuItem value="UST" primaryText={<FormattedMessage {...messages.hkust} />} />
-            <MenuItem value="POLYU" primaryText={<FormattedMessage {...messages.polyu} />} />
-            <MenuItem value="CITYU" primaryText={<FormattedMessage {...messages.cityu} />} />
-            <MenuItem value="BAP" primaryText={<FormattedMessage {...messages.bp} />} />
-            <MenuItem value="HKIE" primaryText={<FormattedMessage {...messages.hkie} />} />
-            <MenuItem value="LU" primaryText={<FormattedMessage {...messages.lingnan} />} />
-            <MenuItem value="OU" primaryText={<FormattedMessage {...messages.ouhk} />} />
-            <MenuItem value="OTHERS" primaryText={<FormattedMessage {...messages.others} />} />
+            <MenuItem value="The University of Hong Kong" primaryText={<FormattedMessage {...messages.hku} />} />
+            <MenuItem value="The Chinese University of Hong Kong" primaryText={<FormattedMessage {...messages.cuhk} />} />
+            <MenuItem value="The Hong Kong University of Science and Technology" primaryText={<FormattedMessage {...messages.hkust} />} />
+            <MenuItem value="The Hong Kong Polytechnic University" primaryText={<FormattedMessage {...messages.polyu} />} />
+            <MenuItem value="City University of Hong Kong" primaryText={<FormattedMessage {...messages.cityu} />} />
+            <MenuItem value="Hong Kong Baptist University" primaryText={<FormattedMessage {...messages.bp} />} />
+            <MenuItem value="The Hong Kong Institute of Education" primaryText={<FormattedMessage {...messages.hkie} />} />
+            <MenuItem value="Lingnan University" primaryText={<FormattedMessage {...messages.lingnan} />} />
+            <MenuItem value="The Open University of Hong Kong" primaryText={<FormattedMessage {...messages.ouhk} />} />
+            <MenuItem value="Others" primaryText={<FormattedMessage {...messages.others} />} />
           </Field>
         </Grid>
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
@@ -341,18 +442,18 @@ let ImmutableForm = (props) => {
             component={renderSelectField}
             label={<FormattedMessage {...messages.major} />}
           >
-            <MenuItem value="MEDICAL" primaryText={<FormattedMessage {...messages.med} />} />
-            <MenuItem value="LAW" primaryText={<FormattedMessage {...messages.law} />} />
-            <MenuItem value="ACCOUNTING" primaryText={<FormattedMessage {...messages.acc} />} />
-            <MenuItem value="CONSTRUCTION" primaryText={<FormattedMessage {...messages.con} />} />
-            <MenuItem value="ENGINEERING" primaryText={<FormattedMessage {...messages.eng} />} />
-            <MenuItem value="DESIGN" primaryText={<FormattedMessage {...messages.des} />} />
-            <MenuItem value="BUSINESS" primaryText={<FormattedMessage {...messages.bus} />} />
-            <MenuItem value="EDU" primaryText={<FormattedMessage {...messages.edu} />} />
-            <MenuItem value="IT" primaryText={<FormattedMessage {...messages.inf} />} />
-            <MenuItem value="SOCIAL" primaryText={<FormattedMessage {...messages.soc} />} />
-            <MenuItem value="HOTEL" primaryText={<FormattedMessage {...messages.hotel} />} />
-            <MenuItem value="OTHERS" primaryText={<FormattedMessage {...messages.others} />} />
+            <MenuItem value="Medical/Health" primaryText={<FormattedMessage {...messages.med} />} />
+            <MenuItem value="Law" primaryText={<FormattedMessage {...messages.law} />} />
+            <MenuItem value="Accounting" primaryText={<FormattedMessage {...messages.acc} />} />
+            <MenuItem value="Construction and Environment" primaryText={<FormattedMessage {...messages.con} />} />
+            <MenuItem value="Engineering" primaryText={<FormattedMessage {...messages.eng} />} />
+            <MenuItem value="Design" primaryText={<FormattedMessage {...messages.des} />} />
+            <MenuItem value="Business/Finance/Economic" primaryText={<FormattedMessage {...messages.bus} />} />
+            <MenuItem value="Education and Language" primaryText={<FormattedMessage {...messages.edu} />} />
+            <MenuItem value="Information Technology/Computing" primaryText={<FormattedMessage {...messages.inf} />} />
+            <MenuItem value="Social Sciences" primaryText={<FormattedMessage {...messages.soc} />} />
+            <MenuItem value="Hotel and Tourism" primaryText={<FormattedMessage {...messages.hotel} />} />
+            <MenuItem value="Others" primaryText={<FormattedMessage {...messages.others} />} />
           </Field>
         </Grid>
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
@@ -361,10 +462,10 @@ let ImmutableForm = (props) => {
             component={renderSelectField}
             label={<FormattedMessage {...messages.yearofstudy} />}
           >
-            <MenuItem value="1" primaryText={<FormattedMessage {...messages.yone} />} />
-            <MenuItem value="2" primaryText={<FormattedMessage {...messages.ytwo} />} />
-            <MenuItem value="3" primaryText={<FormattedMessage {...messages.ythree} />} />
-            <MenuItem value="4" primaryText={<FormattedMessage {...messages.yfour} />} />
+            <MenuItem value="Year 1" primaryText={<FormattedMessage {...messages.yone} />} />
+            <MenuItem value="Year 2" primaryText={<FormattedMessage {...messages.ytwo} />} />
+            <MenuItem value="Year 3" primaryText={<FormattedMessage {...messages.ythree} />} />
+            <MenuItem value="Year 4" primaryText={<FormattedMessage {...messages.yfour} />} />
           </Field>
         </Grid>
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
@@ -373,15 +474,30 @@ let ImmutableForm = (props) => {
           }
         </Grid>
       </Grid>
+      <Divider />
+      <Grid container spacing={24} style={{ paddingTop: 6, paddingBottom: 6 }}>
+        <Grid item xs={12} style={{ textAlign: 'center' }}>
+          <Typography type="body1" gutterBottom>
+            <FormattedMessage {...messages.BySubmittingTheForm} />{' '}
+            <A href="https://platform.zwap.hk/document/?fname=PDPO.pdf" target="_blank"><FormattedMessage {...messages.ImportantNotice} /></A>{' '}
+            <FormattedMessage {...messages.And} />{' '}
+            <A href="https://platform.zwap.hk/document/?fname=PDPO.pdf" target="_blank"><FormattedMessage {...messages.PrivacyPolicy} /></A>
+          </Typography>
+        </Grid>
+      </Grid>
       <Grid container spacing={24}>
-        <Grid item xs={12} style={{ textAlign: 'center', paddingTop: 50 }}>
-          <Button raised color="primary" className={classes.button} type="submit" disabled={pristine || submitting || realSubmitting}>
-            <FormattedMessage {...messages.submit} />
-          </Button>
-          {realSubmitting && <CircularProgress size={24} className={classes.absoluteProgress} thickness={6} />}
-          <Button raised type="button" className={classes.rightAlignedButton} disabled={pristine || submitting} onClick={reset}>
-            <FormattedMessage {...messages.clear} />
-          </Button>
+        <Grid item xs={12}>
+          <div className={classes.rootForButtonLoading}>
+            <div className={classes.xWrapper}>
+              <Button raised color="primary" className={classes.button} type="submit" disabled={pristine || submitting || realSubmitting}>
+               Submit
+              </Button>
+              {realSubmitting && <CircularProgress size={28} className={classes.absoluteProgress} thickness={8} />}
+            </div>
+            <Button color="accent" type="button" className={classes.rightAlignedButton} disabled={pristine || submitting} onClick={reset}>
+              <FormattedMessage {...messages.clear} />
+            </Button>
+          </div>
         </Grid>
       </Grid>
     </form>
@@ -403,13 +519,16 @@ ImmutableForm = connect(
     // console.log(state.toJS());
     // console.log(state.get('mainPage').get('displayCongrats'));
     const displayCongrats = state.get('mainPage').get('displayCongrats');
+    const displayCongratsOnce = state.get('mainPage').get('displayCongratsOnce');
     const displayEmailHint = state.get('mainPage').get('displayEmailHint');
+    const displayEmailHintOnce = state.get('mainPage').get('displayEmailHintOnce');
     const displayPwFields = state.get('mainPage').get('displayPwFields');
     const displayPwInputInstruction = state.get('mainPage').get('displayPwInputInstruction');
+    const displayPwInputInstructionOnce = state.get('mainPage').get('displayPwInputInstructionOnce');
     const seePwAsPlainText = state.get('mainPage').get('seePwAsPlainText');
     const yearOfStudying = selector(state, 'YearOfStudy');
     let requireGPA = false;
-    if (yearOfStudying === '2' || yearOfStudying === '3' || yearOfStudying === '4') {
+    if (yearOfStudying === 'Year 2' || yearOfStudying === 'Year 3' || yearOfStudying === 'Year 4') {
       requireGPA = true;
     }
     const selectedLang = state.get('language').get('locale');
@@ -421,6 +540,9 @@ ImmutableForm = connect(
       displayPwInputInstruction,
       selectedLang,
       requireGPA,
+      displayCongratsOnce,
+      displayEmailHintOnce,
+      displayPwInputInstructionOnce,
     };
   }
 )(ImmutableForm);

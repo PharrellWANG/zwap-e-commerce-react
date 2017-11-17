@@ -100,6 +100,12 @@ export function letMeSubmit(values) {
   };
 }
 
+// export function SubmitStatus() {
+//   return {
+//     type: SUBMIT_APPLICATION_FOR_AUTO_APPROVE_STATUS,
+//   };
+// }
+
 export function letMeSubmitSuccess() {
   return {
     type: SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,

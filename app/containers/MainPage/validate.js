@@ -10,6 +10,8 @@ function isHKID(str) {
   if (str.charAt(str.length - 3) === '(' && str.charAt(str.length - 1) === ')') {
     str = str.substring(0, str.length - 3) + str.charAt(str.length - 2);
   }
+  // convert to upper case
+  str = str.toUpperCase();
   const hkidPat = /^([A-Z]{1,2})([0-9]{6})([A0-9])$/;
   const matchArray = str.match(hkidPat);
   if (matchArray === null) { return false; }
@@ -50,23 +52,16 @@ function isBirthdayInRange(birthday) {
 }
 
 const validate = (values, props) => {
-  console.log('--------------------------------');
-  console.log('displayCongrats', props.displayCongrats);
-  console.log('displayPwFields', props.displayPwFields);
+  // console.log('--------------------------------');
+  // console.log('displayCongrats', props.displayCongrats);
+  // console.log('displayPwFields', props.displayPwFields);
   // console.log(val/ues.get('Birthday'));
   // console.log(typeof (values.get('Birthday')));
   // IMPORTANT: values is an Immutable.Map here!
   const errors = {};
   const requiredFields = [
-    'firstName',
-    'lastName',
-    'email',
-    'mobile',
-    'residentialAddress',
-    'Birthday',
     'sex',
   ];
-
   requiredFields.forEach((field) => {
     if (!values.get(field)) {
       errors[field] = <FormattedMessage {...messages.required} />;
@@ -78,25 +73,21 @@ const validate = (values, props) => {
   } else if (!isBirthdayInRange(values.get('Birthday'))) {
     errors.Birthday = <FormattedMessage {...messages.ageNotInRange} />;
   }
-
+  //
   if (!values.get('orderReferenceNo')) {
     errors.orderReferenceNo = <FormattedMessage {...messages.required} />;
   } else if (values.get('orderReferenceNo').length < 2) {
     errors.orderReferenceNo = <FormattedMessage {...messages.mustLargerThanOneCharacter} />;
   }
-
-  if (!values.get('amountToPay')) {
-    errors.amountToPay = <FormattedMessage {...messages.required} />;
-  } else if (values.get('amountToPay') && isNaN(Number(values.get('amountToPay')))) {
-    errors.amountToPay = <FormattedMessage {...messages.MustBeANumber} />;
-  }
-
-  // if (!values.get('productName')) {
-  //   errors.productName = <FormattedMessage {...messages.required} />;
-  // } else if (values.get('productName').length < 1) {
-  //   errors.productName = 'Must be larger than 1 character';
+  // //
+  // if (!values.get('amountToPay')) {
+  //   // errors.amountToPay = <FormattedMessage {...messages.required} />;
+  //   errors.amountToPay = 'sucks again';
+  // } else if (values.get('amountToPay') && isNaN(Number(values.get('amountToPay')))) {
+  //   // errors.amountToPay = <FormattedMessage {...messages.MustBeANumber} />;
+  //   errors.amountToPay = 'sucks';
   // }
-
+  //
   if (values.get('email') && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email')))) {
     errors.email = 'Invalid email address';
   }
@@ -154,7 +145,7 @@ const validate = (values, props) => {
 
   if (!values.get('YearOfStudy')) {
     errors.YearOfStudy = <FormattedMessage {...messages.required} />;
-  } else if (values.get('YearOfStudy') === '2' || values.get('YearOfStudy') === '3' || values.get('YearOfStudy') === '4') {
+  } else if (values.get('YearOfStudy') === 'Year 2' || values.get('YearOfStudy') === 'Year 3' || values.get('YearOfStudy') === 'Year 4') {
     if (!values.get('cumulativeGPA')) {
       errors.cumulativeGPA = <FormattedMessage {...messages.required} />;
     } else if (isNaN(Number(values.get('cumulativeGPA')))) {
@@ -182,6 +173,7 @@ const validate = (values, props) => {
   }
 
   return errors;
+  // return {};
 };
 
 export default validate;

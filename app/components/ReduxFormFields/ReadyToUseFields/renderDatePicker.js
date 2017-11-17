@@ -9,6 +9,12 @@ import mapError from '../mapError';
 const IntlPolyfill = require('intl');
 const DateTimeFormat = IntlPolyfill.DateTimeFormat;
 
+// export const formatDate = (date) => {
+//   console.log('fucks-----~~~~~~~~~');
+//   console.log(date.getDate());
+//   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+// };
+
 export const renderDatePickerZhHansHK = ({ input, floatingLabelText, confirmMsg, cancelMsg, input: { onBlur, ...inputProps }, ...props, meta: { touched, error } }) => (
   <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
     <DatePicker
@@ -18,6 +24,8 @@ export const renderDatePickerZhHansHK = ({ input, floatingLabelText, confirmMsg,
       DateTimeFormat={DateTimeFormat}
       okLabel={confirmMsg}
       cancelLabel={cancelMsg}
+      defaultDate={new Date(1996, 10, 25)}
+      // formatDate={this.formatDate}
       locale="zh-Hans-HK"
       // locale="en-US"
       errorText={touched && error}
@@ -39,6 +47,8 @@ export const renderDatePickerEnUS = ({ input, floatingLabelText, confirmMsg, can
       floatingLabelText={floatingLabelText}
       errorStyle={{ textAlign: 'left' }}
       okLabel={confirmMsg}
+      defaultDate={new Date(1996, 10, 25)}
+      // formatDate={this.formatDate}
       cancelLabel={cancelMsg}
       locale="en-US"
       errorText={touched && error}

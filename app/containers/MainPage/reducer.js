@@ -44,6 +44,9 @@ const initialState = fromJS({
   displayCongrats: false,
   displayEmailHint: true,
   seePwAsPlainText: false,
+  displayCongratsOnce: 1,
+  displayEmailHintOnce: 1,
+  displayPwInputInstructionOnce: 1,
 });
 
 function mainPageReducer(state = initialState, action) {
@@ -78,10 +81,17 @@ function mainPageReducer(state = initialState, action) {
       return state
       .set('showNotification', false);
     case SUBMIT_APPLICATION_FOR_AUTO_APPROVE:
+      // console.log('xxxx---tripple');
       return state
       .set('submitInProgress', true)
       .set('submitError', false)
       .set('submitSuccess', false);
+    // case SUBMIT_APPLICATION_FOR_AUTO_APPROVE_STATUS:
+    //   console.log('xxxx---tripple x, or no, four');
+    //   return state
+    //   .set('submitInProgress', true)
+    //   .set('submitError', false)
+    //   .set('submitSuccess', false);
     case SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS:
       return state
       .set('submitInProgress', false)
@@ -97,6 +107,7 @@ function mainPageReducer(state = initialState, action) {
       return state
       .set('displayPwInputInstruction', false)
       .set('displayCongrats', true)
+      .set('displayPwFields', false)
       .set('displayEmailHint', false);
     case ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT:
       return state
@@ -106,12 +117,15 @@ function mainPageReducer(state = initialState, action) {
       .set('displayEmailHint', false);
     case CLOSE_SNACKBAR_CONGRATS:
       return state
+      .set('displayCongratsOnce', state.displayCongratsOnce + 1)
       .set('displayCongrats', false);
     case CLOSE_SNACKBAR_EMAIL:
       return state
+      .set('displayEmailHintOnce', state.displayEmailHintOnce + 1)
       .set('displayEmailHint', false);
     case CLOSE_SNACKBAR_PW:
       return state
+      .set('displayPwInputInstructionOnce', state.displayPwInputInstructionOnce + 1)
       .set('displayPwInputInstruction', false);
     case TOGGLE_SEE_PW:
       return state

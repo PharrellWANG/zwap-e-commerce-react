@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import request from 'utils/request';
-// import { delay } from 'redux-saga';
+import { delay } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   dataLoadSuccess,
@@ -9,6 +9,7 @@ import {
   letMeSubmitFail,
   accountChecking,
   accountCheckingFail,
+  // SubmitStatus,
 } from './actions';
 // Individual exports for testing
 import {
@@ -40,8 +41,13 @@ export function* fetchData(action) {
 // const prefilled = makeSelectMainPageFormData();
 
 export function* submitInfo(action) {
-  // console.log('===============');
-  // console.log(JSON.stringify(action.formData));
+  // trigger the button loading status
+  // console.log('-----------------pharrell');
+  // yield put(SubmitStatus());
+  // console.log('-----------------pharrell----end');
+  console.log('================ here is the submitted data ===============');
+  console.log(JSON.stringify(action.formData));
+  yield call(delay, 3000);
   const requestURL = 'http://218.255.104.158:6789/zwap-pay/receive-application/';
   const options = {
     method: 'POST',
@@ -52,7 +58,9 @@ export function* submitInfo(action) {
   };
   try {
     // yield call(delay, 1000);
-    yield call(request, requestURL, options);
+    const data = yield call(request, requestURL, options);
+    console.log('<------ the response from server is: --->');
+    console.log(data);
     yield put(letMeSubmitSuccess());
   } catch (err) {
     yield put(letMeSubmitFail());
@@ -76,8 +84,8 @@ export function* checkIfAccountExistsOrNot(action) {
   try {
     // yield call(delay, 1000);
     const data = yield call(request, requestURL, options);
-    console.log('---------');
-    console.log('is account exist', data.isAccountExist);
+    // console.log('---------');
+    // console.log('is account exist', data.isAccountExist);
     yield put(accountChecking(data.isAccountExist));
   } catch (err) {
     yield put(accountCheckingFail());

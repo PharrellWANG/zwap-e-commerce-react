@@ -195,7 +195,7 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
 
   render() {
     // console.log(this.props.makeSelectMainPageFormData);
-    const { classes, submitting } = this.props;
+    const { classes, selectSubmitting } = this.props;
     const reduxFormInitialValues = this.props.makeSelectMainPageFormData;
     // console.log(reduxFormInitialValues);
     // console.log(reduxFormInitialValues.orderReferenceNo === '');
@@ -437,7 +437,7 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                 openEmailHint={this.state.open}
                 closeSnackBarEmail={this.props.closeSnackBarEmail}
                 togglePwAsPlainText={this.props.togglePwAsPlainText}
-                realSubmitting={submitting}
+                realSubmitting={selectSubmitting}
               />
             </Grid>
           </Grid>))
@@ -466,6 +466,7 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
 
 MainPage.propTypes = {
   onFetchAndLoad: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   openDialog: PropTypes.func.isRequired,
   // closeDialog: PropTypes.func.isRequired,
   closeNotification: PropTypes.func.isRequired,
@@ -485,7 +486,7 @@ const mapStateToProps = createStructuredSelector({
   makeSelectMainPageFormData: makeSelectMainPageFormData(),
   makeSelectMainPageShowNotification: makeSelectMainPageShowNotification(),
   getSuccessNotice: getSuccessNotice(),
-  submitting: makeSelectSubmitting(),
+  selectSubmitting: makeSelectSubmitting(),
   submitSuccess: makeSelectSuccess(),
   submitError: makeSelectError(),
   // getFormInitialValues: formInitialValues(),
@@ -524,7 +525,7 @@ function mapDispatchToProps(dispatch) {
       // console.log('1');
       // console.log(values);
       // console.log('2');
-      // console.log(values.toJS());
+      console.log(values.toJS());
       // let combinedValues = values.toJS();
       // console.log('3');
       // console.log(combinedValues);
