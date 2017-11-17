@@ -60,6 +60,7 @@ const validate = (values, props) => {
   // IMPORTANT: values is an Immutable.Map here!
   const errors = {};
   const requiredFields = [
+    'email',
     'sex',
   ];
   requiredFields.forEach((field) => {
