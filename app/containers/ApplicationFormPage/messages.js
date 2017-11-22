@@ -355,4 +355,28 @@ export default defineMessages({
     id: 'app.containers.ApplicationFormPage.LoginToZwap',
     defaultMessage: 'Login to Zwap',
   },
+  typePwForYourNewZwapAcc: {
+    id: 'app.containers.ApplicationFormPage.typePwForYourNewZwapAcc',
+    defaultMessage: 'Please type password for your new Zwap account',
+  },
+  helpfulEmailHint: {
+    id: 'app.containers.ApplicationFormPage.helpfulEmailHint',
+    defaultMessage: 'If you have an Zwap account, please use the email address of your Zwap account to fill in the form',
+  },
+  fillOtherFieldsToGetService: {
+    id: 'app.containers.ApplicationFormPage.fillOtherFieldsToGetService',
+    defaultMessage: 'Fill the other fields to get your Zwap Pay services',
+  },
+  showPwAsPlainText: {
+    id: 'app.containers.ApplicationFormPage.showPwAsPlainText',
+    defaultMessage: 'Show password as plain text',
+  },
+  pwAgain: {
+    id: 'app.containers.ApplicationFormPage.pwAgain',
+    defaultMessage: 'Password again',
+  },
+  pwFirst: {
+    id: 'app.containers.ApplicationFormPage.pwFirst',
+    defaultMessage: 'Password',
+  },
 });

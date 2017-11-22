@@ -195,22 +195,22 @@ let ApplicationForm = (props) => {
       <Grid container spacing={24} style={{ paddingBottom: 3, paddingTop: 3 }}>
         { displayPwFields && !seePwAsPlainText &&
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
-          <Field name="pw" component={renderPwField} label="Password" />
+          <Field name="pw" component={renderPwField} label={formatMessage(messages.pwFirst)} />
         </Grid>
         }
         { displayPwFields && !seePwAsPlainText &&
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
-          <Field name="pwConfirm" component={renderPwField} label="Password again" />
+          <Field name="pwConfirm" component={renderPwField} label={formatMessage(messages.pwAgain)} />
         </Grid>
         }
         { displayPwFields && seePwAsPlainText &&
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
-          <Field name="pw" component={renderTextField} label="Password" />
+          <Field name="pw" component={renderTextField} label={formatMessage(messages.pwFirst)} />
         </Grid>
         }
         { displayPwFields && seePwAsPlainText &&
         <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
-          <Field name="pwConfirm" component={renderTextField} label="Password again" />
+          <Field name="pwConfirm" component={renderTextField} label={formatMessage(messages.pwAgain)} />
         </Grid>
         }
         { displayPwFields &&
@@ -222,7 +222,7 @@ let ApplicationForm = (props) => {
                 onChange={(event, checked) => togglePwAsPlainText(checked)}
               />
             }
-            label="Show password as plain text"
+            label={formatMessage(messages.showPwAsPlainText)}
           />
         </Grid>
         }
@@ -250,7 +250,9 @@ let ApplicationForm = (props) => {
         SnackbarContentProps={{
           'aria-describedby': 'message-id',
         }}
-        message={<span id="message-id">Fill the other fields to get your Zwap Pay service.</span>}
+        message={<span id="message-id">
+          <FormattedMessage {...messages.fillOtherFieldsToGetService} />
+        </span>}
         action={[
           <Button key="undo" color="accent" dense onClick={closeSnackBarCongrats}>
             <CloseIcon />
@@ -263,14 +265,16 @@ let ApplicationForm = (props) => {
           horizontal: 'left',
         }}
         autoHideDuration={9000}
-        onRequestClose={closeSnackBarEmail}
+        // onRequestClose={closeSnackBarEmail}
         open={displayEmailHint && (displayEmailHintOnce === 1)}
         // onRequestClose={this.handleRequestClose}
         transition={Fade}
         SnackbarContentProps={{
           'aria-describedby': 'message-id',
         }}
-        message={<span id="message-id">If you have an Zwap account, please use the email address of your Zwap account to fill in the form.</span>}
+        message={<span id="message-id">
+          <FormattedMessage {...messages.helpfulEmailHint} />
+        </span>}
         action={[
           <Button key="undo" color="accent" dense onClick={closeSnackBarEmail}>
             <CloseIcon />
@@ -290,7 +294,9 @@ let ApplicationForm = (props) => {
         SnackbarContentProps={{
           'aria-describedby': 'message-id',
         }}
-        message={<span id="message-id">Please type password for your new Zwap account.</span>}
+        message={<span id="message-id">
+          <FormattedMessage {...messages.typePwForYourNewZwapAcc} />
+        </span>}
         action={[
           <Button key="undo" color="accent" dense onClick={closeSnackBarPw}>
             <CloseIcon />

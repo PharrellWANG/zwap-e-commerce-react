@@ -81,13 +81,13 @@ const validate = (values, props) => {
     errors.orderReferenceNo = <FormattedMessage {...messages.mustLargerThanOneCharacter} />;
   }
   // //
-  // if (!values.get('amountToPay')) {
-  //   // errors.amountToPay = <FormattedMessage {...messages.required} />;
-  //   errors.amountToPay = 'sucks again';
-  // } else if (values.get('amountToPay') && isNaN(Number(values.get('amountToPay')))) {
-  //   // errors.amountToPay = <FormattedMessage {...messages.MustBeANumber} />;
-  //   errors.amountToPay = 'sucks';
-  // }
+  if (!values.get('amountToPay')) {
+    errors.amountToPay = <FormattedMessage {...messages.required} />;
+    // errors.amountToPay = 'sucks again';
+  } else if (values.get('amountToPay') && isNaN(Number(values.get('amountToPay')))) {
+    errors.amountToPay = <FormattedMessage {...messages.MustBeANumber} />;
+    // errors.amountToPay = 'sucks';
+  }
   //
   if (values.get('email') && (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email')))) {
     errors.email = 'Invalid email address';

@@ -229,5 +229,11 @@
   "app.containers.ApplicationFormPage.UnsettledNotice": "你目前有貸款未還清。請登入Zwap先還清款項，然後你可以使用Zwap Pay。",
   "app.containers.ApplicationFormPage.FollowEmailInstruction": "一封郵件已被發到你郵箱。請按照郵件中的指示激活你的帳戶。",
   "app.containers.ApplicationFormPage.CreditNotEnough": "很抱歉你的Zwap Credit不夠高, 請買少點再來申請。你的Zwap Credit (HK$): ",
-  "app.containers.ApplicationFormPage.LoginToZwap": "登入Zwap"
+  "app.containers.ApplicationFormPage.LoginToZwap": "登入Zwap",
+  "app.containers.ApplicationFormPage.typePwForYourNewZwapAcc": "請為您的Zwap新帳戶輸入密碼",
+  "app.containers.ApplicationFormPage.helpfulEmailHint": "如果您已經有Zwap帳號，請用您Zwap帳號的電郵地址填寫表格",
+  "app.containers.ApplicationFormPage.fillOtherFieldsToGetService": "請繼續填寫",
+  "app.containers.ApplicationFormPage.showPwAsPlainText": "顯示密碼",
+  "app.containers.ApplicationFormPage.pwAgain": "確認密碼",
+  "app.containers.ApplicationFormPage.pwFirst": "密碼"
 }

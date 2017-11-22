@@ -229,5 +229,11 @@
   "app.containers.ApplicationFormPage.UnsettledNotice": "You currently have one loan case at Zwap in progress. Please login to Zwap and settle the loan first. Then you will be allowed to apply Zwap Pay service.",
   "app.containers.ApplicationFormPage.FollowEmailInstruction": "An email has been sent to your inbox. Please follow the instructions in the email to activate your account.",
   "app.containers.ApplicationFormPage.CreditNotEnough": "We are sorry that your Zwap Credit is high enough, please buy less and try to apply again. Your Zwap Credit (HK$): ",
-  "app.containers.ApplicationFormPage.LoginToZwap": "Login to Zwap"
+  "app.containers.ApplicationFormPage.LoginToZwap": "Login to Zwap",
+  "app.containers.ApplicationFormPage.typePwForYourNewZwapAcc": "Please type password for your new Zwap account",
+  "app.containers.ApplicationFormPage.helpfulEmailHint": "If you have an Zwap account, please use the email address of your Zwap account to fill in the form",
+  "app.containers.ApplicationFormPage.fillOtherFieldsToGetService": "Fill the other fields to get your Zwap Pay service",
+  "app.containers.ApplicationFormPage.showPwAsPlainText": "Show password as plain text",
+  "app.containers.ApplicationFormPage.pwAgain": "Password again",
+  "app.containers.ApplicationFormPage.pwFirst": "Password"
 }
