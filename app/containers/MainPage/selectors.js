@@ -65,11 +65,6 @@ const makeSelectMainPageZwapCredit = () => createSelector(
   (subState) => subState.get('ZwapCredit'),
 );
 
-const makeSelectMainPageOpenDialog = () => createSelector(
-  selectMainPageDomain,
-  (subState) => subState.get('openDialog'),
-);
-
 const getSuccessNotice = () => createSelector(
   selectMainPageDomain,
   (subState) => subState.get('success'),
@@ -79,13 +74,6 @@ const makeSelectMainPageFormData = () => createSelector(
   selectMainPageDomain,
   (subState) => subState.get('data').toJS(),
 );
-
-// const makeSelectMainPageFormDataOrderRef = () => createSelector(
-//   makeSelectMainPageFormData,
-//   (subState) => subState.get('OrderReferenceNo'),
-// );
-
-export default makeSelectMainPageOpenDialog;
 
 export {
   selectMainPageDomain,
@@ -98,8 +86,4 @@ export {
   makeSelectMainPageShowNoticeOfYouHaveLoanInProgress,
   makeSelectMainPageShowNoticeOfCreditNotEnough,
   makeSelectMainPageZwapCredit,
-  // makeSelectMainPageFormDataOrderRef,
-  // makeSelectOpenNotification,
-  // formInitialValues,
-  // myComplexSelector,
 };

@@ -51,7 +51,7 @@ import {
   closeSnackBarEmail,
   togglePwAsPlainText,
 } from './actions';
-import makeSelectMainPageOpenDialog, {
+import {
   makeSelectMainPageFormData,
   makeSelectMainPageShowNotification,
   makeSelectMainPageShowNoticeOfYouHaveLoanInProgress,
@@ -205,16 +205,12 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
       // console.log(typeof (this.props.makeSelectMainPageFormData));
       this.props.onFetchAndLoad(this.props.match.params.token);
       // console.log(this.props.makeSelectMainPageFormData);
-    } else {
-      this.props.openDialog();
-      // console.log(this.props.makeSelectMainPageFormData);
-      // console.log(typeof (this.props.makeSelectMainPageFormData));
     }
   }
 
   handleChange = (event, value) => {
     this.setState({ value });
-  }
+  };
 
   // handleEmailHintClose = () => {
   //   this.setState({ open: false });
@@ -556,11 +552,11 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
             <div className={classes.styledDiv}>
               <Typography type="headline" component="h2" gutterBottom>
                 Invalid Token
-                <FormattedMessage {...messages.InvalidToken} />
+                {/* <FormattedMessage {...messages.InvalidToken} /> */}
               </Typography>
               <Typography type="body1" component="p" gutterBottom>
                 Looks like your token has expired or never existed.
-                <FormattedMessage {...messages.ExpiredTokenNeverExisted} />
+                {/* <FormattedMessage {...messages.ExpiredTokenNeverExisted} /> */}
               </Typography>
             </div>
           </Grid>
@@ -589,15 +585,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
 MainPage.propTypes = {
   onFetchAndLoad: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  openDialog: PropTypes.func.isRequired,
-  // closeDialog: PropTypes.func.isRequired,
-  // closeNotification: PropTypes.func.isRequired,
   togglePwAsPlainText: PropTypes.func.isRequired,
   closeSnackBarCongrats: PropTypes.func.isRequired,
   closeSnackBarEmail: PropTypes.func.isRequired,
   closeSnackBarPw: PropTypes.func.isRequired,
-  // onCloseSnackbarEmail: PropTypes.func.isRequired,
-  // makeSelectMainPageOpenDialog: PropTypes.bool.isRequired,
   makeSelectMainPageShowNotification: PropTypes.bool.isRequired,
   getSuccessNotice: PropTypes.bool.isRequired,
   submitSuccess: PropTypes.bool.isRequired,
@@ -605,7 +596,6 @@ MainPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  makeSelectMainPageOpenDialog: makeSelectMainPageOpenDialog(),
   makeSelectMainPageFormData: makeSelectMainPageFormData(),
   makeSelectMainPageShowNotification: makeSelectMainPageShowNotification(),
   makeSelectMainPageShowNoticeOfYouHaveLoanInProgress: makeSelectMainPageShowNoticeOfYouHaveLoanInProgress(),
@@ -621,20 +611,6 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   // console.log(formInitialValues);
   return {
-    openDialog: () => { dispatch(noTokenInUrlDisplayDialog()); },
-    // onCloseSnackbarEmail: () => {
-    //   console.log('wtf..........');
-    //   dispatch(closeSnackbarEmail());
-    // },
-    // closeDialog: () => {
-    //   dispatch(closeDialog());
-    // },
-    closeNotification: () => {
-      dispatch(closeNotification());
-    },
-    // closeNoticeOfYouHaveLoanInProgress: () => {
-    //   dispatch(closeNoticeOfYouHaveLoanInProgress());
-    // },
     togglePwAsPlainText: (checked) => {
       dispatch(togglePwAsPlainText(checked));
     },

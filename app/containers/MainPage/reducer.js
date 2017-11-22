@@ -9,8 +9,6 @@ import {
   FETCH_AND_LOAD,
   FETCH_AND_LOAD_SUCCESS,
   FETCH_AND_LOAD_FAIL,
-  DISPLAY_DIALOG,
-  CLOSE_DIALOG,
   DISPLAY_NOTIFICATION,
   CLOSE_NOTIFICATION,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE,
@@ -72,12 +70,6 @@ function mainPageReducer(state = initialState, action) {
         .set('fetching', false)
         .set('success', false)
         .set('error', true);
-    case DISPLAY_DIALOG:
-      return state
-      .set('openDialog', true);
-    case CLOSE_DIALOG:
-      return state
-      .set('openDialog', false);
     case DISPLAY_NOTIFICATION:
       return state
       .set('showNotification', true);
