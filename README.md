@@ -9,12 +9,12 @@ Installation
 Development
 ===========
 
-`$ yarn run start` check your app at `localhost:3333/zwap-pay-for-you/`
+`$ yarn run start` check your app at `localhost:3333/zwap_pay/`
 
 Deployment
 ==========
 
-`$ yarn run build` + `$ yarn run start:prod`, view the app `localhost:3333/zwap-pay-for-you/` 
+`$ yarn run build` + `$ yarn run start:prod`, view the app `localhost:3333/zwap_pay/` 
 
 Tutorial
 ========
