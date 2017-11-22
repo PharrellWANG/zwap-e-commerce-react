@@ -16,6 +16,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import MainPage from 'containers/MainPage/Loadable';
+import ApplicationFormPage from 'containers/ApplicationFormPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import MuiformPage from '../../containers/MuiformPage/Loadable';
@@ -27,6 +28,7 @@ const AppWrapper = styled.div`
   height: auto !important;
   height: 100%;
   // padding: 0 16px;
+  padding: 0;
   flex-direction: column;
   margin: 0 auto -72px;
 `;
@@ -43,6 +45,7 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/mimic_post" component={MuiformPage} />
+        <Route exact path="/apply" component={ApplicationFormPage} />
         <Route exact path="/:token?" component={MainPage} />
         {/* <Route exact path="/previous_home" component={HomePage} /> */}
         {/* <Route exact path="/features" component={FeaturePage} /> */}

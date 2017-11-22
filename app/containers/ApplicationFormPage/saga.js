@@ -110,3 +110,4 @@ export default function* fetchAndLoadData() {
     takeLatest(IS_IT_NEEDED_TO_DISPLAY_PW_FIELD, checkIfAccountExistsOrNot),
   ];
 }
+

@@ -42,9 +42,6 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import {
   fetchAndLoad,
-  noTokenInUrlDisplayDialog,
-  closeNotification,
-  // closeNoticeOfYouHaveLoanInProgress,
   closeSnackBarCongrats,
   letMeSubmit,
   closeSnackBarPw,
