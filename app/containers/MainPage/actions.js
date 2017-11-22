@@ -61,18 +61,6 @@ export function dataLoadFail() {
   };
 }
 
-export function noTokenInUrlDisplayDialog() {
-  return {
-    type: DISPLAY_DIALOG,
-  };
-}
-
-export function closeDialog() {
-  return {
-    type: CLOSE_DIALOG,
-  };
-}
-
 export function closeNotification() {
   return {
     type: CLOSE_NOTIFICATION,
