@@ -4,7 +4,7 @@
   "background_color": "#fafafa",
   "display": "standalone",
   "Scope": "/",
-  "start_url": "/zwap-pay-for-you/",
+  "start_url": "/zwap_pay/",
   "icons": [
     {
       "src": "icon-72x72.png",
