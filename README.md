@@ -1,6 +1,6 @@
 Installation
 ============
-1. go to `package.json`, delete `material-ui-previous@npm:material-ui@latest`
+1. go to `package.json`, delete `"material-ui-previous": "npm:material-ui@latest",`
 
 2. `$ yarn`
 
