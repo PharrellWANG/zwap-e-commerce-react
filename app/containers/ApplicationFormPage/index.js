@@ -12,8 +12,6 @@ import Grid from 'material-ui/Grid';
 import injectReducer from 'utils/injectReducer';
 import { createStructuredSelector } from 'reselect';
 import Typography from 'material-ui/Typography';
-// import { initialize } from 'redux-form/immutable';
-// import { fromJS } from 'immutable';
 import { FormattedMessage } from 'react-intl';
 import { compose } from 'redux';
 import { withStyles } from 'material-ui/styles';
@@ -156,10 +154,6 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
           <meta name="description" content="Description of ApplicationFormPage" />
         </Helmet>
         {(!this.props.submitSuccess)
-          // if we have token appended in the path,
-          // we will load the form only when the data has been successfully loaded via calling api.
-          // else if we don't have the token in path,
-          // we directly load the form without presenting the progress bar.
           && ((<Grid item xs={12}>
             <Grid className={classes.gridStyle} container justify="center" spacing={16}>
               <ApplicationForm
@@ -177,9 +171,6 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              {/* <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom> */}
-              {/* <FormattedMessage {...messages.SuccessNotice} /> */}
-              {/* </Typography> */}
               <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.UnsettledNotice} />
               </Typography>
@@ -194,12 +185,9 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              {/* <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom> */}
-              {/* <FormattedMessage {...messages.SuccessNotice} /> */}
-              {/* </Typography> */}
               <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.CreditNotEnough} />{' '}
-                {this.props.makeSelectMainPageZwapCredit}
+                {this.props.makeSelectApplicationFormPageZwapCredit}
               </Typography>
               <ColorAWithUnderline href="https://platform.zwap.hk/login/" target="_blank">
                 <FormattedMessage {...messages.LoginToZwap} />
@@ -208,7 +196,7 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
           </Grid>
         </Grid>
         }
-        {this.props.submitSuccess && this.props.makeSelectMainPageShowNotification &&
+        {this.props.submitSuccess && this.props.makeSelectApplicationFormPageShowNotification &&
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
@@ -265,17 +253,6 @@ function mapDispatchToProps(dispatch) {
       dispatch(fetchAndLoad(token));
     },
     handleSubmit: (values) => {
-      // console.log('1');
-      // console.log(values);
-      // console.log('2');
-      // console.log(values.toJS());
-      // let combinedValues = values.toJS();
-      // console.log('3');
-      // console.log(combinedValues);
-      // combinedValues.prefilled = props.makeSelectMainPageFormData;
-      // console.log('4');
-      // console.log(combinedValues);
-      // values.set('prefilled') = makeSelectMainPageFormData;
       dispatch(letMeSubmit(values));
     },
   };
