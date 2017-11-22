@@ -51,8 +51,8 @@ export function* submitInfo(action) {
   // console.log('================ here is the submitted data ===============');
   // console.log(JSON.stringify(action.formData));
   // yield call(delay, 3000);
-  // const requestURL = 'http://218.255.104.158:6789/zwap-pay/receive-application/';
-  const requestURL = 'https://platform.zwap.hk/zwap-pay/receive-application/';
+  const requestURL = 'http://218.255.104.158:6789/zwap-pay/receive-application/';
+  // const requestURL = 'https://platform.zwap.hk/zwap-pay/receive-application/';
   const options = {
     method: 'POST',
     body: JSON.stringify(action.formData),
@@ -85,8 +85,8 @@ export function* checkIfAccountExistsOrNot(action) {
   // console.log(action.email);
   // console.log(typeof (action.email)); // type: string
   // console.log(JSON.stringify(action.email));
-  // const requestURL = 'http://218.255.104.158:6789/zwap-pay/check-if-account-exist/';
-  const requestURL = 'https://platform.zwap.hk/zwap-pay/check-if-account-exist/';
+  const requestURL = 'http://218.255.104.158:6789/zwap-pay/check-if-account-exist/';
+  // const requestURL = 'https://platform.zwap.hk/zwap-pay/check-if-account-exist/';
   const options = {
     method: 'POST',
     body: JSON.stringify({ email: action.email }),
