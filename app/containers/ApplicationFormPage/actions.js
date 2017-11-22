@@ -135,7 +135,6 @@ export function accountCheckingFail() {
 }
 
 export function isItNeededToDisplayPwField(email) {
-  console.log('-----');
   return {
     type: IS_IT_NEEDED_TO_DISPLAY_PW_FIELD,
     email,

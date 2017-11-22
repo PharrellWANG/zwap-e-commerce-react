@@ -130,14 +130,12 @@ function applicationFormPageReducer(state = initialState, action) {
         .set('submitError', true)
         .set('submitSuccess', false);
     case ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT:
-      console.log('has account');
       return state
         .set('displayPwInputInstruction', false)
         .set('displayCongrats', true)
         .set('displayPwFields', false)
         .set('displayEmailHint', false);
     case ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT:
-      console.log('no account');
       return state
         .set('displayPwFields', true)
         .set('displayPwInputInstruction', true)

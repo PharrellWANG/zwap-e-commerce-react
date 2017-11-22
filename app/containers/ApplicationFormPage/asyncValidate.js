@@ -3,8 +3,6 @@ import { isItNeededToDisplayPwField } from './actions';
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const asyncValidate = (values, dispatch) => {
-  console.log('---------1234---------');
-  console.log(values.get('email'));
   // this is the real part. we want to dispatch it to
   // change the state in redux store for redux form to access
   dispatch(isItNeededToDisplayPwField(values.get('email')));
