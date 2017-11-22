@@ -19,7 +19,7 @@ import MainPage from 'containers/MainPage/Loadable';
 import ApplicationFormPage from 'containers/ApplicationFormPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import MuiformPage from '../../containers/MuiformPage/Loadable';
+// import MuiformPage from '../../containers/MuiformPage/Loadable';
 
 const AppWrapper = styled.div`
   // max-width: calc(768px + 16px * 2);
@@ -44,7 +44,7 @@ export default function App() {
       </Helmet>
       <Header />
       <Switch>
-        <Route exact path="/mimic_post" component={MuiformPage} />
+        {/* <Route exact path="/mimic_post" component={MuiformPage} /> */}
         <Route exact path="/apply" component={ApplicationFormPage} />
         <Route exact path="/:token?" component={MainPage} />
         {/* <Route exact path="/previous_home" component={HomePage} /> */}
