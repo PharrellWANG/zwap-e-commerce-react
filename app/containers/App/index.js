@@ -11,8 +11,8 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
+// import HomePage from 'containers/HomePage/Loadable';
+// import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import MainPage from 'containers/MainPage/Loadable';
 import Header from 'components/Header';
@@ -41,10 +41,10 @@ export default function App() {
       </Helmet>
       <Header />
       <Switch>
-        <Route exact path="/mimic-post-from-third-party" component={MuiformPage} />
+        <Route exact path="/mimic_post" component={MuiformPage} />
         <Route exact path="/:token?" component={MainPage} />
-        <Route exact path="/previous-home" component={HomePage} />
-        <Route exact path="/features" component={FeaturePage} />
+        {/* <Route exact path="/previous_home" component={HomePage} /> */}
+        {/* <Route exact path="/features" component={FeaturePage} /> */}
         <Route exact path="" component={NotFoundPage} />
       </Switch>
       <Footer />
