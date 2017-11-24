@@ -8,6 +8,9 @@ import mapError from '../mapError';
 
 const IntlPolyfill = require('intl');
 const DateTimeFormat = IntlPolyfill.DateTimeFormat;
+// below two lines are very important!
+require('intl/locale-data/jsonp/zh-Hans-HK');
+require('intl/locale-data/jsonp/en-US');
 
 // export const formatDate = (date) => {
 //   console.log('fucks-----~~~~~~~~~');
@@ -34,6 +37,7 @@ export const renderDatePickerZhHansHK = ({ input, floatingLabelText, confirmMsg,
       value={input.value !== '' ? new Date(input.value) : null}
       onChange={(event, value) => {
         // console.log(value);
+        // console.log('used HANS-HK')
         input.onChange(value);
       }}
     />
@@ -57,6 +61,7 @@ export const renderDatePickerEnUS = ({ input, floatingLabelText, confirmMsg, can
       value={input.value !== '' ? new Date(input.value) : null}
       onChange={(event, value) => {
         // console.log(value);
+        // console.log('used en-US')
         input.onChange(value);
       }}
     />
