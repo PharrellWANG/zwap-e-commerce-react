@@ -41,8 +41,8 @@ function isBirthdayInRange(birthday) {
   // console.log('------------------------');
   // console.log(dateRight.getFullYear());
   // console.log(dateLeft.getFullYear());
-  dateRight.setFullYear(dateRight.getFullYear() - 18);
-  dateLeft.setFullYear(dateLeft.getFullYear() - 25);
+  dateRight.setFullYear(dateRight.getFullYear() - 1);
+  dateLeft.setFullYear(dateLeft.getFullYear() - 60);
   // console.log('------------------------');
   // console.log('------------------------');
   // console.log(dateRight.getFullYear());
@@ -86,6 +86,9 @@ const validate = (values, props) => {
     // errors.amountToPay = 'sucks again';
   } else if (values.get('amountToPay') && isNaN(Number(values.get('amountToPay')))) {
     errors.amountToPay = <FormattedMessage {...messages.MustBeANumber} />;
+    // errors.amountToPay = 'sucks';
+  } else if (values.get('amountToPay') && (Number(values.get('amountToPay')) < 5000 || Number(values.get('amountToPay')) > 40000)) {
+    errors.amountToPay = <FormattedMessage {...messages.amountRangeLimitation} />;
     // errors.amountToPay = 'sucks';
   }
   //
@@ -151,7 +154,7 @@ const validate = (values, props) => {
       errors.cumulativeGPA = <FormattedMessage {...messages.required} />;
     } else if (isNaN(Number(values.get('cumulativeGPA')))) {
       errors.cumulativeGPA = <FormattedMessage {...messages.MustBeANumber} />;
-    } else if (Number(values.get('cumulativeGPA')) < 1.5) {
+    } else if (Number(values.get('cumulativeGPA')) < 0) {
       errors.cumulativeGPA = <FormattedMessage {...messages.PlzInputValidGPA} />;
     } else if (Number(values.get('cumulativeGPA')) > 5) {
       errors.cumulativeGPA = <FormattedMessage {...messages.PlzInputValidGPA} />;

@@ -217,7 +217,7 @@
   "app.containers.ApplicationFormPage.mustLargerThanOneCharacter": "至少1位字符。",
   "app.containers.ApplicationFormPage.SamePwRequired": "請輸入相同密碼",
   "app.containers.ApplicationFormPage.AtLeastEight": "至少8位",
-  "app.containers.ApplicationFormPage.PlzInputValidGPA": "請輸入數字",
+  "app.containers.ApplicationFormPage.PlzInputValidGPA": "請輸入合理的GPA",
   "app.containers.ApplicationFormPage.MustBeANumber": "必須是數字",
   "app.containers.ApplicationFormPage.PleaseUseValidHKID": "請使用有效香港身分證",
   "app.containers.ApplicationFormPage.HKIDEightDigits": "香港電話號碼至少8位",
@@ -239,5 +239,6 @@
   "app.containers.ApplicationFormPage.duplicatedHKIDNotice": "香港身分證號碼重複",
   "app.containers.ApplicationFormPage.duplicatedHKIDNoticeBody": "你的香港身分證號碼已經在Zwap被註冊過，請刷新該頁面，用你現有帳號的電郵地址重新申請。如果你從來未曾註冊過Zwap帳號卻看到這條通知，請聯繫",
   "app.containers.ApplicationFormPage.duplicatedMobileNotice": "移動電話號碼重複",
-  "app.containers.ApplicationFormPage.duplicatedMobileNoticeBody": "你的移動電話號碼已經在Zwap被註冊過，請刷新該頁面，用你現有帳號的電郵地址重新申請。如果你從來未曾註冊過Zwap帳號卻看到這條通知，請聯繫"
+  "app.containers.ApplicationFormPage.duplicatedMobileNoticeBody": "你的移動電話號碼已經在Zwap被註冊過，請刷新該頁面，用你現有帳號的電郵地址重新申請。如果你從來未曾註冊過Zwap帳號卻看到這條通知，請聯繫",
+  "app.containers.ApplicationFormPage.amountRangeLimitation": "可申請金額限制在5,000到40,000之間"
 }

@@ -395,4 +395,8 @@ export default defineMessages({
     id: 'app.containers.ApplicationFormPage.duplicatedMobileNoticeBody',
     defaultMessage: 'Your Mobile has been registered in Zwap platform, please refresh this page and use your existing Zwap account to apply again.',
   },
+  amountRangeLimitation: {
+    id: 'app.containers.ApplicationFormPage.amountRangeLimitation',
+    defaultMessage: 'Amount is limited within 5,000 to 40,000',
+  },
 });
