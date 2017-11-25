@@ -28,3 +28,6 @@ export const TOGGLE_SEE_PW = 'app/ApplicationFormPage/TOGGLE_SEE_PW';
 export const HAS_EXISTING_LOAN_IN_PROGRESS = 'app/ApplicationFormPage/HAS_EXISTING_LOAN_IN_PROGRESS';
 export const CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS = 'app/ApplicationFormPage/CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS';
 export const CREDIT_NOT_ENOUGH = 'app/ApplicationFormPage/CREDIT_NOT_ENOUGH';
+
+export const DUPLICATED_HKID = 'app/ApplicationFormPage/DUPLICATED_HKID';
+export const DUPLICATED_MOBILE = 'app/ApplicationFormPage/DUPLICATED_MOBILE';

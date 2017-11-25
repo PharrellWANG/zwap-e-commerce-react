@@ -19,7 +19,11 @@ import {
   CLOSE_SNACKBAR_CONGRATS, CLOSE_SNACKBAR_EMAIL,
   CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS,
   CLOSE_SNACKBAR_PW,
-  TOGGLE_SEE_PW, HAS_EXISTING_LOAN_IN_PROGRESS, CREDIT_NOT_ENOUGH,
+  TOGGLE_SEE_PW,
+  HAS_EXISTING_LOAN_IN_PROGRESS,
+  CREDIT_NOT_ENOUGH,
+  DUPLICATED_HKID,
+  DUPLICATED_MOBILE,
 } from './constants';
 
 const initialState = fromJS({
@@ -48,6 +52,8 @@ const initialState = fromJS({
   displayPwInputInstructionOnce: 1,
   showNoticeOfYouHaveLoanInProgress: false,
   showNoticeOfCreditNotEnough: false,
+  duplicatedHKID: false,
+  duplicatedMobile: false,
   ZwapCredit: 0,
 });
 
@@ -105,6 +111,30 @@ function applicationFormPageReducer(state = initialState, action) {
         .set('submitSuccess', true)
         // only one of them can be true////////////////////////////////////////////////////////////////
         .set('showNoticeOfYouHaveLoanInProgress', true)
+        .set('showNoticeOfCreditNotEnough', false)
+        .set('showNotification', false)
+        .set('openDialog', false);
+    case DUPLICATED_HKID:
+      return state
+        .set('duplicatedHKID', true)
+        .set('duplicatedMobile', false)
+        .set('submitInProgress', false)
+        .set('submitError', false)
+        .set('submitSuccess', true)
+        // only one of them can be true////////////////////////////////////////////////////////////////
+        .set('showNoticeOfYouHaveLoanInProgress', false)
+        .set('showNoticeOfCreditNotEnough', false)
+        .set('showNotification', false)
+        .set('openDialog', false);
+    case DUPLICATED_MOBILE:
+      return state
+        .set('duplicatedHKID', false)
+        .set('duplicatedMobile', true)
+        .set('submitInProgress', false)
+        .set('submitError', false)
+        .set('submitSuccess', true)
+        // only one of them can be true////////////////////////////////////////////////////////////////
+        .set('showNoticeOfYouHaveLoanInProgress', false)
         .set('showNoticeOfCreditNotEnough', false)
         .set('showNotification', false)
         .set('openDialog', false);

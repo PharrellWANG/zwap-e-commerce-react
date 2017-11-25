@@ -55,6 +55,16 @@ const makeSelectApplicationFormPageShowNoticeOfYouHaveLoanInProgress = () => cre
   (subState) => subState.get('showNoticeOfYouHaveLoanInProgress'),
 );
 
+const selectDuplicatedHKID = () => createSelector(
+  selectApplicationFormPageDomain,
+  (subState) => subState.get('duplicatedHKID'),
+);
+
+const selectDuplicatedMobile = () => createSelector(
+  selectApplicationFormPageDomain,
+  (subState) => subState.get('duplicatedMobile'),
+);
+
 const makeSelectApplicationFormPageShowNoticeOfCreditNotEnough = () => createSelector(
   selectApplicationFormPageDomain,
   (subState) => subState.get('showNoticeOfCreditNotEnough'),
@@ -76,6 +86,8 @@ const makeSelectApplicationFormPageFormData = () => createSelector(
 );
 
 export {
+  selectDuplicatedMobile,
+  selectDuplicatedHKID,
   selectApplicationFormPageDomain,
   makeSelectApplicationFormPageFormData,
   getSuccessNotice,

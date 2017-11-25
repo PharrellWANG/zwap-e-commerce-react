@@ -235,5 +235,9 @@
   "app.containers.ApplicationFormPage.fillOtherFieldsToGetService": "Fill the other fields to get your Zwap Pay service",
   "app.containers.ApplicationFormPage.showPwAsPlainText": "Show password as plain text",
   "app.containers.ApplicationFormPage.pwAgain": "Password again",
-  "app.containers.ApplicationFormPage.pwFirst": "Password"
+  "app.containers.ApplicationFormPage.pwFirst": "Password",
+  "app.containers.ApplicationFormPage.duplicatedHKIDNotice": "HKID Duplication",
+  "app.containers.ApplicationFormPage.duplicatedHKIDNoticeBody": "Your HKID has been registered in Zwap platform, please refresh this page and use your existing Zwap account to apply again. If you have never registered in Zwap before, please contact",
+  "app.containers.ApplicationFormPage.duplicatedMobileNotice": "Mobile Duplication",
+  "app.containers.ApplicationFormPage.duplicatedMobileNoticeBody": "Your Mobile has been registered in Zwap platform, please refresh this page and use your existing Zwap account to apply again. If you have never registered in Zwap before, please contact"
 }

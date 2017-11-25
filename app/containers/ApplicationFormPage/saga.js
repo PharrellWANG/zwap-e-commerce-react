@@ -11,6 +11,8 @@ import {
   creditNotEnoughSorry,
   accountChecking,
   accountCheckingFail,
+  duplicatedMobile,
+  duplicatedHKID,
   // SubmitStatus,
 } from './actions';
 // Individual exports for testing
@@ -23,8 +25,8 @@ import {
 export function* fetchData(action) {
   const tokenInUrl = action.token;
   // console.log(tokenInUrl);
-  // const requestURL = 'http://218.255.104.158:6789/zwap-pay/token-query/';
-  const requestURL = 'https://platform.zwap.hk/zwap-pay/token-query/';
+  const requestURL = 'http://218.255.104.158:6789/zwap-pay/token-query/';
+  // const requestURL = 'https://platform.zwap.hk/zwap-pay/token-query/';
   const options = {
     method: 'POST',
     body: JSON.stringify({ token: tokenInUrl }),
@@ -51,8 +53,8 @@ export function* submitInfo(action) {
   // console.log('================ here is the submitted data ===============');
   // console.log(JSON.stringify(action.formData));
   // yield call(delay, 3000);
-  // const requestURL = 'http://218.255.104.158:6789/zwap-pay/receive-application/';
-  const requestURL = 'https://platform.zwap.hk/zwap-pay/receive-application/';
+  const requestURL = 'http://218.255.104.158:6789/zwap-pay/receive-application/';
+  // const requestURL = 'https://platform.zwap.hk/zwap-pay/receive-application/';
   const options = {
     method: 'POST',
     body: JSON.stringify(action.formData),
@@ -72,6 +74,10 @@ export function* submitInfo(action) {
       yield put(hasExistingLoanInProgress());
     } else if (data.creditNotEnough === true) {
       yield put(creditNotEnoughSorry(data.credit.amount));
+    } else if (data.duplicatedMobile === true) {
+      yield put(duplicatedMobile());
+    } else if (data.duplicatedHKID === true) {
+      yield put(duplicatedHKID());
     } else {
       yield put(letMeSubmitSuccess());
     }
@@ -85,8 +91,8 @@ export function* checkIfAccountExistsOrNot(action) {
   // console.log(action.email);
   // console.log(typeof (action.email)); // type: string
   // console.log(JSON.stringify(action.email));
-  // const requestURL = 'http://218.255.104.158:6789/zwap-pay/check-if-account-exist/';
-  const requestURL = 'https://platform.zwap.hk/zwap-pay/check-if-account-exist/';
+  const requestURL = 'http://218.255.104.158:6789/zwap-pay/check-if-account-exist/';
+  // const requestURL = 'https://platform.zwap.hk/zwap-pay/check-if-account-exist/';
   const options = {
     method: 'POST',
     body: JSON.stringify({ email: action.email }),

@@ -379,4 +379,20 @@ export default defineMessages({
     id: 'app.containers.ApplicationFormPage.pwFirst',
     defaultMessage: 'Password',
   },
+  duplicatedHKIDNotice: {
+    id: 'app.containers.ApplicationFormPage.duplicatedHKIDNotice',
+    defaultMessage: 'HKID Duplication',
+  },
+  duplicatedHKIDNoticeBody: {
+    id: 'app.containers.ApplicationFormPage.duplicatedHKIDNoticeBody',
+    defaultMessage: 'Your HKID has been registered in Zwap platform, please refresh this page and use your existing Zwap account to apply again.',
+  },
+  duplicatedMobileNotice: {
+    id: 'app.containers.ApplicationFormPage.duplicatedMobileNotice',
+    defaultMessage: 'Mobile Duplication',
+  },
+  duplicatedMobileNoticeBody: {
+    id: 'app.containers.ApplicationFormPage.duplicatedMobileNoticeBody',
+    defaultMessage: 'Your Mobile has been registered in Zwap platform, please refresh this page and use your existing Zwap account to apply again.',
+  },
 });

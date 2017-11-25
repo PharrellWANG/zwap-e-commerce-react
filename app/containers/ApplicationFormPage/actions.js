@@ -23,6 +23,8 @@ import {
   CLOSE_SNACKBAR_PW,
   TOGGLE_SEE_PW,
   CREDIT_NOT_ENOUGH,
+  DUPLICATED_MOBILE,
+  DUPLICATED_HKID,
 } from './constants';
 
 export function closeSnackBarEmail() {
@@ -107,6 +109,18 @@ export function letMeSubmitSuccess() {
 export function hasExistingLoanInProgress() {
   return {
     type: HAS_EXISTING_LOAN_IN_PROGRESS,
+  };
+}
+
+export function duplicatedHKID() {
+  return {
+    type: DUPLICATED_HKID,
+  };
+}
+
+export function duplicatedMobile() {
+  return {
+    type: DUPLICATED_MOBILE,
   };
 }
 

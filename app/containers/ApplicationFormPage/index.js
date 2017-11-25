@@ -31,6 +31,8 @@ import {
   makeSelectApplicationFormPageShowNoticeOfYouHaveLoanInProgress,
   makeSelectApplicationFormPageZwapCredit,
   makeSelectApplicationFormPageShowNoticeOfCreditNotEnough,
+  selectDuplicatedHKID,
+  selectDuplicatedMobile,
   getSuccessNotice,
   makeSelectError,
   makeSelectSuccess,
@@ -210,6 +212,38 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
           </Grid>
         </Grid>
         }
+        {this.props.submitSuccess && this.props.selectDuplicatedHKID &&
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={12} className={classes.styledGrid}>
+            <div className={classes.styledDiv}>
+              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+                <FormattedMessage {...messages.duplicatedHKIDNotice} />
+              </Typography>
+              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+                <FormattedMessage {...messages.duplicatedHKIDNoticeBody} />
+                {' '}
+                <a href="mailto:cs@zwap.hk?subject=Issue of Duplicated HKID">cs@zwap.hk</a>
+              </Typography>
+            </div>
+          </Grid>
+        </Grid>
+        }
+        {this.props.submitSuccess && this.props.selectDuplicatedMobile &&
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={12} className={classes.styledGrid}>
+            <div className={classes.styledDiv}>
+              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+                <FormattedMessage {...messages.duplicatedMobileNotice} />
+              </Typography>
+              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+                <FormattedMessage {...messages.duplicatedMobileNoticeBody} />
+                {' '}
+                <a href="mailto:cs@zwap.hk?subject=Issue of Duplicated Mobile">cs@zwap.hk</a>
+              </Typography>
+            </div>
+          </Grid>
+        </Grid>
+        }
       </div>
     );
   }
@@ -230,6 +264,8 @@ const mapStateToProps = createStructuredSelector({
   makeSelectApplicationFormPageZwapCredit: makeSelectApplicationFormPageZwapCredit(),
   makeSelectApplicationFormPageShowNoticeOfCreditNotEnough: makeSelectApplicationFormPageShowNoticeOfCreditNotEnough(),
   getSuccessNotice: getSuccessNotice(),
+  selectDuplicatedHKID: selectDuplicatedHKID(),
+  selectDuplicatedMobile: selectDuplicatedMobile(),
   selectSubmitting: makeSelectSubmitting(),
   submitSuccess: makeSelectSuccess(),
   submitError: makeSelectError(),
