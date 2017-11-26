@@ -242,5 +242,6 @@
   "app.containers.ApplicationFormPage.duplicatedMobileNoticeBody": "你的移動電話號碼已經在Zwap被註冊過，請刷新該頁面，用你現有帳號的電郵地址重新申請。如果你從來未曾註冊過Zwap帳號卻看到這條通知，請聯繫",
   "app.containers.ApplicationFormPage.amountRangeLimitation": "可申請金額限制在5,000到40,000之間",
   "app.containers.ApplicationFormPage.MakeANewOrder": "我要重新落單",
-  "app.containers.ApplicationFormPage.reasonableExplanation": "建議：點擊下面的按鈕回到電子商務網站，重新落單。新單總金額應當少於或等於你的Zwap Credit。重新落單後, 你可以用新單參考編號重新申請Zwap Pay。"
+  "app.containers.ApplicationFormPage.reasonableExplanation": "建議：點擊下面的按鈕回到電子商務網站，重新落單。新單總金額應當少於或等於你的Zwap Credit。重新落單後, 你可以用新單參考編號重新申請Zwap Pay。",
+  "app.containers.ApplicationFormPage.rejectionNotice": "很抱歉你的申請已被拒絕。"
 }

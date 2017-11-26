@@ -65,6 +65,11 @@ const selectDuplicatedMobile = () => createSelector(
   (subState) => subState.get('duplicatedMobile'),
 );
 
+const selectShowRejectionNotice = () => createSelector(
+  selectApplicationFormPageDomain,
+  (subState) => subState.get('showRejectionNotice'),
+);
+
 const makeSelectApplicationFormPageShowNoticeOfCreditNotEnough = () => createSelector(
   selectApplicationFormPageDomain,
   (subState) => subState.get('showNoticeOfCreditNotEnough'),
@@ -86,6 +91,7 @@ const makeSelectApplicationFormPageFormData = () => createSelector(
 );
 
 export {
+  selectShowRejectionNotice,
   selectDuplicatedMobile,
   selectDuplicatedHKID,
   selectApplicationFormPageDomain,

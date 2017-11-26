@@ -407,4 +407,8 @@ export default defineMessages({
     id: 'app.containers.ApplicationFormPage.MakeANewOrder',
     defaultMessage: 'I want to make a new order',
   },
+  rejectionNotice: {
+    id: 'app.containers.ApplicationFormPage.rejectionNotice',
+    defaultMessage: 'We are sorry that your application has been rejected.',
+  },
 });

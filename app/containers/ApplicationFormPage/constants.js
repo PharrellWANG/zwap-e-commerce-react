@@ -31,3 +31,5 @@ export const CREDIT_NOT_ENOUGH = 'app/ApplicationFormPage/CREDIT_NOT_ENOUGH';
 
 export const DUPLICATED_HKID = 'app/ApplicationFormPage/DUPLICATED_HKID';
 export const DUPLICATED_MOBILE = 'app/ApplicationFormPage/DUPLICATED_MOBILE';
+
+export const SHOW_REJECTION_NOTICE = 'app/ApplicationFormPage/SHOW_REJECTION_NOTICE';

@@ -24,6 +24,7 @@ import {
   CREDIT_NOT_ENOUGH,
   DUPLICATED_HKID,
   DUPLICATED_MOBILE,
+  SHOW_REJECTION_NOTICE,
 } from './constants';
 
 const initialState = fromJS({
@@ -52,6 +53,7 @@ const initialState = fromJS({
   displayPwInputInstructionOnce: 1,
   showNoticeOfYouHaveLoanInProgress: false,
   showNoticeOfCreditNotEnough: false,
+  showRejectionNotice: false,
   duplicatedHKID: false,
   duplicatedMobile: false,
   ZwapCredit: 0,
@@ -100,42 +102,65 @@ function applicationFormPageReducer(state = initialState, action) {
         .set('submitError', false)
         .set('submitSuccess', true)
         // only one of them can be true ////////////////////////////////////////////////////////////////
+        .set('duplicatedMobile', false)
+        .set('duplicatedHKID', false)
         .set('showNotification', true)
         .set('showNoticeOfYouHaveLoanInProgress', false)
         .set('showNoticeOfCreditNotEnough', false)
+        .set('showRejectionNotice', false)
         .set('openDialog', false);
     case HAS_EXISTING_LOAN_IN_PROGRESS:
       return state
         .set('submitInProgress', false)
         .set('submitError', false)
         .set('submitSuccess', true)
-        // only one of them can be true////////////////////////////////////////////////////////////////
+        // only one of them can be true////////////////////////////////////////////////////////////////\
+        .set('duplicatedMobile', false)
+        .set('duplicatedHKID', false)
         .set('showNoticeOfYouHaveLoanInProgress', true)
+        .set('showRejectionNotice', false)
         .set('showNoticeOfCreditNotEnough', false)
         .set('showNotification', false)
         .set('openDialog', false);
     case DUPLICATED_HKID:
       return state
+        .set('submitInProgress', false)
+        .set('submitError', false)
+        .set('submitSuccess', true)
+        // only one of them can be true////////////////////////////////////////////////////////////////
+        .set('duplicatedMobile', false)
         .set('duplicatedHKID', true)
+        .set('showNoticeOfYouHaveLoanInProgress', false)
+        .set('showNoticeOfCreditNotEnough', false)
+        .set('showRejectionNotice', false)
+        .set('showNotification', false)
+        .set('openDialog', false);
+    case DUPLICATED_MOBILE:
+      return state
+        .set('submitInProgress', false)
+        .set('submitError', false)
+        .set('submitSuccess', true)
+        // only one of them can be true////////////////////////////////////////////////////////////////
+        .set('duplicatedMobile', true)
+        .set('duplicatedHKID', false)
+        .set('showNoticeOfYouHaveLoanInProgress', false)
+        .set('showNoticeOfCreditNotEnough', false)
+        .set('showNotification', false)
+        .set('showRejectionNotice', false)
+        .set('openDialog', false);
+    case SHOW_REJECTION_NOTICE:
+      return state
+        .set('duplicatedHKID', false)
         .set('duplicatedMobile', false)
         .set('submitInProgress', false)
         .set('submitError', false)
         .set('submitSuccess', true)
         // only one of them can be true////////////////////////////////////////////////////////////////
-        .set('showNoticeOfYouHaveLoanInProgress', false)
-        .set('showNoticeOfCreditNotEnough', false)
-        .set('showNotification', false)
-        .set('openDialog', false);
-    case DUPLICATED_MOBILE:
-      return state
+        .set('duplicatedMobile', false)
         .set('duplicatedHKID', false)
-        .set('duplicatedMobile', true)
-        .set('submitInProgress', false)
-        .set('submitError', false)
-        .set('submitSuccess', true)
-        // only one of them can be true////////////////////////////////////////////////////////////////
         .set('showNoticeOfYouHaveLoanInProgress', false)
         .set('showNoticeOfCreditNotEnough', false)
+        .set('showRejectionNotice', true)
         .set('showNotification', false)
         .set('openDialog', false);
     case CREDIT_NOT_ENOUGH:
@@ -143,12 +168,15 @@ function applicationFormPageReducer(state = initialState, action) {
         .set('submitInProgress', false)
         .set('submitError', false)
         .set('submitSuccess', true)
-        // set credit ////////////////////////////////////////
+        // set credit //
         .set('ZwapCredit', fromJS(action.data))
         // only one of them can be true////////////////////////////////////////////////////////////////
+        .set('duplicatedMobile', false)
+        .set('duplicatedHKID', false)
         .set('showNoticeOfYouHaveLoanInProgress', false)
         .set('showNoticeOfCreditNotEnough', true)
         .set('showNotification', false)
+        .set('showRejectionNotice', false)
         .set('openDialog', false);
     case CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS:
       return state

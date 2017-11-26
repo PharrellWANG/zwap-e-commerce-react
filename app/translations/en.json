@@ -242,5 +242,6 @@
   "app.containers.ApplicationFormPage.duplicatedMobileNoticeBody": "Your Mobile has been registered in Zwap platform, please refresh this page and use your existing Zwap account to apply again. If you have never registered in Zwap before, please contact",
   "app.containers.ApplicationFormPage.amountRangeLimitation": "Amount is limited within 5,000 to 40,000",
   "app.containers.ApplicationFormPage.MakeANewOrder": "I want to make a new order",
-  "app.containers.ApplicationFormPage.reasonableExplanation": "Tip: Click the button below to go back to e-commerce website for making a new order, and the total amount of the new order should be less than or equal to your Zwap Credit. After you have placed a new order, you can apply Zwap Pay again using your new order reference number."
+  "app.containers.ApplicationFormPage.reasonableExplanation": "Tip: Click the button below to go back to e-commerce website for making a new order, and the total amount of the new order should be less than or equal to your Zwap Credit. After you have placed a new order, you can apply Zwap Pay again using your new order reference number.",
+  "app.containers.ApplicationFormPage.rejectionNotice": "We are sorry that your application has been rejected."
 }

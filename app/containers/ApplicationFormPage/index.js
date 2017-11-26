@@ -34,6 +34,7 @@ import {
   makeSelectApplicationFormPageShowNoticeOfCreditNotEnough,
   selectDuplicatedHKID,
   selectDuplicatedMobile,
+  selectShowRejectionNotice,
   getSuccessNotice,
   makeSelectError,
   makeSelectSuccess,
@@ -252,6 +253,18 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
           </Grid>
         </Grid>
         }
+        {this.props.submitSuccess && this.props.selectShowRejectionNotice &&
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={12} className={classes.styledGrid}>
+            <div className={classes.styledDiv}>
+              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+                <FormattedMessage {...messages.rejectionNotice} />
+              </Typography>
+            </div>
+          </Grid>
+        </Grid>
+        }
+        {/* selectShowRejectionNotice */}
       </div>
     );
   }
@@ -274,6 +287,7 @@ const mapStateToProps = createStructuredSelector({
   getSuccessNotice: getSuccessNotice(),
   selectDuplicatedHKID: selectDuplicatedHKID(),
   selectDuplicatedMobile: selectDuplicatedMobile(),
+  selectShowRejectionNotice: selectShowRejectionNotice(),
   selectSubmitting: makeSelectSubmitting(),
   submitSuccess: makeSelectSuccess(),
   submitError: makeSelectError(),

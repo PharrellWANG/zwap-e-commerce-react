@@ -78,6 +78,8 @@ export function* submitInfo(action) {
       yield put(duplicatedMobile());
     } else if (data.duplicatedHKID === true) {
       yield put(duplicatedHKID());
+    } else if (data.rejectedByCreditEvaluationSystem === true) {
+      yield put(showRejectionNotice());
     } else {
       yield put(letMeSubmitSuccess());
     }

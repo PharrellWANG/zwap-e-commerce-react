@@ -25,6 +25,7 @@ import {
   CREDIT_NOT_ENOUGH,
   DUPLICATED_MOBILE,
   DUPLICATED_HKID,
+  SHOW_REJECTION_NOTICE,
 } from './constants';
 
 export function closeSnackBarEmail() {
@@ -115,6 +116,12 @@ export function hasExistingLoanInProgress() {
 export function duplicatedHKID() {
   return {
     type: DUPLICATED_HKID,
+  };
+}
+
+export function showRejectionNotice() {
+  return {
+    type: SHOW_REJECTION_NOTICE,
   };
 }
 
