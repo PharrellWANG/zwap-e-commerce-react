@@ -228,7 +228,7 @@
   "app.containers.ApplicationFormPage.SuccessNotice": "你已經成功遞交申請",
   "app.containers.ApplicationFormPage.UnsettledNotice": "你目前有貸款未還清。請登入Zwap先還清款項，然後你可以使用Zwap Pay。",
   "app.containers.ApplicationFormPage.FollowEmailInstruction": "一封郵件已被發到你郵箱。請按照郵件中的指示激活你的帳戶。",
-  "app.containers.ApplicationFormPage.CreditNotEnough": "很抱歉你的Zwap Credit不夠高, 請買少點再來申請。你的Zwap Credit (HK$): ",
+  "app.containers.ApplicationFormPage.CreditNotEnough": "你的訂單總價高於你的Zwap Credit, 請買少點再來申請。你的Zwap Credit (HK$): ",
   "app.containers.ApplicationFormPage.LoginToZwap": "登入Zwap",
   "app.containers.ApplicationFormPage.typePwForYourNewZwapAcc": "請為您的Zwap新帳戶輸入密碼",
   "app.containers.ApplicationFormPage.helpfulEmailHint": "如果您已經有Zwap帳號，請用您Zwap帳號的電郵地址填寫表格",
@@ -240,5 +240,7 @@
   "app.containers.ApplicationFormPage.duplicatedHKIDNoticeBody": "你的香港身分證號碼已經在Zwap被註冊過，請刷新該頁面，用你現有帳號的電郵地址重新申請。如果你從來未曾註冊過Zwap帳號卻看到這條通知，請聯繫",
   "app.containers.ApplicationFormPage.duplicatedMobileNotice": "移動電話號碼重複",
   "app.containers.ApplicationFormPage.duplicatedMobileNoticeBody": "你的移動電話號碼已經在Zwap被註冊過，請刷新該頁面，用你現有帳號的電郵地址重新申請。如果你從來未曾註冊過Zwap帳號卻看到這條通知，請聯繫",
-  "app.containers.ApplicationFormPage.amountRangeLimitation": "可申請金額限制在5,000到40,000之間"
+  "app.containers.ApplicationFormPage.amountRangeLimitation": "可申請金額限制在5,000到40,000之間",
+  "app.containers.ApplicationFormPage.MakeANewOrder": "我要重新落單",
+  "app.containers.ApplicationFormPage.reasonableExplanation": "建議：點擊下面的按鈕回到電子商務網站，重新落單。新單總金額應當少於或等於你的Zwap Credit。重新落單後, 你可以用新單參考編號重新申請Zwap Pay。"
 }

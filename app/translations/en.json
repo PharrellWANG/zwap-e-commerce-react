@@ -119,7 +119,7 @@
   "app.containers.MainPage.SuccessNotice": "You have successfully submitted application",
   "app.containers.MainPage.UnsettledNotice": "You currently have one loan case at Zwap in progress. Please login to Zwap and settle the loan first. Then you will be allowed to apply Zwap Pay service.",
   "app.containers.MainPage.FollowEmailInstruction": "An email has been sent to your inbox. Please follow the instructions in the email to activate your account.",
-  "app.containers.MainPage.CreditNotEnough": "We are sorry that your Zwap Credit is high enough, please buy less and try to apply again. Your Zwap Credit (HK$): ",
+  "app.containers.MainPage.CreditNotEnough": "The amount of your order is higher than your Zwap Credit, please buy less and apply again. Your Zwap Credit (HK$): ",
   "app.containers.MainPage.LoginToZwap": "Login to Zwap",
   "zwap.components.Footer.aboutZwap": "About Zwap",
   "zwap.components.Footer.FAQs": "FAQs",
@@ -240,5 +240,7 @@
   "app.containers.ApplicationFormPage.duplicatedHKIDNoticeBody": "Your HKID has been registered in Zwap platform, please refresh this page and use your existing Zwap account to apply again. If you have never registered in Zwap before, please contact",
   "app.containers.ApplicationFormPage.duplicatedMobileNotice": "Mobile Duplication",
   "app.containers.ApplicationFormPage.duplicatedMobileNoticeBody": "Your Mobile has been registered in Zwap platform, please refresh this page and use your existing Zwap account to apply again. If you have never registered in Zwap before, please contact",
-  "app.containers.ApplicationFormPage.amountRangeLimitation": "Amount is limited within 5,000 to 40,000"
+  "app.containers.ApplicationFormPage.amountRangeLimitation": "Amount is limited within 5,000 to 40,000",
+  "app.containers.ApplicationFormPage.MakeANewOrder": "I want to make a new order",
+  "app.containers.ApplicationFormPage.reasonableExplanation": "Tip: Click the button below to go back to e-commerce website for making a new order, and the total amount of the new order should be less than or equal to your Zwap Credit. After you have placed a new order, you can apply Zwap Pay again using your new order reference number."
 }

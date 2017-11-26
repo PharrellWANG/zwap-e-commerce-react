@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import Grid from 'material-ui/Grid';
+import Button from 'material-ui/Button';
 import injectReducer from 'utils/injectReducer';
 import { createStructuredSelector } from 'reselect';
 import Typography from 'material-ui/Typography';
@@ -41,7 +42,7 @@ import {
 import reducer from './reducer';
 import saga from './saga';
 import ApplicationForm from './form';
-import { ColorAWithUnderline } from '../../components/A';
+// import { ColorAWithUnderline } from '../../components/A';
 
 const styles = (theme) => ({
   progressStyle: {
@@ -144,6 +145,10 @@ const styles = (theme) => ({
     margin: '0 auto',
     maxWidth: 500,
   },
+  button: {
+    textAlign: 'center',
+    marginTop: theme.spacing.unit,
+  },
 });
 
 export class ApplicationFormPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -176,9 +181,9 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
               <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.UnsettledNotice} />
               </Typography>
-              <ColorAWithUnderline href="https://platform.zwap.hk/login/" target="_blank">
+              <Button raised href="https://platform.zwap.hk/login/" className={classes.button}>
                 <FormattedMessage {...messages.LoginToZwap} />
-              </ColorAWithUnderline>
+              </Button>
             </div>
           </Grid>
         </Grid>
@@ -191,9 +196,12 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
                 <FormattedMessage {...messages.CreditNotEnough} />{' '}
                 {this.props.makeSelectApplicationFormPageZwapCredit}
               </Typography>
-              <ColorAWithUnderline href="https://platform.zwap.hk/login/" target="_blank">
-                <FormattedMessage {...messages.LoginToZwap} />
-              </ColorAWithUnderline>
+              <Typography type="body1" style={{ textAlign: 'left' }} gutterBottom>
+                <FormattedMessage {...messages.reasonableExplanation} />
+              </Typography>
+              <Button raised href="https://www.4decomart.com/zh_hant_hk/special.html" className={classes.button}>
+                <FormattedMessage {...messages.MakeANewOrder} />
+              </Button>
             </div>
           </Grid>
         </Grid>

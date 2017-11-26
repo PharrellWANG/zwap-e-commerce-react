@@ -349,7 +349,7 @@ export default defineMessages({
   },
   CreditNotEnough: {
     id: 'app.containers.ApplicationFormPage.CreditNotEnough',
-    defaultMessage: 'We are sorry that your Zwap Credit is high enough, please buy less and try to apply again. Your Zwap Credit (HK$): ',
+    defaultMessage: 'The amount of your order is higher than your Zwap Credit, please buy less and apply again. Your Zwap Credit (HK$): ',
   },
   LoginToZwap: {
     id: 'app.containers.ApplicationFormPage.LoginToZwap',
@@ -398,5 +398,13 @@ export default defineMessages({
   amountRangeLimitation: {
     id: 'app.containers.ApplicationFormPage.amountRangeLimitation',
     defaultMessage: 'Amount is limited within 5,000 to 40,000',
+  },
+  reasonableExplanation: {
+    id: 'app.containers.ApplicationFormPage.reasonableExplanation',
+    defaultMessage: 'Click the button below to go back to e-commerce website for making a new order, and the total amount of the order should be less than or equal to your Zwap Credit. After you have placed a new order, you can apply Zwap Pay again using your new order reference number.',
+  },
+  MakeANewOrder: {
+    id: 'app.containers.ApplicationFormPage.MakeANewOrder',
+    defaultMessage: 'I want to make a new order',
   },
 });
