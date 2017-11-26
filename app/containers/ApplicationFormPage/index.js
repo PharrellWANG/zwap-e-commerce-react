@@ -10,6 +10,12 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
+import Dialog, {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from 'material-ui/Dialog';
 import injectReducer from 'utils/injectReducer';
 import { createStructuredSelector } from 'reselect';
 import Typography from 'material-ui/Typography';
@@ -25,6 +31,7 @@ import {
   closeSnackBarPw,
   closeSnackBarEmail,
   togglePwAsPlainText,
+  cancelCurrentApplication,
 } from './actions';
 import {
   makeSelectApplicationFormPageFormData,
@@ -35,6 +42,9 @@ import {
   selectDuplicatedHKID,
   selectDuplicatedMobile,
   selectShowRejectionNotice,
+  makeSelectApplicationFormPageLOA,
+  selectShowDialogOfCancelApplicationSucceeded,
+  selectAutoApprovedYouCanApplyMore,
   getSuccessNotice,
   makeSelectError,
   makeSelectSuccess,
@@ -155,12 +165,28 @@ const styles = (theme) => ({
 export class ApplicationFormPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { classes, selectSubmitting } = this.props;
+    const loanRefNo = this.props.makeSelectApplicationFormPageLOA;
     return (
       <div>
         <Helmet>
           <title>ApplicationFormPage</title>
           <meta name="description" content="Description of ApplicationFormPage" />
         </Helmet>
+        <Dialog open={this.props.selectShowDialogOfCancelApplicationSucceeded}>
+          <DialogTitle>
+            <FormattedMessage {...messages.SuccessNoticeHeader} />
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              <FormattedMessage {...messages.SuccessNoticeBody} />
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button raised href="https://www.4decomart.com/zh_hant_hk/special.html" className={classes.button}>
+              <FormattedMessage {...messages.MakeANewOrder} />
+            </Button>
+          </DialogActions>
+        </Dialog>
         {(!this.props.submitSuccess)
           && ((<Grid item xs={12}>
             <Grid className={classes.gridStyle} container justify="center" spacing={16}>
@@ -264,6 +290,27 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
           </Grid>
         </Grid>
         }
+        {this.props.submitSuccess && this.props.selectAutoApprovedYouCanApplyMore &&
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={12} className={classes.styledGrid}>
+            <div className={classes.styledDiv}>
+              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+                <FormattedMessage {...messages.autoApprovedYouHaveTwoWays} />
+              </Typography>
+              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+                <FormattedMessage {...messages.autoApprovedYouHaveTwoWaysOne} />{' '}
+                {this.props.makeSelectApplicationFormPageZwapCredit}
+              </Typography>
+              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+                <FormattedMessage {...messages.autoApprovedYouHaveTwoWaysSecond} />
+              </Typography>
+              <Button raised onClick={() => this.props.cancelCurrentApplication(loanRefNo)} className={classes.button}>
+                <FormattedMessage {...messages.autoApprovedYouHaveTwoWaysButtonMsg} />
+              </Button>
+            </div>
+          </Grid>
+        </Grid>
+        }
         {/* selectShowRejectionNotice */}
       </div>
     );
@@ -273,6 +320,7 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
 ApplicationFormPage.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   togglePwAsPlainText: PropTypes.func.isRequired,
+  cancelCurrentApplication: PropTypes.func.isRequired,
   closeSnackBarCongrats: PropTypes.func.isRequired,
   closeSnackBarEmail: PropTypes.func.isRequired,
   closeSnackBarPw: PropTypes.func.isRequired,
@@ -283,10 +331,13 @@ const mapStateToProps = createStructuredSelector({
   makeSelectApplicationFormPageShowNotification: makeSelectApplicationFormPageShowNotification(),
   makeSelectApplicationFormPageShowNoticeOfYouHaveLoanInProgress: makeSelectApplicationFormPageShowNoticeOfYouHaveLoanInProgress(),
   makeSelectApplicationFormPageZwapCredit: makeSelectApplicationFormPageZwapCredit(),
+  makeSelectApplicationFormPageLOA: makeSelectApplicationFormPageLOA(),
+  selectShowDialogOfCancelApplicationSucceeded: selectShowDialogOfCancelApplicationSucceeded(),
   makeSelectApplicationFormPageShowNoticeOfCreditNotEnough: makeSelectApplicationFormPageShowNoticeOfCreditNotEnough(),
   getSuccessNotice: getSuccessNotice(),
   selectDuplicatedHKID: selectDuplicatedHKID(),
   selectDuplicatedMobile: selectDuplicatedMobile(),
+  selectAutoApprovedYouCanApplyMore: selectAutoApprovedYouCanApplyMore(),
   selectShowRejectionNotice: selectShowRejectionNotice(),
   selectSubmitting: makeSelectSubmitting(),
   submitSuccess: makeSelectSuccess(),
@@ -295,6 +346,11 @@ const mapStateToProps = createStructuredSelector({
 });
 function mapDispatchToProps(dispatch) {
   return {
+    cancelCurrentApplication: (loanRefNo) => {
+      console.log('=============');
+      console.log(loanRefNo);
+      dispatch(cancelCurrentApplication(loanRefNo));
+    },
     togglePwAsPlainText: (checked) => {
       dispatch(togglePwAsPlainText(checked));
     },

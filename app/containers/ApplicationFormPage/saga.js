@@ -13,10 +13,15 @@ import {
   accountCheckingFail,
   duplicatedMobile,
   duplicatedHKID,
+  showRejectionNotice,
+  showSuccessNoticeAndReorderForApplyMoreOption,
+  cancelSucceed,
+  cancelFailed,
   // SubmitStatus,
 } from './actions';
 // Individual exports for testing
 import {
+  CANCEL_APPLICATION_FOR_APPLY_NEW,
   FETCH_AND_LOAD,
   IS_IT_NEEDED_TO_DISPLAY_PW_FIELD,
   SUBMIT_APPLICATION_FOR_AUTO_APPROVE,
@@ -80,6 +85,8 @@ export function* submitInfo(action) {
       yield put(duplicatedHKID());
     } else if (data.rejectedByCreditEvaluationSystem === true) {
       yield put(showRejectionNotice());
+    } else if (data.youCanApplyMore === true) {
+      yield put(showSuccessNoticeAndReorderForApplyMoreOption(data)); // data.LOA; data.credit.amount
     } else {
       yield put(letMeSubmitSuccess());
     }
@@ -114,11 +121,33 @@ export function* checkIfAccountExistsOrNot(action) {
   }
 }
 
+export function* cancelApplication(action) {
+  const requestURL = 'http://218.255.104.158:6789/zwap-pay/cancel-application/';
+  // const requestURL = 'https://platform.zwap.hk/zwap-pay/check-if-account-exist/';
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({ LOA: action.loanRefNo }),
+    headers: {
+      // Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    // yield call(delay, 1000);
+    const data = yield call(request, requestURL, options);
+    // console.log('---------');
+    yield put(cancelSucceed(data.successfullyCancelled)); // boolean
+  } catch (err) {
+    yield put(cancelFailed());
+  }
+}
+
 export default function* fetchAndLoadData() {
   yield [
     takeLatest(FETCH_AND_LOAD, fetchData),
     takeLatest(SUBMIT_APPLICATION_FOR_AUTO_APPROVE, submitInfo),
     takeLatest(IS_IT_NEEDED_TO_DISPLAY_PW_FIELD, checkIfAccountExistsOrNot),
+    takeLatest(CANCEL_APPLICATION_FOR_APPLY_NEW, cancelApplication),
   ];
 }
 

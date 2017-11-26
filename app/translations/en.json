@@ -243,5 +243,11 @@
   "app.containers.ApplicationFormPage.amountRangeLimitation": "Amount is limited within 5,000 to 40,000",
   "app.containers.ApplicationFormPage.MakeANewOrder": "I want to make a new order",
   "app.containers.ApplicationFormPage.reasonableExplanation": "Tip: Click the button below to go back to e-commerce website for making a new order, and the total amount of the new order should be less than or equal to your Zwap Credit. After you have placed a new order, you can apply Zwap Pay again using your new order reference number.",
-  "app.containers.ApplicationFormPage.rejectionNotice": "We are sorry that your application has been rejected."
+  "app.containers.ApplicationFormPage.rejectionNotice": "We are sorry that your application has been rejected.",
+  "app.containers.ApplicationFormPage.autoApprovedYouHaveTwoWays": "Congratulations! You Zwap Pay application has been auto-approved. Please check your email for next step.",
+  "app.containers.ApplicationFormPage.autoApprovedYouHaveTwoWaysOne": "Your Zwap Credit (HK$): ",
+  "app.containers.ApplicationFormPage.autoApprovedYouHaveTwoWaysSecond": "Your Zwap Credit is higher than the amount applied. If you have a need for buying more, it is encouraged for you to click the button below to cancel the current application, and reorder a new one with a higher total price which shall not exceed your Zwap Credit shown above.",
+  "app.containers.ApplicationFormPage.autoApprovedYouHaveTwoWaysButtonMsg": "I WANT TO CANCEL FOR A NEW APPLICATION",
+  "app.containers.ApplicationFormPage.successNoticeHeader": "Success",
+  "app.containers.ApplicationFormPage.SuccessNoticeBody": "You have successfully cancelled your current loan application. Now you can reorder to apply Zwap Pay again"
 }

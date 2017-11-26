@@ -411,4 +411,28 @@ export default defineMessages({
     id: 'app.containers.ApplicationFormPage.rejectionNotice',
     defaultMessage: 'We are sorry that your application has been rejected.',
   },
+  autoApprovedYouHaveTwoWays: {
+    id: 'app.containers.ApplicationFormPage.autoApprovedYouHaveTwoWays',
+    defaultMessage: 'Congratulations! You Zwap Pay application has been auto-approved! Please check your email for next step!',
+  },
+  autoApprovedYouHaveTwoWaysOne: {
+    id: 'app.containers.ApplicationFormPage.autoApprovedYouHaveTwoWaysOne',
+    defaultMessage: 'Your Zwap Credit (HK$): ',
+  },
+  autoApprovedYouHaveTwoWaysSecond: {
+    id: 'app.containers.ApplicationFormPage.autoApprovedYouHaveTwoWaysSecond',
+    defaultMessage: 'Your Zwap Credit is higher than the amount applied. If you have a need for buying more, it is encouraged for you to click the button below to cancel the current application, and reorder a new one with a higher total price which shall not exceed your Zwap Credit shown above.',
+  },
+  autoApprovedYouHaveTwoWaysButtonMsg: {
+    id: 'app.containers.ApplicationFormPage.autoApprovedYouHaveTwoWaysButtonMsg',
+    defaultMessage: 'I WANT TO CANCEL FOR A NEW APPLICATION',
+  },
+  SuccessNoticeHeader: {
+    id: 'app.containers.ApplicationFormPage.SuccessNoticeHeader',
+    defaultMessage: 'Success',
+  },
+  SuccessNoticeBody: {
+    id: 'app.containers.ApplicationFormPage.SuccessNoticeBody',
+    defaultMessage: 'You have successfully cancelled your current loan application. Now you can reorder to apply Zwap Pay again.',
+  },
 });

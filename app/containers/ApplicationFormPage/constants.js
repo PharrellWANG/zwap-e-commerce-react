@@ -33,3 +33,8 @@ export const DUPLICATED_HKID = 'app/ApplicationFormPage/DUPLICATED_HKID';
 export const DUPLICATED_MOBILE = 'app/ApplicationFormPage/DUPLICATED_MOBILE';
 
 export const SHOW_REJECTION_NOTICE = 'app/ApplicationFormPage/SHOW_REJECTION_NOTICE';
+export const AUTO_APPROVED_AND_YOU_CAN_APPLY_MORE = 'app/ApplicationFormPage/AUTO_APPROVED_AND_YOU_CAN_APPLY_MORE';
+export const CANCEL_APPLICATION_FOR_APPLY_NEW = 'app/ApplicationFormPage/CANCEL_APPLICATION_FOR_APPLY_NEW';
+
+export const CANCEL_APPLICATION_SUCCEEDED = 'app/ApplicationFormPage/CANCEL_APPLICATION_SUCCEEDED';
+export const CANCEL_APPLICATION_FAILED = 'app/ApplicationFormPage/CANCEL_APPLICATION_FAILED';

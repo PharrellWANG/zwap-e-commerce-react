@@ -25,6 +25,8 @@ import {
   DUPLICATED_HKID,
   DUPLICATED_MOBILE,
   SHOW_REJECTION_NOTICE,
+  AUTO_APPROVED_AND_YOU_CAN_APPLY_MORE,
+  CANCEL_APPLICATION_SUCCEEDED,
 } from './constants';
 
 const initialState = fromJS({
@@ -54,9 +56,12 @@ const initialState = fromJS({
   showNoticeOfYouHaveLoanInProgress: false,
   showNoticeOfCreditNotEnough: false,
   showRejectionNotice: false,
+  autoApprovedYouCanApplyMore: false,
   duplicatedHKID: false,
   duplicatedMobile: false,
   ZwapCredit: 0,
+  LOA: '',
+  showDialogOfCancelApplicationSucceeded: false,
 });
 
 function applicationFormPageReducer(state = initialState, action) {
@@ -103,6 +108,7 @@ function applicationFormPageReducer(state = initialState, action) {
         .set('submitSuccess', true)
         // only one of them can be true ////////////////////////////////////////////////////////////////
         .set('duplicatedMobile', false)
+        .set('autoApprovedYouCanApplyMore', false)
         .set('duplicatedHKID', false)
         .set('showNotification', true)
         .set('showNoticeOfYouHaveLoanInProgress', false)
@@ -114,7 +120,8 @@ function applicationFormPageReducer(state = initialState, action) {
         .set('submitInProgress', false)
         .set('submitError', false)
         .set('submitSuccess', true)
-        // only one of them can be true////////////////////////////////////////////////////////////////\
+        // only one of them can be true////////////////////////////////////////////////////////////////
+        .set('autoApprovedYouCanApplyMore', false)
         .set('duplicatedMobile', false)
         .set('duplicatedHKID', false)
         .set('showNoticeOfYouHaveLoanInProgress', true)
@@ -141,6 +148,7 @@ function applicationFormPageReducer(state = initialState, action) {
         .set('submitError', false)
         .set('submitSuccess', true)
         // only one of them can be true////////////////////////////////////////////////////////////////
+        .set('autoApprovedYouCanApplyMore', false)
         .set('duplicatedMobile', true)
         .set('duplicatedHKID', false)
         .set('showNoticeOfYouHaveLoanInProgress', false)
@@ -156,6 +164,7 @@ function applicationFormPageReducer(state = initialState, action) {
         .set('submitError', false)
         .set('submitSuccess', true)
         // only one of them can be true////////////////////////////////////////////////////////////////
+        .set('autoApprovedYouCanApplyMore', false)
         .set('duplicatedMobile', false)
         .set('duplicatedHKID', false)
         .set('showNoticeOfYouHaveLoanInProgress', false)
@@ -171,6 +180,7 @@ function applicationFormPageReducer(state = initialState, action) {
         // set credit //
         .set('ZwapCredit', fromJS(action.data))
         // only one of them can be true////////////////////////////////////////////////////////////////
+        .set('autoApprovedYouCanApplyMore', false)
         .set('duplicatedMobile', false)
         .set('duplicatedHKID', false)
         .set('showNoticeOfYouHaveLoanInProgress', false)
@@ -178,6 +188,28 @@ function applicationFormPageReducer(state = initialState, action) {
         .set('showNotification', false)
         .set('showRejectionNotice', false)
         .set('openDialog', false);
+    case AUTO_APPROVED_AND_YOU_CAN_APPLY_MORE:
+      return state
+        .set('submitInProgress', false)
+        .set('submitError', false)
+        .set('submitSuccess', true)
+        // set credit //
+        .set('ZwapCredit', fromJS(action.data.credit.amount)) // data.LOA; data.credit.amount
+        .set('LOA', fromJS(action.data.LOA)) // data.LOA; data.credit.amount
+        // only one of them can be true////////////////////////////////////////////////////////////////
+        .set('autoApprovedYouCanApplyMore', true)
+        .set('duplicatedMobile', false)
+        .set('duplicatedHKID', false)
+        .set('showNoticeOfYouHaveLoanInProgress', false)
+        .set('showNoticeOfCreditNotEnough', false)
+        .set('showNotification', false)
+        .set('showRejectionNotice', false)
+        .set('openDialog', false);
+    //
+    case CANCEL_APPLICATION_SUCCEEDED:
+      return state
+      // only one of them can be true
+        .set('showDialogOfCancelApplicationSucceeded', true);
     case CLOSE_NOTICE_OF_YOU_HAVE_LOAN_IN_PROGRESS:
       return state
       // only one of them can be true

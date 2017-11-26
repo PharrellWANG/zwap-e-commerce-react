@@ -26,6 +26,10 @@ import {
   DUPLICATED_MOBILE,
   DUPLICATED_HKID,
   SHOW_REJECTION_NOTICE,
+  AUTO_APPROVED_AND_YOU_CAN_APPLY_MORE,
+  CANCEL_APPLICATION_FOR_APPLY_NEW,
+  CANCEL_APPLICATION_SUCCEEDED,
+  CANCEL_APPLICATION_FAILED,
 } from './constants';
 
 export function closeSnackBarEmail() {
@@ -95,11 +99,19 @@ export function letMeSubmit(values) {
   };
 }
 
-// export function SubmitStatus() {
-//   return {
-//     type: SUBMIT_APPLICATION_FOR_AUTO_APPROVE_STATUS,
-//   };
-// }
+export function showSuccessNoticeAndReorderForApplyMoreOption(data) {
+  return {
+    type: AUTO_APPROVED_AND_YOU_CAN_APPLY_MORE,
+    data,
+  };
+}
+
+export function cancelCurrentApplication(loanRefNo) {
+  return {
+    type: CANCEL_APPLICATION_FOR_APPLY_NEW,
+    loanRefNo,
+  };
+}
 
 export function letMeSubmitSuccess() {
   return {
@@ -152,6 +164,23 @@ export function accountChecking(data) {
 export function accountCheckingFail() {
   return {
     type: ACCOUNT_CHECKING_FAIL,
+  };
+}
+
+export function cancelSucceed(data) {
+  if (data) {
+    return {
+      type: CANCEL_APPLICATION_SUCCEEDED,
+    };
+  }
+  return {
+    type: CANCEL_APPLICATION_FAILED,
+  };
+}
+
+export function cancelFailed() {
+  return {
+    type: CANCEL_APPLICATION_FAILED,
   };
 }
 

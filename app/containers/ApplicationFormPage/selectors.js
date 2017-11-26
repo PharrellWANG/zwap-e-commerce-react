@@ -80,6 +80,25 @@ const makeSelectApplicationFormPageZwapCredit = () => createSelector(
   (subState) => subState.get('ZwapCredit'),
 );
 
+const makeSelectApplicationFormPageLOA = () => createSelector(
+  selectApplicationFormPageDomain,
+  (subState) => subState.get('LOA'),
+);
+
+const selectAutoApprovedYouCanApplyMore = () => createSelector(
+  selectApplicationFormPageDomain,
+  (subState) => subState.get('autoApprovedYouCanApplyMore'),
+);
+
+const selectShowDialogOfCancelApplicationSucceeded = () => createSelector(
+  selectApplicationFormPageDomain,
+  (subState) => subState.get('showDialogOfCancelApplicationSucceeded'),
+);
+// showDialogOfCancelApplicationSucceeded
+
+// autoApprovedYouCanApplyMore
+// SELECT this one and put it in index.js, make the button to do two things: cancel and go to e-commerce
+
 const getSuccessNotice = () => createSelector(
   selectApplicationFormPageDomain,
   (subState) => subState.get('success'),
@@ -92,12 +111,15 @@ const makeSelectApplicationFormPageFormData = () => createSelector(
 
 export {
   selectShowRejectionNotice,
+  selectAutoApprovedYouCanApplyMore,
+  selectShowDialogOfCancelApplicationSucceeded,
   selectDuplicatedMobile,
   selectDuplicatedHKID,
   selectApplicationFormPageDomain,
   makeSelectApplicationFormPageFormData,
   getSuccessNotice,
   makeSelectSubmitting,
+  makeSelectApplicationFormPageLOA,
   makeSelectError,
   makeSelectSuccess,
   makeSelectApplicationFormPageShowNotification,
