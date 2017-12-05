@@ -123,7 +123,7 @@ export function* checkIfAccountExistsOrNot(action) {
 
 export function* cancelApplication(action) {
   // const requestURL = 'http://218.255.104.158:6789/zwap-pay/cancel-application/';
-  const requestURL = 'https://platform.zwap.hk/zwap-pay/check-if-account-exist/';
+  const requestURL = 'https://platform.zwap.hk/zwap-pay/cancel-application/';
   const options = {
     method: 'POST',
     body: JSON.stringify({ LOA: action.loanRefNo }),
