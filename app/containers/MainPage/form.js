@@ -203,14 +203,14 @@ let ImmutableForm = (props) => {
         autoHideDuration={9000}
         // onRequestClose={closeSnackBarCongrats}
         open={displayCongrats && (displayCongratsOnce === 1)}
-        onRequestClose={this.handleRequestClose}
+        onClose={this.handleRequestClose}
         transition={Fade}
         SnackbarContentProps={{
           'aria-describedby': 'message-id',
         }}
         message={<span id="message-id">Fill the other fields to get your Zwap Pay service.</span>}
         action={[
-          <Button key="undo" color="accent" dense onClick={closeSnackBarCongrats}>
+          <Button key="undo" color="secondary" onClick={closeSnackBarCongrats}>
             <CloseIcon />
           </Button>,
         ]}
@@ -221,7 +221,7 @@ let ImmutableForm = (props) => {
           horizontal: 'left',
         }}
         autoHideDuration={9000}
-        onRequestClose={closeSnackBarEmail}
+        onClose={closeSnackBarEmail}
         open={displayEmailHint && (displayEmailHintOnce === 1)}
         // onRequestClose={this.handleRequestClose}
         transition={Fade}
@@ -230,7 +230,7 @@ let ImmutableForm = (props) => {
         }}
         message={<span id="message-id">If you have an Zwap account, please use the email address of your Zwap account to fill in the form.</span>}
         action={[
-          <Button key="undo" color="accent" dense onClick={closeSnackBarEmail}>
+          <Button key="undo" color="secondary" onClick={closeSnackBarEmail}>
             <CloseIcon />
           </Button>,
         ]}
@@ -250,7 +250,7 @@ let ImmutableForm = (props) => {
         }}
         message={<span id="message-id">Please type password for your new Zwap account.</span>}
         action={[
-          <Button key="undo" color="accent" dense onClick={closeSnackBarPw}>
+          <Button key="undo" color="secondary" onClick={closeSnackBarPw}>
             <CloseIcon />
           </Button>,
         ]}
@@ -489,12 +489,12 @@ let ImmutableForm = (props) => {
         <Grid item xs={12}>
           <div className={classes.rootForButtonLoading}>
             <div className={classes.xWrapper}>
-              <Button raised color="primary" className={classes.button} type="submit" disabled={pristine || submitting || realSubmitting}>
+              <Button variant="raised" color="primary" className={classes.button} type="submit" disabled={pristine || submitting || realSubmitting}>
                 <FormattedMessage {...messages.submit} />
               </Button>
               {realSubmitting && <CircularProgress size={28} className={classes.absoluteProgress} thickness={8} />}
             </div>
-            <Button color="accent" type="button" className={classes.rightAlignedButton} disabled={pristine || submitting} onClick={reset}>
+            <Button color="secondary" type="button" className={classes.rightAlignedButton} disabled={pristine || submitting} onClick={reset}>
               <FormattedMessage {...messages.clear} />
             </Button>
           </div>

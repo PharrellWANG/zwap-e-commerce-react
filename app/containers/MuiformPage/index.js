@@ -86,7 +86,7 @@ class MuiformPage extends React.PureComponent {
           <meta name="description" content="Description of MuiformPage" />
         </Helmet>
         <div>
-          <Dialog open={this.props.makeSelectDialogBoxStatus} onRequestClose={this.props.closeDialogBox}>
+          <Dialog open={this.props.makeSelectDialogBoxStatus} onClose={this.props.closeDialogBox}>
             <DialogTitle>
               Nice to see you here
             </DialogTitle>

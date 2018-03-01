@@ -125,12 +125,12 @@ const ImmutableForm = (props) => {
       </div>
       <div className={classes.root}>
         <div className={classes.wrapper}>
-          <Button raised color="primary" className={classes.button} type="submit" disabled={submitting || realSubmitting}>
+          <Button variant="raised" color="primary" className={classes.button} type="submit" disabled={submitting || realSubmitting}>
            Submit
           </Button>
           {realSubmitting && <CircularProgress size={24} className={classes.buttonProgress} thickness={6} />}
         </div>
-        <Button raised type="button" className={classes.rightAlignedButton} disabled={submitting} onClick={reset}>
+        <Button variant="raised" type="button" className={classes.rightAlignedButton} disabled={submitting} onClick={reset}>
           Clear
         </Button>
       </div>

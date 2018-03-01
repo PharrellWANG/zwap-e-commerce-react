@@ -129,7 +129,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
           </AppBar>
           <div>
             <CenteredSection>
-              <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
+              <Dialog open={this.state.open} onClose={this.handleRequestClose}>
                 <DialogTitle>
                   <FormattedMessage {...messages.startProjectHeader} />
                 </DialogTitle>

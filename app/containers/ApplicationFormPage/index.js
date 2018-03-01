@@ -182,7 +182,7 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button raised href="https://www.4decomart.com/zh_hant_hk/special.html" className={classes.button}>
+            <Button variant="raised" href="https://www.4decomart.com/zh_hant_hk/special.html" className={classes.button}>
               <FormattedMessage {...messages.MakeANewOrder} />
             </Button>
           </DialogActions>
@@ -208,7 +208,7 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
               <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.UnsettledNotice} />
               </Typography>
-              <Button raised href="https://platform.zwap.hk/login/" className={classes.button}>
+              <Button variant="raised" href="https://platform.zwap.hk/login/" className={classes.button}>
                 <FormattedMessage {...messages.LoginToZwap} />
               </Button>
             </div>
@@ -226,7 +226,7 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
               <Typography type="body1" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.reasonableExplanation} />
               </Typography>
-              <Button raised href="https://www.4decomart.com/zh_hant_hk/special.html" className={classes.button}>
+              <Button variant="raised" href="https://www.4decomart.com/zh_hant_hk/special.html" className={classes.button}>
                 <FormattedMessage {...messages.MakeANewOrder} />
               </Button>
             </div>
@@ -304,7 +304,7 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
               <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.autoApprovedYouHaveTwoWaysSecond} />
               </Typography>
-              <Button raised onClick={() => this.props.cancelCurrentApplication(loanRefNo)} className={classes.button}>
+              <Button variant="raised" onClick={() => this.props.cancelCurrentApplication(loanRefNo)} className={classes.button}>
                 <FormattedMessage {...messages.autoApprovedYouHaveTwoWaysButtonMsg} />
               </Button>
             </div>

@@ -245,7 +245,7 @@ let ApplicationForm = (props) => {
         autoHideDuration={9000}
         // onRequestClose={closeSnackBarCongrats}
         open={displayCongrats && (displayCongratsOnce === 1)}
-        onRequestClose={this.handleRequestClose}
+        onClose={this.handleRequestClose}
         transition={Fade}
         SnackbarContentProps={{
           'aria-describedby': 'message-id',
@@ -254,7 +254,7 @@ let ApplicationForm = (props) => {
           <FormattedMessage {...messages.fillOtherFieldsToGetService} />
         </span>}
         action={[
-          <Button key="undo" color="accent" dense onClick={closeSnackBarCongrats}>
+          <Button key="undo" color="secondary" onClick={closeSnackBarCongrats}>
             <CloseIcon />
           </Button>,
         ]}
@@ -276,7 +276,7 @@ let ApplicationForm = (props) => {
           <FormattedMessage {...messages.helpfulEmailHint} />
         </span>}
         action={[
-          <Button key="undo" color="accent" dense onClick={closeSnackBarEmail}>
+          <Button key="undo" color="secondary" onClick={closeSnackBarEmail}>
             <CloseIcon />
           </Button>,
         ]}
@@ -298,7 +298,7 @@ let ApplicationForm = (props) => {
           <FormattedMessage {...messages.typePwForYourNewZwapAcc} />
         </span>}
         action={[
-          <Button key="undo" color="accent" dense onClick={closeSnackBarPw}>
+          <Button key="undo" color="secondary" onClick={closeSnackBarPw}>
             <CloseIcon />
           </Button>,
         ]}
@@ -491,12 +491,12 @@ let ApplicationForm = (props) => {
         <Grid item xs={12}>
           <div className={classes.rootForButtonLoading}>
             <div className={classes.xWrapper}>
-              <Button raised color="primary" className={classes.button} type="submit" disabled={pristine || submitting || realSubmitting}>
+              <Button variant="raised" color="primary" className={classes.button} type="submit" disabled={pristine || submitting || realSubmitting}>
                 <FormattedMessage {...messages.submit} />
               </Button>
               {realSubmitting && <CircularProgress size={28} className={classes.absoluteProgress} thickness={8} />}
             </div>
-            <Button color="accent" type="button" className={classes.rightAlignedButton} disabled={pristine || submitting} onClick={reset}>
+            <Button color="secondary" type="button" className={classes.rightAlignedButton} disabled={pristine || submitting} onClick={reset}>
               <FormattedMessage {...messages.clear} />
             </Button>
           </div>
