@@ -270,7 +270,7 @@ export default defineMessages({
   },
   submitInstruction: {
     id: 'app.containers.InSmileRegistrationPage.submitInstruction',
-    defaultMessage: 'Submit the form below to apply Zwap Pay for your order',
+    defaultMessage: 'Submit the form below to apply HK$ 15,000 to enjoy the service from InSmile',
   },
   birthday: {
     id: 'app.containers.InSmileRegistrationPage.birthday',

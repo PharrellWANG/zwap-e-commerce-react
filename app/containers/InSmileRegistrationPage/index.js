@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  *
  * InSmileRegistrationPage
@@ -67,6 +68,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     handleSubmit: (values) => {
+      // console.log('aha, in handleSubmit');
       dispatch(letMeSubmit(values));
     },
     closeSnackBarCongrats: () => {
@@ -76,6 +78,8 @@ function mapDispatchToProps(dispatch) {
       dispatch(closeSnackBarPw());
     },
     togglePwAsPlainText: (checked) => {
+      // console.log('-----in dispatch function:');
+      // console.log(checked);
       dispatch(togglePwAsPlainText(checked));
     },
   };

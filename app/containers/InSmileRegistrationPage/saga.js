@@ -4,7 +4,7 @@ import request from 'utils/request';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   accountChecking,
-  accountCheckingFail,
+  // accountCheckingFail,
 } from './actions';
 // Individual exports for testing
 import {
@@ -31,11 +31,12 @@ export function* checkIfAccountExistsOrNot(action) {
   try {
     // yield call(delay, 1000);
     const data = yield call(request, requestURL, options);
-    console.log('---------');
-    console.log('is account exist', data.isAccountExist);
+    // console.log('---------');
+    // console.log('is account exist', data.isAccountExist);
     yield put(accountChecking(data.isAccountExist));
   } catch (err) {
-    yield put(accountCheckingFail());
+    // yield put(accountCheckingFail());
+    console.log('this should not happen..');
   }
 }
 

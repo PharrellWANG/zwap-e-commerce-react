@@ -48,6 +48,7 @@ import messages from './messages';
 import validate from './validate';
 import asyncValidate from './asyncValidate';
 import A from '../../components/A';
+import InSmile from './insmile.png';
 // import styles from './styles';
 
 const styles = (theme) => ({
@@ -169,10 +170,16 @@ let ApplicationForm = (props) => {
   // console.log('haha, now the value of asyncValidating is: ', asyncValidating);
   // console.log(initialValues.toJS());
   // console.log(selectedLang === 'zh');
+  // console.log('---------------------');
+  // console.log(displayPwFields);
+  // console.log(seePwAsPlainText);
   return (
     <form onSubmit={handleSubmit} style={{ width: 800 }}>
       <Grid container spacing={24} style={{ paddingBottom: 15 }}>
         <Grid item xs={12} style={{ textAlign: 'center', paddingLeft: 16, paddingRight: 16 }}>
+          <A href="https://www.insmilehk.com" target="_blank">
+            <img src={InSmile} alt="InSmile - Logo" style={{ paddingBottom: 32 }} />
+          </A>
           <Typography variant="headline" component="h5" gutterBottom>
             <FormattedMessage {...messages.submitInstruction} />
           </Typography>
@@ -223,15 +230,6 @@ let ApplicationForm = (props) => {
           />
         </Grid>
         }
-      </Grid>
-      <Divider />
-      <Grid container spacing={24} style={{ paddingBottom: 15, paddingTop: 15 }}>
-        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
-          <Field name="orderReferenceNo" component={renderTextField} label={formatMessage(messages.orderRefNo)} />
-        </Grid>
-        <Grid item xs={12} sm={6} style={{ textAlign: 'center' }}>
-          <Field name="amountToPay" component={renderTextField} label={formatMessage(messages.amountToPay)} />
-        </Grid>
       </Grid>
       <Divider />
       <Snackbar
@@ -502,6 +500,8 @@ ApplicationForm = connect(
     const displayPwInputInstruction = state.get('inSmileRegistrationPage').get('displayPwInputInstruction');
     const displayPwInputInstructionOnce = state.get('inSmileRegistrationPage').get('displayPwInputInstructionOnce');
     const seePwAsPlainText = state.get('inSmileRegistrationPage').get('seePwAsPlainText');
+    // console.log('destination-->');
+    // console.log(seePwAsPlainText);
     const yearOfStudying = selector(state, 'YearOfStudy');
     let requireGPA = false;
     if (yearOfStudying === 'Year 2' || yearOfStudying === 'Year 3' || yearOfStudying === 'Year 4') {
