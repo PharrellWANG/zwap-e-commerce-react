@@ -172,7 +172,7 @@ function Footer() {
       <Grid container spacing={24} style={{ paddingBottom: 1, paddingLeft: 8, paddingRight: 8 }}>
         <Grid item xs={12} style={{ textAlign: 'center', paddingLeft: 4, paddingRight: 4 }}>
           <Typography type="caption" align="left" style={{ color: '#616161', verticalAlign: 'center' }}>
-            <FormattedMessage {...messages.Copyright} />&copy; 2017 P L Technology Limited
+            <FormattedMessage {...messages.Copyright} />&copy; 2018 P L Technology Limited
           </Typography>
         </Grid>
       </Grid>
