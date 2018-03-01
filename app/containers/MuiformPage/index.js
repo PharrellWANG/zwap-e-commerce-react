@@ -109,13 +109,13 @@ class MuiformPage extends React.PureComponent {
         <Grid item xs={12}>
           <Card className={classes.card}>
             <CardContent>
-              {/* <Typography type="body1" className={classes.title}> */}
+              {/* <Typography variant="body1" className={classes.title}> */}
               {/* Hint */}
               {/* </Typography> */}
-              <Typography type="headline" component="h2">
+              <Typography variant="headline" component="h2">
                 API Endpoints
               </Typography>
-              <Typography type="body1" className={classes.pos}>
+              <Typography variant="body1" className={classes.pos}>
                 It only servers as an example of posting data to Zwap
                 for getting to the Zwap Pay form page in a valid way.
               </Typography>

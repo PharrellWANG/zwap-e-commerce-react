@@ -205,7 +205,7 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.UnsettledNotice} />
               </Typography>
               <Button variant="raised" href="https://platform.zwap.hk/login/" className={classes.button}>
@@ -219,11 +219,11 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.CreditNotEnough} />{' '}
                 {this.props.makeSelectApplicationFormPageZwapCredit}
               </Typography>
-              <Typography type="body1" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body1" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.reasonableExplanation} />
               </Typography>
               <Button variant="raised" href="https://www.4decomart.com/zh_hant_hk/special.html" className={classes.button}>
@@ -237,10 +237,10 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.SuccessNotice} />
               </Typography>
-              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.FollowEmailInstruction} />
               </Typography>
             </div>
@@ -251,10 +251,10 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.duplicatedHKIDNotice} />
               </Typography>
-              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.duplicatedHKIDNoticeBody} />
                 {' '}
                 <a href="mailto:cs@zwap.hk?subject=Issue of Duplicated HKID">cs@zwap.hk</a>
@@ -267,10 +267,10 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.duplicatedMobileNotice} />
               </Typography>
-              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.duplicatedMobileNoticeBody} />
                 {' '}
                 <a href="mailto:cs@zwap.hk?subject=Issue of Duplicated Mobile">cs@zwap.hk</a>
@@ -283,7 +283,7 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.rejectionNotice} />
               </Typography>
             </div>
@@ -294,14 +294,14 @@ export class ApplicationFormPage extends React.Component { // eslint-disable-lin
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.autoApprovedYouHaveTwoWays} />
               </Typography>
-              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.autoApprovedYouHaveTwoWaysOne} />{' '}
                 {this.props.makeSelectApplicationFormPageZwapCredit}
               </Typography>
-              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.autoApprovedYouHaveTwoWaysSecond} />
               </Typography>
               <Button variant="raised" onClick={() => this.props.cancelCurrentApplication(loanRefNo)} className={classes.button}>

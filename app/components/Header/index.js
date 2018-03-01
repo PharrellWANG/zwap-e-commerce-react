@@ -119,7 +119,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
         <Paper className={this.props.classes.root} elevation={4}>
           <AppBar position="static" className={this.props.classes.appbar}>
             <Toolbar>
-              <Typography type="title" color="inherit" className={this.props.classes.flex}>
+              <Typography variant="title" color="inherit" className={this.props.classes.flex}>
                 <A href="https://www.zwap.hk">
                   <img className={this.props.classes.image} src={ZwapLogo} alt="Zwap - Logo" />
                 </A>
@@ -134,22 +134,22 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
                   <FormattedMessage {...messages.startProjectHeader} />
                 </DialogTitle>
                 <DialogContent>
-                  <Typography type="body2" color="primary" gutterBottom>
+                  <Typography variant="body2" color="primary" gutterBottom>
                     <FormattedMessage {...messages.stepOne} />
                   </Typography>
-                  <Typography type="body1" align="left" gutterBottom>
+                  <Typography variant="body1" align="left" gutterBottom>
                     <FormattedMessage {...messages.stepOneContents} />
                   </Typography>
-                  <Typography type="body2" color="primary" gutterBottom>
+                  <Typography variant="body2" color="primary" gutterBottom>
                     <FormattedMessage {...messages.stepTwo} />
                   </Typography>
-                  <Typography type="body1" align="left" gutterBottom>
+                  <Typography variant="body1" align="left" gutterBottom>
                     <FormattedMessage {...messages.stepTwoContents} />
                   </Typography>
-                  <Typography type="body2" color="primary" gutterBottom>
+                  <Typography variant="body2" color="primary" gutterBottom>
                     <FormattedMessage {...messages.stepThree} />
                   </Typography>
-                  <Typography type="body1" align="left" gutterBottom>
+                  <Typography variant="body1" align="left" gutterBottom>
                     <FormattedMessage {...messages.stepThreeContents} />
                   </Typography>
                 </DialogContent>
@@ -160,10 +160,10 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
                 </DialogActions>
               </Dialog>
               <br />
-              <Typography type="display1" gutterBottom style={{ paddingTop: 48 }}>
+              <Typography variant="display1" gutterBottom style={{ paddingTop: 48 }}>
                 <FormattedMessage {...messages.startProjectHeader} />
               </Typography>
-              <Typography type="subheading" gutterBottom>
+              <Typography variant="subheading" gutterBottom>
                 <FormattedMessage {...messages.startProjectMessage} />
               </Typography>
               <br />

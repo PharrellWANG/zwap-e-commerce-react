@@ -298,7 +298,7 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                   <Tab label="How does it work" icon={<FlightTakeoff />} />
                 </Tabs>
                 {value === 0 && <TabContainer>
-                  <Typography type="headline" component="h3" gutterBottom>
+                  <Typography variant="headline" component="h3" gutterBottom>
                     What is Zwap Pay?
                   </Typography>
                   {/* start single conversation block */}
@@ -308,10 +308,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                       src={pharrellAva}
                       className={classNames(classes.avatar, classes.bigAvatar)}
                     />
-                    <Typography type="body2" style={{ marginTop: 8, marginLeft: 2, marginRight: 2 }}>
+                    <Typography variant="body2" style={{ marginTop: 8, marginLeft: 2, marginRight: 2 }}>
                       Adam:
                     </Typography>
-                    <Typography type="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
+                    <Typography variant="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
                       Eve, my dear, what is the Zwap Pay?
                     </Typography>
                   </div>
@@ -322,10 +322,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                       src={eveAva}
                       className={classNames(classes.avatar, classes.bigAvatar)}
                     />
-                    <Typography type="body2" style={{ marginTop: 8, marginLeft: 16, marginRight: 2 }}>
+                    <Typography variant="body2" style={{ marginTop: 8, marginLeft: 16, marginRight: 2 }}>
                       Eve:
                     </Typography>
-                    <Typography type="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
+                    <Typography variant="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
                       {/* Oh, dear, you should have heard of it. Don&#39;t you remember our last trip to Hong Kong? */}
                       Oh, dear. After I tell you the answer, shall we eat the apple?
                     </Typography>
@@ -337,10 +337,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                       src={pharrellAva}
                       className={classNames(classes.avatar, classes.bigAvatar)}
                     />
-                    <Typography type="body2" style={{ marginTop: 8, marginLeft: 2, marginRight: 2 }}>
+                    <Typography variant="body2" style={{ marginTop: 8, marginLeft: 2, marginRight: 2 }}>
                       Adam:
                     </Typography>
-                    <Typography type="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
+                    <Typography variant="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
                       Sure Eve. Tell me what is Zwap Pay. I can&#39;t wait!
                     </Typography>
                   </div>
@@ -351,10 +351,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                       src={eveAva}
                       className={classNames(classes.avatar, classes.bigAvatar)}
                     />
-                    <Typography type="body2" style={{ marginTop: 8, marginLeft: 16, marginRight: 2 }}>
+                    <Typography variant="body2" style={{ marginTop: 8, marginLeft: 16, marginRight: 2 }}>
                       Eve:
                     </Typography>
-                    <Typography type="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
+                    <Typography variant="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
                       Well, Zwap Pay is a payment method, just like pay by credit card. The difference is, you
                       don&#39;t need a plastic card with a chip inside! You just submit your application to
                       Zwap, and they will pay for the goods that you wanna buy. All you need to do is repay them
@@ -368,10 +368,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                       src={pharrellAva}
                       className={classNames(classes.avatar, classes.bigAvatar)}
                     />
-                    <Typography type="body2" style={{ marginTop: 8, marginLeft: 2, marginRight: 2 }}>
+                    <Typography variant="body2" style={{ marginTop: 8, marginLeft: 2, marginRight: 2 }}>
                       Adam:
                     </Typography>
-                    <Typography type="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
+                    <Typography variant="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
                       Oh Jesus! Is it for real! I am desperately want to try it! I just want to buy iPhone X but I
                       don&#39;t have enough money!
                     </Typography>
@@ -383,10 +383,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                       src={eveAva}
                       className={classNames(classes.avatar, classes.bigAvatar)}
                     />
-                    <Typography type="body2" style={{ marginTop: 8, marginLeft: 16, marginRight: 2 }}>
+                    <Typography variant="body2" style={{ marginTop: 8, marginLeft: 16, marginRight: 2 }}>
                       Eve:
                     </Typography>
-                    <Typography type="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
+                    <Typography variant="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
                       Hold on, my dear! Currently they only collaborate with MTGamer e-commerce website. So their
                       Zwap Pay service is only applicable when you want to buy things from MTGamer. And you need
                       to be an undergraduate student in the university.
@@ -399,10 +399,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                       src={pharrellAva}
                       className={classNames(classes.avatar, classes.bigAvatar)}
                     />
-                    <Typography type="body2" style={{ marginTop: 8, marginLeft: 2, marginRight: 2 }}>
+                    <Typography variant="body2" style={{ marginTop: 8, marginLeft: 2, marginRight: 2 }}>
                       Adam:
                     </Typography>
-                    <Typography type="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
+                    <Typography variant="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
                       Okay. I see, let&#39;s go to MTGamer e-commerce website! Shopping time!
                     </Typography>
                   </div>
@@ -413,10 +413,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                       src={eveAva}
                       className={classNames(classes.avatar, classes.bigAvatar)}
                     />
-                    <Typography type="body2" style={{ marginTop: 8, marginLeft: 16, marginRight: 2 }}>
+                    <Typography variant="body2" style={{ marginTop: 8, marginLeft: 16, marginRight: 2 }}>
                       Eve:
                     </Typography>
-                    <Typography type="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
+                    <Typography variant="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
                       How about enjoy the apple first?
                     </Typography>
                   </div>
@@ -427,41 +427,41 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
                       src={pharrellAva}
                       className={classNames(classes.avatar, classes.bigAvatar)}
                     />
-                    <Typography type="body2" style={{ marginTop: 8, marginLeft: 2, marginRight: 2 }}>
+                    <Typography variant="body2" style={{ marginTop: 8, marginLeft: 2, marginRight: 2 }}>
                       Adam:
                     </Typography>
-                    <Typography type="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
+                    <Typography variant="body1" component="p" style={{ marginTop: 10, marginLeft: 2 }}>
                       No! Enjoy Zwap Pay first!
                     </Typography>
                   </div>
                   {/* end single conversation block */}
                 </TabContainer>}
                 {value === 1 && <TabContainer>
-                  <Typography type="headline" component="h3" gutterBottom>
+                  <Typography variant="headline" component="h3" gutterBottom>
                     How does Zwap Pay work?
                   </Typography>
-                  <Typography type="body2" component="p">
+                  <Typography variant="body2" >
                     We collaborate with e-commerce websites to provide interest-free payments for you.
                   </Typography>
-                  <Typography type="body1" component="p" gutterBottom>
+                  <Typography variant="body1" gutterBottom>
                     {''}
                   </Typography>
-                  <Typography type="body2" component="p">
+                  <Typography variant="body2" >
                     {''}
                   </Typography>
-                  <Typography type="body1" component="p" gutterBottom>
+                  <Typography variant="body1" gutterBottom>
                     Go to our collaborator&#39;s website, and add something into cart for yourself, choose Zwap Pay to checkout.
                   </Typography>
-                  <Typography type="body2" component="p">
+                  <Typography variant="body2" >
                     {''}
                   </Typography>
-                  <Typography type="body1" component="p" gutterBottom>
+                  <Typography variant="body1" gutterBottom>
                     Submit application to Zwap. Wait for the application to be approved.
                   </Typography>
-                  <Typography type="body2" component="p">
+                  <Typography variant="body2" >
                     {''}
                   </Typography>
-                  <Typography type="body1" component="p" gutterBottom>
+                  <Typography variant="body1" gutterBottom>
                     You application is approved. Your items bought are on the way to your hands.
                   </Typography>
                 </TabContainer>}
@@ -502,10 +502,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              {/* <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom> */}
+              {/* <Typography variant="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom> */}
               {/* <FormattedMessage {...messages.SuccessNotice} /> */}
               {/* </Typography> */}
-              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.UnsettledNotice} />
               </Typography>
               <ColorAWithUnderline href="https://platform.zwap.hk/login/" target="_blank">Login to Zwap</ColorAWithUnderline>
@@ -517,10 +517,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              {/* <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom> */}
+              {/* <Typography variant="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom> */}
               {/* <FormattedMessage {...messages.SuccessNotice} /> */}
               {/* </Typography> */}
-              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.CreditNotEnough} />{' '}
                 {this.props.makeSelectMainPageZwapCredit}
               </Typography>
@@ -533,10 +533,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              <Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.SuccessNotice} />
               </Typography>
-              <Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>
+              <Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>
                 <FormattedMessage {...messages.FollowEmailInstruction} />
               </Typography>
             </div>
@@ -547,11 +547,11 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} className={classes.styledGrid}>
             <div className={classes.styledDiv}>
-              <Typography type="headline" component="h2" gutterBottom>
+              <Typography variant="headline" component="h2" gutterBottom>
                 Invalid Token
                 {/* <FormattedMessage {...messages.InvalidToken} /> */}
               </Typography>
-              <Typography type="body1" component="p" gutterBottom>
+              <Typography variant="body1" component="p" gutterBottom>
                 Looks like your token has expired or never existed.
                 {/* <FormattedMessage {...messages.ExpiredTokenNeverExisted} /> */}
               </Typography>
@@ -567,10 +567,10 @@ export class MainPage extends React.Component { // eslint-disable-line react/pre
         // {/*<Grid item xs={12} sm={12} className={classes.styledGrid}>*/}
         // {/*<Card className={classes.card}>*/}
         // {/*<CardContent>*/}
-        // {/*<Typography type="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>*/}
+        // {/*<Typography variant="headline" component="h2" style={{ textAlign: 'left' }} gutterBottom>*/}
         // {/*Congratulations! You have successfully submitted your application*/}
         // {/*</Typography>*/}
-        // {/*<Typography type="body2" style={{ textAlign: 'left' }} gutterBottom>*/}
+        // {/*<Typography variant="body2" style={{ textAlign: 'left' }} gutterBottom>*/}
         // {/*An email has been sent to your inbox. Please follow the instructions*/}
         // {/*in the email to activate your account.*/}
         // {/*</Typography>*/}

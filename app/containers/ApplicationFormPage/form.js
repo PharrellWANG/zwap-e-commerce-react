@@ -176,7 +176,7 @@ let ApplicationForm = (props) => {
     <form onSubmit={handleSubmit} style={{ width: 800 }}>
       <Grid container spacing={24} style={{ paddingBottom: 15 }}>
         <Grid item xs={12} style={{ textAlign: 'center', paddingLeft: 16, paddingRight: 16 }}>
-          <Typography type="headline" component="h5" gutterBottom>
+          <Typography variant="headline" component="h5" gutterBottom>
             <FormattedMessage {...messages.submitInstruction} />
           </Typography>
         </Grid>
@@ -479,7 +479,7 @@ let ApplicationForm = (props) => {
       <Divider />
       <Grid container spacing={24} style={{ paddingTop: 6, paddingBottom: 6 }}>
         <Grid item xs={12} style={{ textAlign: 'center', paddingLeft: 16, paddingRight: 16 }}>
-          <Typography type="body1" gutterBottom>
+          <Typography variant="body1" gutterBottom>
             <FormattedMessage {...messages.BySubmittingTheForm} />{' '}
             <A href="https://platform.zwap.hk/document/?fname=PDPO.pdf" target="_blank"><FormattedMessage {...messages.ImportantNotice} /></A>{' '}
             <FormattedMessage {...messages.And} />{' '}
