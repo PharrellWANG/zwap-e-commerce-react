@@ -347,8 +347,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     cancelCurrentApplication: (loanRefNo) => {
-      console.log('=============');
-      console.log(loanRefNo);
+      // console.log('=============');
+      // console.log(loanRefNo);
       dispatch(cancelCurrentApplication(loanRefNo));
     },
     togglePwAsPlainText: (checked) => {

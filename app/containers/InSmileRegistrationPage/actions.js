@@ -14,7 +14,47 @@ import {
   IS_IT_NEEDED_TO_DISPLAY_PW_FIELD,
   ACCOUNT_CHECKING_SUCCESS_AND_HAVE_ACCOUNT,
   ACCOUNT_CHECKING_SUCCESS_AND_NO_ACCOUNT,
+  CREDIT_NOT_ENOUGH, DUPLICATED_HKID, DUPLICATED_MOBILE, HAS_EXISTING_LOAN_IN_PROGRESS,
+  SHOW_REJECTION_NOTICE,
+  SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
 } from './constants';
+
+export function letMeSubmitSuccess() {
+  return {
+    type: SUBMIT_APPLICATION_FOR_AUTO_APPROVE_SUCCESS,
+  };
+}
+
+export function hasExistingLoanInProgress() {
+  return {
+    type: HAS_EXISTING_LOAN_IN_PROGRESS,
+  };
+}
+
+export function duplicatedHKID() {
+  return {
+    type: DUPLICATED_HKID,
+  };
+}
+
+export function showRejectionNotice() {
+  return {
+    type: SHOW_REJECTION_NOTICE,
+  };
+}
+
+export function duplicatedMobile() {
+  return {
+    type: DUPLICATED_MOBILE,
+  };
+}
+
+export function creditNotEnoughSorry(data) {
+  return {
+    type: CREDIT_NOT_ENOUGH,
+    data,
+  };
+}
 
 export function defaultAction() {
   return {
@@ -23,8 +63,8 @@ export function defaultAction() {
 }
 
 export function letMeSubmit(values) {
-  console.log('yea, this is in action.js! excited! ---> ');
-  console.log('formValues: ', values.toJS());
+  // console.log('yea, this is in action.js! excited! ---> ');
+  // console.log('formValues: ', values.toJS());
   return {
     type: SUBMIT_APPLICATION_FOR_AUTO_APPROVE,
     formData: values,

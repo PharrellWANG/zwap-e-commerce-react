@@ -354,7 +354,7 @@ export default defineMessages({
   },
   CreditNotEnough: {
     id: 'app.containers.InSmileRegistrationPage.CreditNotEnough',
-    defaultMessage: 'The amount of your order is higher than your Zwap Credit, please buy less and apply again. Your Zwap Credit (HK$): ',
+    defaultMessage: 'We are sorry that your application has been rejected. Please refresh the page for new application.',
   },
   LoginToZwap: {
     id: 'app.containers.InSmileRegistrationPage.LoginToZwap',
@@ -414,7 +414,7 @@ export default defineMessages({
   },
   rejectionNotice: {
     id: 'app.containers.InSmileRegistrationPage.rejectionNotice',
-    defaultMessage: 'We are sorry that your application has been rejected.',
+    defaultMessage: 'We are sorry that your application has been rejected. Please refresh the page for new application',
   },
   autoApprovedYouHaveTwoWays: {
     id: 'app.containers.InSmileRegistrationPage.autoApprovedYouHaveTwoWays',
