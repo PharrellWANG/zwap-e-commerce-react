@@ -31,7 +31,8 @@ const initialState = fromJS({
   submitInProgress: false,
   submitError: false,
   submitSuccess: false,
-
+  // submitSuccess: true,
+  // toggle one of the below items to truth to see it on web page.
   showNoticeOfYouHaveLoanInProgress: false,
   showNoticeOfCreditNotEnough: false,
   showRejectionNotice: false,

@@ -21,7 +21,8 @@ require('intl/locale-data/jsonp/en-US');
 export const renderDatePickerZhHansHK = ({ input, floatingLabelText, confirmMsg, cancelMsg, input: { onBlur, ...inputProps }, ...props, meta: { touched, error } }) => (
   <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
     <DatePicker
-      floatingLabelStyle={{ color: '#7a7a7a' }}
+      // floatingLabelStyle={{ color: '#7a7a7a' }}
+      floatingLabelStyle={{ color: '#7a7a7a', fontFamily: 'Roboto' }}
       floatingLabelText={floatingLabelText}
       errorStyle={{ textAlign: 'left' }}
       DateTimeFormat={DateTimeFormat}
@@ -47,7 +48,8 @@ export const renderDatePickerZhHansHK = ({ input, floatingLabelText, confirmMsg,
 export const renderDatePickerEnUS = ({ input, floatingLabelText, confirmMsg, cancelMsg, input: { onBlur, ...inputProps }, ...props, meta: { touched, error } }) => (
   <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
     <DatePicker
-      floatingLabelStyle={{ color: '#7a7a7a' }}
+      // floatingLabelStyle={{ color: '#7a7a7a' }}
+      floatingLabelStyle={{ color: '#7a7a7a', fontFamily: 'Roboto' }}
       floatingLabelText={floatingLabelText}
       errorStyle={{ textAlign: 'left' }}
       okLabel={confirmMsg}

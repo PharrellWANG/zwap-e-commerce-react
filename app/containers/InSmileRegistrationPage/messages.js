@@ -270,7 +270,7 @@ export default defineMessages({
   },
   submitInstruction: {
     id: 'app.containers.InSmileRegistrationPage.submitInstruction',
-    defaultMessage: 'Submit the form below to apply HK$ 15,000 to enjoy the service from InSmile',
+    defaultMessage: 'Submit the form below to apply HK$ 15,888 to enjoy the service from InSmile',
   },
   birthday: {
     id: 'app.containers.InSmileRegistrationPage.birthday',
@@ -350,7 +350,7 @@ export default defineMessages({
   },
   FollowEmailInstruction: {
     id: 'app.containers.InSmileRegistrationPage.FollowEmailInstruction',
-    defaultMessage: 'An email has been sent to your inbox. Please follow the instructions in the email to activate your account.',
+    defaultMessage: 'An email has been sent to your inbox. Please follow the instructions in the email to continue. (if you do not have Zwap account before or your Zwap account has not been activated, you will receive an email for account activation in addition.)',
   },
   CreditNotEnough: {
     id: 'app.containers.InSmileRegistrationPage.CreditNotEnough',

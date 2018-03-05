@@ -15,7 +15,8 @@ const renderSelectField = ({
   <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
     <SelectField
       // floatingLabelFixed
-      floatingLabelStyle={{ color: '#7a7a7a' }}
+      // floatingLabelStyle={{ color: '#7a7a7a' }}
+      floatingLabelStyle={{ color: '#7a7a7a', fontFamily: 'Roboto' }}
       // menuItemStyle={{ textAlign: 'left' }}
       // hintStyle={{ textAlign: 'left' }}
       // labelStyle={{ textAlign: 'left' }}
