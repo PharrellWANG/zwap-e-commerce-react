@@ -270,7 +270,7 @@ export default defineMessages({
   },
   submitInstruction: {
     id: 'app.containers.InSmileRegistrationPage.submitInstruction',
-    defaultMessage: 'Submit the form below to apply HK$ 15,888 to enjoy the service from InSmile',
+    defaultMessage: 'Submit the form below to apply HK$ 15,880 to enjoy the service from InSmile',
   },
   birthday: {
     id: 'app.containers.InSmileRegistrationPage.birthday',
