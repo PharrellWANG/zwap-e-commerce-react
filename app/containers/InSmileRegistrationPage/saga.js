@@ -20,8 +20,8 @@ import {
 
 // const prefilled = makeSelectMainPageFormData();
 export function* submitInSmileApplication(action) {
-  // const requestURL = 'http://218.255.104.158:6789/zwap-pay/insmile/receive-application/';
-  const requestURL = 'https://platform.zwap.hk/zwap-pay/insmile/receive-application/';
+  const requestURL = 'http://218.255.104.158:6789/zwap-pay/insmile/receive-application/';
+  // const requestURL = 'https://platform.zwap.hk/zwap-pay/insmile/receive-application/';
 
   const strData = serialize({
     // formData: action.formData,
@@ -76,8 +76,8 @@ export function* checkIfAccountExistsOrNot(action) {
   // console.log(action.email);
   // console.log(typeof (action.email)); // type: string
   // console.log(JSON.stringify(action.email));
-  // const requestURL = 'http://218.255.104.158:6789/zwap-pay/check-if-account-exist/';
-  const requestURL = 'https://platform.zwap.hk/zwap-pay/check-if-account-exist/';
+  const requestURL = 'http://218.255.104.158:6789/zwap-pay/check-if-account-exist/';
+  // const requestURL = 'https://platform.zwap.hk/zwap-pay/check-if-account-exist/';
   const options = {
     method: 'POST',
     body: JSON.stringify({ email: action.email }),
